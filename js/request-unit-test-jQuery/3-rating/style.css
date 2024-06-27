@@ -1,0 +1,26 @@
+body {
+    background-color: #fbf2e9;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+li {
+    display: inline-block;
+    font-size: 35px;
+}
+
+.hovered-stars {
+    color: #ffbe62;
+}
+
+.clicked-stars {
+    color: #ff9601;
+}
