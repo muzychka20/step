@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palette</title>
+    <link rel="stylesheet" href="./style/style.css">
+</head>
+<body>
+    <main>
+        <h2 class="header">Create new color</h2>
+        <form id="addColorForm" class="form_pallete">            
+            <div class="form_pallete_element">
+                <div class="tips">
+                    <label class="mark" for="input_color">Color:</label>
+                    <span class="wrong_data" id="wrong_data_name"></span>
+                </div>
+                <input class="input_data" name="input_color" id="input_color" type="text" required>
+            </div>
+            <div class="form_pallete_element">
+                <label class="mark" for="select_type">Type:</label>
+                <select name="select_type" id="select_type">
+                    <option value="1">RGB</option>
+                    <option value="2">RGBA</option>
+                    <option value="3">HEX</option>
+                </select>
+            </div>
+            <div class="form_pallete_element">
+                <div class="tips">
+                    <label class="mark" for="input_code">Code:</label>
+                    <span class="wrong_data" id="wrong_data_code"></span>
+                </div>
+                <input class="input_data" name="input_code" id="input_code" type="text" required>
+            </div>
+            <div class="form_pallete_element">
+                <button type="submit" class="button_save">Save</button>
+            </div>
+        </form>
+    </main>    
+    <div class="palette">
+        <h2 class="header">All colors</h2>
+        <div class="palette_blocks" id="palette_blocks"></div>
+    </div>
+    <script type="module" src="./script/script.js"></script>
+</body>
+</html>

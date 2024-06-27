@@ -1,0 +1,114 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: antiquewhite;
+}
+
+main {
+    width: 30%;
+    margin: 0 auto;
+}
+
+p {
+    margin: 0;
+}
+
+.header {
+    text-align: center;
+}
+
+.form_pallete {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form_pallete_element {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.mark {
+    font-weight: 600;
+}
+
+.input_data {
+    height: 25px;
+    padding-left: 10px;
+}
+
+select {
+    height: 30px;
+    padding-left: 10px; 
+}
+
+.button_save {
+    height: 30px;
+}
+
+.palette {
+    width: 70%;    
+    margin: 50px auto;    
+}
+
+.palette_blocks {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.tips {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;    
+}
+
+.wrong_data {
+    margin: 0;
+    color: rgb(160, 0, 0);
+    font-weight: 900;
+    text-align: right;
+}
+
+.colorBlock {
+    width: 30%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;        
+}
+
+.colorInfoBg {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 70%;
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.colorInfo {
+    text-align: center;
+    display: flex;
+    flex-direction: column;    
+    gap: 7px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;        
+}
+
+.colorInfoName {
+    font-weight: 100;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+.colorInfoType {
+    font-weight: 100;
+    font-size: 16px;
+}
+
+.colorInfoCode {
+    font-weight: 600;
+    font-size: 18px;    
+}
