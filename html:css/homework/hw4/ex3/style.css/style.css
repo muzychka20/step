@@ -1,0 +1,109 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(238, 238, 238);
+}
+
+.container {  
+  width: 90%;
+  margin: auto;
+  height: 100vh;
+}
+
+.row {
+  display: flex;  
+  justify-content: space-between;
+  gap: 70px;
+  position: relative;
+  top: 50%;
+  transform: translate(0, -50%);
+  background-color: aliceblue;
+  padding: 100px;
+  border-radius: 10px;
+}
+
+.card__text {
+  margin-top: 20px;
+}
+
+.card__btn__angels_demons,
+.card__btn__da_vinci_code,
+.card__btn__inferno {
+  border-radius: 5px;
+  border: none;
+  padding: 10px 30px;
+  cursor: pointer;
+  margin-top: 20px;
+  -webkit-box-shadow: 10px 10px 33px -12px rgba(0,0,0,0.75);
+  -moz-box-shadow: 10px 10px 33px -12px rgba(0,0,0,0.75);
+  box-shadow: 10px 10px 33px -12px rgba(0,0,0,0.75);
+}
+
+.card__btn__angels_demons {
+  background-color: blueviolet;
+  color: aliceblue;  
+  font-size: 12px;
+}
+
+.card__btn__angels_demons:hover {
+  background-color: rebeccapurple;
+}
+
+.card__btn__da_vinci_code {
+  background-color: rgb(0, 107, 72);
+  color: whitesmoke;  
+  font-size: 14px;
+}
+
+.dropdown {
+  width: fit-content;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content {
+  display: none;
+  width: 200px;  
+  position: absolute;
+}
+
+.dropdown-content > ul {
+  background-color: rgb(224, 224, 224);
+  list-style: none;  
+  border-radius: 5px;
+}
+
+.dropdown-content > ul > li {
+  background-color: rgb(229, 229, 229);
+  padding: 5px;  
+}
+
+.dropdown-content > ul > li:first-child {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.dropdown-content > ul > li:last-child {
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.dropdown-content > ul > li:hover {
+  background-color: rgb(195, 195, 195);
+}
+
+.card__btn__inferno {
+  background-color: rgb(43, 174, 226);  
+  color: antiquewhite;  
+  font-size: 16px;
+}
+
+.display {
+  display: block;
+}

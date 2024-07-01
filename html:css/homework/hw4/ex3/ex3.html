@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="card">
+        <h2>Angels <span>&amp;</span> Demons</h2>
+        <p class="card__text">
+          World-renowned Harvard symbologist Robert Langdon is summoned to a Swiss research facility to analyze a
+          cryptic symbol seared into the chest of a murdered physicist. What he discovers is unimaginable: a deadly
+          vendetta against the Catholic Church by a centuries-old underground organization -- the Illuminati. In a
+          desperate race to save the Vatican from a powerful time bomb, Langdon joins forces in Rome with the beautiful
+          and mysterious scientist Vittoria Vetra. Together they embark on a frantic hunt through sealed crypts,
+          dangerous catacombs, and deserted cathedrals, and into the depths of the most secretive vault on earth...the
+          long-forgotten Illuminati lair.
+        </p>
+        <button class="card__btn__angels_demons">Read</button>
+      </div>
+      <div class="card">
+        <h2>The Da Vinci Code</h2>
+        <p class="card__text">
+          Harvard professor Robert Langdon receives an urgent late-night phone call while on business in Paris: the
+          elderly curator of the Louvre has been brutally murdered inside the museum. Alongside the body, police have
+          found a series of baffling codes.
+          As Langdon and a gifted French cryptologist, Sophie Neveu, begin to sort through the bizarre riddles, they are
+          stunned to find a trail that leads to the works of Leonardo Da Vinci - and suggests the answer to a mystery
+          that stretches deep into the vault of history.
+          Unless Langdon and Neveu can decipher the labyrinthine code and quickly assemble the pieces of the puzzle, a
+          stunning historical truth will be lost forever...
+          Origin, the spellbinding new Robert Langdon thriller from Dan Brown, is out now
+        </p>
+        <div class="dropdown">
+          <button class="card__btn__da_vinci_code">Read</button>
+          <div class="dropdown-content">
+            <ul>
+              <li>Angels <span>&amp;</span> Demons</li>
+              <li>The Da Vinci Code</li>
+              <li>Inferno</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Inferno</h2>
+        <p class="card__text">
+          In his international blockbusters The Da Vinci Code, Angels & Demons, and The Lost Symbol, Dan Brown
+          masterfully fused history, art, codes, and symbols. In this riveting new thriller, Brown returns to his
+          element and has crafted his highest-stakes novel to date.
+          In the heart of Italy, Harvard professor of symbology Robert Langdon is drawn into a harrowing world centered
+          on one of history’s most enduring and mysterious literary masterpieces . . . Dante’s Inferno.
+          Against this backdrop, Langdon battles a chilling adversary and grapples with an ingenious riddle that pulls
+          him into a landscape of classic art, secret passageways, and futuristic science. Drawing from Dante’s dark
+          epic poem, Langdon races to find answers and decide whom to trust . . . before the world is irrevocably
+          altered.
+        </p>
+        <div class="dropdown_js">
+          <button class="card__btn__inferno" onClick="dropdownMenu()">Read</button>
+          <div id="dropdown-content_js" class="dropdown-content">
+            <ul>
+              <li>Angels <span>&amp;</span> Demons</li>
+              <li>The Da Vinci Code</li>
+              <li>Inferno</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script>
+    function dropdownMenu() {
+      document.getElementById("dropdown-content_js").classList.toggle("display")
+    }
+  </script>
+</body>
+
+</html>
