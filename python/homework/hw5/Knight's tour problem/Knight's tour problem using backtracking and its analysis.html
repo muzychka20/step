@@ -1,0 +1,2490 @@
+<!DOCTYPE html>
+<!-- saved from url=(0065)https://www.codesdope.com/course/algorithms-knights-tour-problem/ -->
+<html itemscope="" itemtype="http://schema.org/WebPage" lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="origin-trial" content="Az520Inasey3TAyqLyojQa8MnmCALSEU29yQFW8dePZ7xQTvSt73pHazLFTK5f7SyLUJSo2uKLesEtEa9aUYcgMAAACPeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZS5jb206NDQzIiwiZmVhdHVyZSI6IkRpc2FibGVUaGlyZFBhcnR5U3RvcmFnZVBhcnRpdGlvbmluZyIsImV4cGlyeSI6MTcyNTQwNzk5OSwiaXNTdWJkb21haW4iOnRydWUsImlzVGhpcmRQYXJ0eSI6dHJ1ZX0=">
+  <link rel="shortcut icon" type="image/x-icon" href="https://www.codesdope.com/staticroot/images/logo.ico">
+  <title>
+  Knight's tour problem using backtracking and its analysis
+</title>
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="knight tour problem knight&#39;s backtracking make knight visit all cells of chessboard code in c java python analysis of code solve example">
+  <meta name="description" content="Learn about the knight&#39;s tour problem and its analysis using backtracking. Code in C, Java and Python.">
+
+  <!--open graph protocol-->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Knight&#39;s tour problem using backtracking and its analysis">
+  <meta property="og:description" content="Learn about the knight&#39;s tour problem and its analysis using backtracking. Code in C, Java and Python.">
+  <meta property="og:image" content="/staticroot/images/so.jgp">
+  <meta property="og:site_name" content="CodesDope">
+  <meta property="fb:app_id" content="248267068862122">
+  <meta property="og:type" content="website">
+  <!--Twitter card-->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@codesdope">
+  <meta name="twitter:title" content="Knight&#39;s tour problem using backtracking and its analysis">
+  <meta name="twitter:description" content="Learn about the knight&#39;s tour problem and its analysis using backtracking. Code in C, Java and Python.">
+  <meta name="twitter:image" content="/staticroot/images/so.jgp">
+
+
+  <!--
+Font
+-->
+  <link href="./Knight&#39;s tour problem using backtracking and its analysis_files/css" rel="stylesheet" type="text/css">
+  <link href="./Knight&#39;s tour problem using backtracking and its analysis_files/css(1)" rel="stylesheet" type="text/css">
+
+  <link rel="preload" href="https://www.codesdope.com/staticroot/css/main_center.css" as="style">
+  <link rel="stylesheet" type="text/css" href="./Knight&#39;s tour problem using backtracking and its analysis_files/pygments-colorful.css">
+
+  <link rel="stylesheet" type="text/css" href="./Knight&#39;s tour problem using backtracking and its analysis_files/normal_base.css">
+
+  
+<link rel="stylesheet" href="./Knight&#39;s tour problem using backtracking and its analysis_files/bootstrap.min.css" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;">
+<noscript><link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"></noscript>
+
+<link rel="stylesheet" href="./Knight&#39;s tour problem using backtracking and its analysis_files/jquery-ui.css" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;">
+<noscript><link rel='stylesheet' type='text/css' href='https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css' /></noscript>
+
+<link rel="stylesheet" href="./Knight&#39;s tour problem using backtracking and its analysis_files/font-awesome.min.css" as="style" onload="this.onload=null;this.rel=&#39;stylesheet&#39;">
+<noscript><link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"></noscript> 
+  <link rel="stylesheet" type="text/css" href="./Knight&#39;s tour problem using backtracking and its analysis_files/content.css">
+
+  
+  
+
+
+  <script async="" src="./Knight&#39;s tour problem using backtracking and its analysis_files/qevents.js"></script><script async="" src="./Knight&#39;s tour problem using backtracking and its analysis_files/fbevents.js"></script><script async="" src="./Knight&#39;s tour problem using backtracking and its analysis_files/analytics.js"></script><script type="text/javascript" async="" src="./Knight&#39;s tour problem using backtracking and its analysis_files/recaptcha__ru.js" crossorigin="anonymous" integrity="sha384-HxMDJNiB/+VLQO1v5JDKl4lUOnGhprP3IX74nBggrie3IEALlCaxIAn0NpOF8z6s"></script><script src="./Knight&#39;s tour problem using backtracking and its analysis_files/api.js" async="" defer=""></script>
+
+  
+
+  <!--Google ads-->
+  <script async="" src="./Knight&#39;s tour problem using backtracking and its analysis_files/f.txt"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-4050543544420496",
+      enable_page_level_ads: true,
+    });
+  </script>
+  <!--Google ads-->
+  <script src="./Knight&#39;s tour problem using backtracking and its analysis_files/3504.js"></script>
+
+   
+<!--For mathematical formula-->
+  <script type="text/x-mathjax-config;executed=true">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script src="./Knight&#39;s tour problem using backtracking and its analysis_files/latest.js" async=""></script>
+
+
+  <!--Value Impression Ads-->
+  <!-- <script type="text/javascript" src="//services.bilsyndication.com/adv1/?q=6e841b427046653d0efcaf124d6042e5" defer="" async=""></script><script> var vitag = vitag || {};</script> -->
+  <!--End Valueimpression Header Tags-->
+<script type="text/javascript" async="" src="./Knight&#39;s tour problem using backtracking and its analysis_files/MathJax.js"></script><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 5px 0px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px; -khtml-border-radius: 5px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 1px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: .7em}
+.MathJax_MenuRadioCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuLabel {padding: 1px 2em 3px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #DDDDDD; margin: 4px 3px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: #606872; color: white}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.mjx-chtml {display: inline-block; line-height: 0; text-indent: 0; text-align: left; text-transform: none; font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; letter-spacing: normal; word-wrap: normal; word-spacing: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; margin: 0; padding: 1px 0}
+.MJXc-display {display: block; text-align: center; margin: 1em 0; padding: 0}
+.mjx-chtml[tabindex]:focus, body :focus .mjx-chtml[tabindex] {display: inline-table}
+.mjx-full-width {text-align: center; display: table-cell!important; width: 10000em}
+.mjx-math {display: inline-block; border-collapse: separate; border-spacing: 0}
+.mjx-math * {display: inline-block; -webkit-box-sizing: content-box!important; -moz-box-sizing: content-box!important; box-sizing: content-box!important; text-align: left}
+.mjx-numerator {display: block; text-align: center}
+.mjx-denominator {display: block; text-align: center}
+.MJXc-stacked {height: 0; position: relative}
+.MJXc-stacked > * {position: absolute}
+.MJXc-bevelled > * {display: inline-block}
+.mjx-stack {display: inline-block}
+.mjx-op {display: block}
+.mjx-under {display: table-cell}
+.mjx-over {display: block}
+.mjx-over > * {padding-left: 0px!important; padding-right: 0px!important}
+.mjx-under > * {padding-left: 0px!important; padding-right: 0px!important}
+.mjx-stack > .mjx-sup {display: block}
+.mjx-stack > .mjx-sub {display: block}
+.mjx-prestack > .mjx-presup {display: block}
+.mjx-prestack > .mjx-presub {display: block}
+.mjx-delim-h > .mjx-char {display: inline-block}
+.mjx-surd {vertical-align: top}
+.mjx-mphantom * {visibility: hidden}
+.mjx-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 2px 3px; font-style: normal; font-size: 90%}
+.mjx-annotation-xml {line-height: normal}
+.mjx-menclose > svg {fill: none; stroke: currentColor}
+.mjx-mtr {display: table-row}
+.mjx-mlabeledtr {display: table-row}
+.mjx-mtd {display: table-cell; text-align: center}
+.mjx-label {display: table-row}
+.mjx-box {display: inline-block}
+.mjx-block {display: block}
+.mjx-span {display: inline}
+.mjx-char {display: block; white-space: pre}
+.mjx-itable {display: inline-table; width: auto}
+.mjx-row {display: table-row}
+.mjx-cell {display: table-cell}
+.mjx-table {display: table; width: 100%}
+.mjx-line {display: block; height: 0}
+.mjx-strut {width: 0; padding-top: 1em}
+.mjx-vsize {width: 0}
+.MJXc-space1 {margin-left: .167em}
+.MJXc-space2 {margin-left: .222em}
+.MJXc-space3 {margin-left: .278em}
+.mjx-chartest {display: block; visibility: hidden; position: absolute; top: 0; line-height: normal; font-size: 500%}
+.mjx-chartest .mjx-char {display: inline}
+.mjx-chartest .mjx-box {padding-top: 1000px}
+.MJXc-processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MJXc-processed {display: none}
+.mjx-test {font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow: hidden; height: 1px}
+.mjx-test.mjx-test-display {display: table!important}
+.mjx-test.mjx-test-inline {display: inline!important; margin-right: -1px}
+.mjx-test.mjx-test-default {display: block!important; clear: both}
+.mjx-ex-box {display: inline-block!important; position: absolute; overflow: hidden; min-height: 0; max-height: none; padding: 0; border: 0; margin: 0; width: 1px; height: 60ex}
+.mjx-test-inline .mjx-left-box {display: inline-block; width: 0; float: left}
+.mjx-test-inline .mjx-right-box {display: inline-block; width: 0; float: right}
+.mjx-test-display .mjx-right-box {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+#MathJax_CHTML_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.mjx-chtml .mjx-noError {line-height: 1.2; vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+.MJXc-TeX-unknown-R {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: normal; font-weight: normal}
+.MJXc-TeX-unknown-I {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: italic; font-weight: normal}
+.MJXc-TeX-unknown-B {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: normal; font-weight: bold}
+.MJXc-TeX-unknown-BI {font-family: STIXGeneral,'Cambria Math','Arial Unicode MS',serif; font-style: italic; font-weight: bold}
+.MJXc-TeX-ams-R {font-family: MJXc-TeX-ams-R,MJXc-TeX-ams-Rw}
+.MJXc-TeX-cal-B {font-family: MJXc-TeX-cal-B,MJXc-TeX-cal-Bx,MJXc-TeX-cal-Bw}
+.MJXc-TeX-frak-R {font-family: MJXc-TeX-frak-R,MJXc-TeX-frak-Rw}
+.MJXc-TeX-frak-B {font-family: MJXc-TeX-frak-B,MJXc-TeX-frak-Bx,MJXc-TeX-frak-Bw}
+.MJXc-TeX-math-BI {font-family: MJXc-TeX-math-BI,MJXc-TeX-math-BIx,MJXc-TeX-math-BIw}
+.MJXc-TeX-sans-R {font-family: MJXc-TeX-sans-R,MJXc-TeX-sans-Rw}
+.MJXc-TeX-sans-B {font-family: MJXc-TeX-sans-B,MJXc-TeX-sans-Bx,MJXc-TeX-sans-Bw}
+.MJXc-TeX-sans-I {font-family: MJXc-TeX-sans-I,MJXc-TeX-sans-Ix,MJXc-TeX-sans-Iw}
+.MJXc-TeX-script-R {font-family: MJXc-TeX-script-R,MJXc-TeX-script-Rw}
+.MJXc-TeX-type-R {font-family: MJXc-TeX-type-R,MJXc-TeX-type-Rw}
+.MJXc-TeX-cal-R {font-family: MJXc-TeX-cal-R,MJXc-TeX-cal-Rw}
+.MJXc-TeX-main-B {font-family: MJXc-TeX-main-B,MJXc-TeX-main-Bx,MJXc-TeX-main-Bw}
+.MJXc-TeX-main-I {font-family: MJXc-TeX-main-I,MJXc-TeX-main-Ix,MJXc-TeX-main-Iw}
+.MJXc-TeX-main-R {font-family: MJXc-TeX-main-R,MJXc-TeX-main-Rw}
+.MJXc-TeX-math-I {font-family: MJXc-TeX-math-I,MJXc-TeX-math-Ix,MJXc-TeX-math-Iw}
+.MJXc-TeX-size1-R {font-family: MJXc-TeX-size1-R,MJXc-TeX-size1-Rw}
+.MJXc-TeX-size2-R {font-family: MJXc-TeX-size2-R,MJXc-TeX-size2-Rw}
+.MJXc-TeX-size3-R {font-family: MJXc-TeX-size3-R,MJXc-TeX-size3-Rw}
+.MJXc-TeX-size4-R {font-family: MJXc-TeX-size4-R,MJXc-TeX-size4-Rw}
+.MJXc-TeX-vec-R {font-family: MJXc-TeX-vec-R,MJXc-TeX-vec-Rw}
+.MJXc-TeX-vec-B {font-family: MJXc-TeX-vec-B,MJXc-TeX-vec-Bx,MJXc-TeX-vec-Bw}
+@font-face {font-family: MJXc-TeX-ams-R; src: local('MathJax_AMS'), local('MathJax_AMS-Regular')}
+@font-face {font-family: MJXc-TeX-ams-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_AMS-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_AMS-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_AMS-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-cal-B; src: local('MathJax_Caligraphic Bold'), local('MathJax_Caligraphic-Bold')}
+@font-face {font-family: MJXc-TeX-cal-Bx; src: local('MathJax_Caligraphic'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-cal-Bw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Bold.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Bold.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-frak-R; src: local('MathJax_Fraktur'), local('MathJax_Fraktur-Regular')}
+@font-face {font-family: MJXc-TeX-frak-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-frak-B; src: local('MathJax_Fraktur Bold'), local('MathJax_Fraktur-Bold')}
+@font-face {font-family: MJXc-TeX-frak-Bx; src: local('MathJax_Fraktur'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-frak-Bw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Fraktur-Bold.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Fraktur-Bold.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Fraktur-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-math-BI; src: local('MathJax_Math BoldItalic'), local('MathJax_Math-BoldItalic')}
+@font-face {font-family: MJXc-TeX-math-BIx; src: local('MathJax_Math'); font-weight: bold; font-style: italic}
+@font-face {font-family: MJXc-TeX-math-BIw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Math-BoldItalic.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Math-BoldItalic.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Math-BoldItalic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-sans-R; src: local('MathJax_SansSerif'), local('MathJax_SansSerif-Regular')}
+@font-face {font-family: MJXc-TeX-sans-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-sans-B; src: local('MathJax_SansSerif Bold'), local('MathJax_SansSerif-Bold')}
+@font-face {font-family: MJXc-TeX-sans-Bx; src: local('MathJax_SansSerif'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-sans-Bw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Bold.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Bold.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-sans-I; src: local('MathJax_SansSerif Italic'), local('MathJax_SansSerif-Italic')}
+@font-face {font-family: MJXc-TeX-sans-Ix; src: local('MathJax_SansSerif'); font-style: italic}
+@font-face {font-family: MJXc-TeX-sans-Iw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_SansSerif-Italic.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_SansSerif-Italic.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_SansSerif-Italic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-script-R; src: local('MathJax_Script'), local('MathJax_Script-Regular')}
+@font-face {font-family: MJXc-TeX-script-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Script-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Script-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Script-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-type-R; src: local('MathJax_Typewriter'), local('MathJax_Typewriter-Regular')}
+@font-face {font-family: MJXc-TeX-type-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Typewriter-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Typewriter-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Typewriter-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-cal-R; src: local('MathJax_Caligraphic'), local('MathJax_Caligraphic-Regular')}
+@font-face {font-family: MJXc-TeX-cal-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Caligraphic-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-main-B; src: local('MathJax_Main Bold'), local('MathJax_Main-Bold')}
+@font-face {font-family: MJXc-TeX-main-Bx; src: local('MathJax_Main'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-main-Bw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Main-Bold.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-main-I; src: local('MathJax_Main Italic'), local('MathJax_Main-Italic')}
+@font-face {font-family: MJXc-TeX-main-Ix; src: local('MathJax_Main'); font-style: italic}
+@font-face {font-family: MJXc-TeX-main-Iw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Main-Italic.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-main-R; src: local('MathJax_Main'), local('MathJax_Main-Regular')}
+@font-face {font-family: MJXc-TeX-main-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Main-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-math-I; src: local('MathJax_Math Italic'), local('MathJax_Math-Italic')}
+@font-face {font-family: MJXc-TeX-math-Ix; src: local('MathJax_Math'); font-style: italic}
+@font-face {font-family: MJXc-TeX-math-Iw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Math-Italic.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size1-R; src: local('MathJax_Size1'), local('MathJax_Size1-Regular')}
+@font-face {font-family: MJXc-TeX-size1-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Size1-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size2-R; src: local('MathJax_Size2'), local('MathJax_Size2-Regular')}
+@font-face {font-family: MJXc-TeX-size2-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Size2-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size3-R; src: local('MathJax_Size3'), local('MathJax_Size3-Regular')}
+@font-face {font-family: MJXc-TeX-size3-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Size3-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-size4-R; src: local('MathJax_Size4'), local('MathJax_Size4-Regular')}
+@font-face {font-family: MJXc-TeX-size4-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Size4-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-vec-R; src: local('MathJax_Vector'), local('MathJax_Vector-Regular')}
+@font-face {font-family: MJXc-TeX-vec-Rw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Vector-Regular.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Vector-Regular.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Vector-Regular.otf') format('opentype')}
+@font-face {font-family: MJXc-TeX-vec-B; src: local('MathJax_Vector Bold'), local('MathJax_Vector-Bold')}
+@font-face {font-family: MJXc-TeX-vec-Bx; src: local('MathJax_Vector'); font-weight: bold}
+@font-face {font-family: MJXc-TeX-vec-Bw; src /*1*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/eot/MathJax_Vector-Bold.eot'); src /*2*/: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/woff/MathJax_Vector-Bold.woff') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/fonts/HTML-CSS/TeX/otf/MathJax_Vector-Bold.otf') format('opentype')}
+</style><style></style></head>
+
+<body><div role="dialog" aria-live="polite" aria-label="cookieconsent" aria-describedby="cookieconsent:desc" class="cc-window cc-banner cc-type-info cc-theme-edgeless cc-bottom cc-color-override-170793312 " style=""><!--googleoff: all--><span id="cookieconsent:desc" class="cc-message">This website uses cookies to ensure you get the best experience on our website. <a aria-label="learn more about cookies" role="button" tabindex="0" class="cc-link" href="https://www.codesdope.com/privacy-policy/" rel="noopener noreferrer nofollow" target="_blank">Learn more</a></span><div class="cc-compliance"><a aria-label="dismiss cookie message" role="button" tabindex="0" class="cc-btn cc-dismiss">Got it!</a></div><!--googleon: all--></div><div id="MathJax_Message" style="display: none;"></div>
+  <!--FB Like-->
+  <!-- <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.1';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script> -->
+  <!--FB Like-->
+
+  <div itemscope="" itemtype="http://schema.org/Article">
+    
+
+
+<div class="container-fluid apple">
+    <a href="https://www.codesdope.com/"><img class="header_img_logo" itemprop="image" src="./Knight&#39;s tour problem using backtracking and its analysis_files/content_new.gif" alt="logo codesdope" width="269" height="47" style="margin-left:0px;"></a>
+    </div>
+    
+    
+    <div id="a">
+    <div id="b">
+    
+    
+    
+    
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        <span class="home"><a aria-label="Home" class="navbar-brand" href="https://www.codesdope.com/"><span class="glyphicon glyphicon-home"></span></a></span>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav">
+           <li class="about"><a href="https://www.codesdope.com/about/">About</a></li>
+           <li id="dropcourses" class="dropdown"><a aria-label="Courses" class="dropdown-toggle" data-toggle="dropdown" id="nav_courses" href="https://www.codesdope.com/course/">Courses</a>
+              <ul id="dropcourses-menu" class="dropdown-menu">
+    
+                <li><a href="https://www.codesdope.com/course/python-introduction/">Python</a></li>
+                <li><a href="https://www.codesdope.com/c-introduction/">C</a></li>
+            <li><a href="https://www.codesdope.com/cpp-introduction/">C++</a></li>
+            <li><a href="https://www.codesdope.com/java-introduction/">Java</a></li>
+            <li><a href="https://www.codesdope.com/ruby-introduction/">Ruby</a></li>
+            <li><a href="https://www.codesdope.com/perl-introduction/">Perl</a></li>
+        <li><a href="https://www.codesdope.com/course/algorithms-introduction/">Algorithms</a></li>
+        <li><a href="https://www.codesdope.com/course/data-structures-introduction/">Data Structures</a></li>
+        <li><a href="https://www.codesdope.com/course/c-sharp-introduction/">C#</a></li>
+              </ul>
+            </li>
+            <li class="discussion"><a href="https://www.codesdope.com/discussion/">Discussion</a></li>
+            <li class="practice"><a href="https://www.codesdope.com/practice/">Practice</a></li>
+        <li><a href="https://www.codesdope.com/blog/">Blog</a></li>
+        <li><a href="https://pro.codesdope.com/" target="_blank">PRO</a></li>
+        <li><a href="https://6figr.com/salaries" target="_blank">Salaries</a></li>
+          </ul>
+
+          
+          <ul class="nav navbar-nav navbar-right">
+            <!-- <li class="donate"><a>Donate</a></li> -->
+        
+            <li><a href="https://www.codesdope.com/course/algorithms-knights-tour-problem/#user" class="signupwindow"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="https://www.codesdope.com/course/algorithms-knights-tour-problem/#login" class="loginwindow"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        
+    
+    
+    
+          </ul>
+          
+        </div>
+      </div>
+    </nav>
+    
+    
+</div>
+</div>
+
+
+
+
+<div id="user" class="signuppop">
+        <a class="close" href="https://www.codesdope.com/course/algorithms-knights-tour-problem/#close">
+        <img src="./Knight&#39;s tour problem using backtracking and its analysis_files/closeicon.png" class="btn_close" title="Close Window" alt="Close">
+        </a>
+        <i class="fa fa-user fa-5x"></i>
+        <br>
+        <p class="welcome_signup">Welcome.please sign up.</p>
+        
+        
+        <form class="signup" method="post" action="https://www.codesdope.com/accounts/signup/?next=/course/algorithms-knights-tour-problem/">
+        
+        
+        <input type="hidden" name="csrfmiddlewaretoken" value="pNDk7hpgsC6u50khvOq1rMyqY1AhLkaGF8KMavXIU3kfJZMdMsijheGj9LyGqlFJ">
+        <fieldset class="signup_text">
+        
+        <label class="signup_username">
+        <span>Username</span>
+        <input id="signup_username" name="username" value="" type="text" autocomplete="on" placeholder="Username">
+        </label>
+        
+        <label class="signup_password">
+        <span>Password (min 6 characters)</span>
+        <input class="signup_password_input" name="password1" value="" type="password" placeholder="Password">
+        </label>
+        
+        <label class="signup_password">
+        <span>Password (again)</span>
+        <input class="signup_password_input" name="password2" value="" type="password" placeholder="Password">
+        </label>
+        
+        <label class="signup_email">
+        <span>Email</span>
+        <input id="signup_email" name="email" value="" type="email" autocomplete="on" placeholder="Email">
+        </label>
+        
+        <div class="g-recaptcha" data-sitekey="6LffjpYUAAAAADOqTtbVWqY-zNpWu_Eq2NCVUQNV" name="captcha"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" width="304" height="78" role="presentation" name="a-sc4gssol1n8u" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="./Knight&#39;s tour problem using backtracking and its analysis_files/anchor.html"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;" src="./Knight&#39;s tour problem using backtracking and its analysis_files/saved_resource(1).html"></iframe></div>
+        
+        
+        
+        <button class="signup_submit button" type="submit">Sign Up</button>
+        <p>By signing up or logging in, you agree to our <a href="https://www.codesdope.com/terms-of-use/">Terms of service</a><br>and confirm that you have read our <a href="https://www.codesdope.com/privacy-policy/">Privacy Policy</a>.</p>
+        <p class="p_member_label">
+         Already a member? Go to <a id="a_member" href="https://www.codesdope.com/course/algorithms-knights-tour-problem/#login">Log In</a>
+         </p>
+         <br>
+        </fieldset>
+        </form>
+        </div>
+        
+        
+        
+        <div id="login" class="loginpop">
+        <a class="close" href="https://www.codesdope.com/course/algorithms-knights-tour-problem/#close">
+        <img src="./Knight&#39;s tour problem using backtracking and its analysis_files/closeicon.png" class="btn_close" title="Close Window" alt="Close">
+        </a>
+        <i class="fa fa-user fa-5x"></i>
+        <br>
+        <p class="welcome_signup">Welcome.please login.</p>
+        <form class="signup" method="post" action="https://www.codesdope.com/accounts/login/?next=/course/algorithms-knights-tour-problem/">
+        <input type="hidden" name="csrfmiddlewaretoken" value="pNDk7hpgsC6u50khvOq1rMyqY1AhLkaGF8KMavXIU3kfJZMdMsijheGj9LyGqlFJ">
+        <fieldset class="signup_text">
+        
+        <label class="login_username">
+        <span>Username or Email</span>
+        <input id="login_username" name="login" value="" type="text" autocomplete="on" placeholder="Username or email">
+        </label>
+        
+        <label class="login_password">
+        <span>Password</span>
+        <input id="login_password" name="password" value="" type="password" placeholder="Password">
+        </label>
+        
+        
+        <label class="login_check">
+        <input id="login_check" name="remember" value="" type="checkbox"> <span id="remember">Remember me</span>
+        </label>
+        
+        <p class="forgot">
+         <a class="forget" href="https://www.codesdope.com/accounts/password/reset/">Forgot your password</a>
+        </p>
+        
+        <button class="login_submit button" type="submit">Login</button>
+         <p class="p_member_label">
+         Not registered yet? Go to <a id="a_login" href="https://www.codesdope.com/course/algorithms-knights-tour-problem/#user">Sign Up</a>
+         </p>
+        
+        
+        
+        <br>
+        <p>By signing up or logging in, you agree to our <a href="https://www.codesdope.com/terms-of-use/">Terms of service</a><br>and confirm that you have read our <a href="https://www.codesdope.com/privacy-policy/">Privacy Policy</a>.</p>
+        <!-- <hr class="signup_hr">
+        
+        <a href="/accounts/facebook/login/?next=/course/algorithms-knights-tour-problem/"><div class="login_facebook"><i class="fa fa-facebook fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;Login with Facebook</div></a>
+        <a href="/accounts/google/login/?next=/course/algorithms-knights-tour-problem/"><div class="login_google"><i class="fa fa-google-plus fa-lg"></i>&nbsp;&nbsp;&nbsp;Login with Google</div></a>
+        
+        
+
+
+<div id="fb-root"></div>
+<script id="allauth-facebook-settings" type="application/json">
+{"appId": "248267068862122", "version": "v2.4", "sdkUrl": "//connect.facebook.net/en_us/sdk.js", "initParams": {"appId": "248267068862122", "version": "v2.4"}, "loginOptions": {"auth_type": "reauthenticate", "scope": "email,public_profile", "auth_nonce": "XAz5kzSmtqiBRdsvtq3UYzfKQ5zQEE1Q"}, "loginByTokenUrl": "https://www.codesdope.com/accounts/facebook/login/token/", "cancelUrl": "https://www.codesdope.com/accounts/social/login/cancelled/", "logoutUrl": "https://www.codesdope.com/accounts/logout/", "loginUrl": "https://www.codesdope.com/accounts/facebook/login/", "errorUrl": "https://www.codesdope.com/accounts/social/login/error/", "csrfToken": "dRHVoW1JF5SEHC0TlaVnuBLYZeUyE036tcOnrazb7w6plBsPCONFk3TRaYSXj1y9"}
+</script>
+<script type="text/javascript" src="/staticroot/facebook/js/fbconnect.js"></script>
+
+
+ -->
+        
+        </fieldset>
+        </form>
+    </div>
+
+
+<style>
+    .fixnav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+        backface-visibility: hidden;
+    }
+    .navbar {
+        /*changing default properties of navbar  */
+        padding: 0px 0px;
+        font-size: 18px !important;
+        font-weight: 500 !important;
+        font-family: "Source Sans Pro", sans-serif;
+        background-color: black !important;
+        border-radius: 0% !important;
+        z-index: 10;
+    }
+    .navbar-inverse .navbar-nav > li > a:hover,
+    .navbar-inverse .navbar-nav > li > a:focus {
+        color: #ea0000 !important; /*Sets the text hover color on navbar*/
+        padding-top: 9px;
+        padding-bottom: 20px;
+        font-weight: 500;
+    }
+    .navbar-inverse .navbar-nav > li > a:hover,
+    .navbar-inverse .navbar-nav > li > a:focus {
+        box-shadow: 0px 6px 0px #ea0000;
+    }
+    .navbar-inverse .navbar-nav > .active > a,
+    .navbar-inverse .navbar-nav > .active > a:hover,
+    .navbar-inverse .navbar-nav > .active > a:focus {
+        /*BACKGROUND color for active*/
+        background-color: black;
+    }
+    .navbar-inverse {
+        background-color: black !important; /*default background color */
+        box-shadow: 0px 6px 0px transparent;
+    }
+    .dropdown-menu {
+        margin-top: -2px !important;
+        margin-left: -2px !important;
+    }
+    .dropdown-menu > li > a:hover,
+    .dropdown-menu > li > a:focus {
+        color: white;
+        font-weight: 700;
+        text-decoration: none;
+        background-color: #282828 !important; /*change color of links in drop down here*/
+    }
+    .navbar-inverse .navbar-nav > li > a {
+        color: #f2f2f2 !important;
+        -webkit-transition: all 0.2s linear !important;
+        transition: all 0.2s linear !important;
+    }
+    
+    @media (max-width: 768px) {
+        .navbar-inverse .navbar-nav > li > a:hover,
+        .navbar-inverse .navbar-nav > li > a:focus {
+        box-shadow: 0px 0px 0px;
+        }
+    }
+    .apple {
+        height: 80px;
+        background-color: black;
+    }
+    .hoverrr {
+        margin-left: 10px;
+    }
+    .header_img_logo {
+        margin-left: 50px;
+        vertical-align: center;
+        margin-top: 15px;
+    }
+    /*.navbar-brand{
+    background-color:red;
+    }*/
+    .top {
+        position: fixed;
+    }
+    #notification_one {
+        display: none;
+        z-index: 100000;
+        margin-bottom: -45px;
+    }
+    @media (max-width: 768px) {
+    #notification {
+        display: none;
+    }
+    #notification_one {
+        display: inline-block;
+    }
+    }
+    .dropdown:hover .dropdown-menu {
+        /* to display drpdown of learn by hovering  */
+        display: block;
+        margin-top: 0;
+    }
+    .nav-badge {
+        vertical-align: top;
+        margin-top: -11px;
+        margin-left: -13px;
+        background-color: #4e84de;
+    }
+    .dropdown-menu {
+        background-color: black !important;
+    }
+    .dropdown-menu > li > a {
+        background-color: black !important;
+        color: white !important;
+    }
+    /* donate box */
+
+    .donate:hover {
+    cursor: pointer;
+    }
+    #donate {
+        position: fixed;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+        display: table !important;
+        background-color: rgba(0, 0, 0, 0.8);
+        text-align: center;
+        -webkit-transition: all 0.5s ease-in-out;
+        -moz-transition: all 0.5s ease-in-out;
+        -o-transition: all 0.5s ease-in-out;
+        -ms-transition: all 0.5s ease-in-out;
+        transition: all 0.5s ease-in-out;
+
+        -webkit-transform: translate(0px, -100%) scale(0, 0);
+        -moz-transform: translate(0px, -100%) scale(0, 0);
+        -o-transform: translate(0px, -100%) scale(0, 0);
+        -ms-transform: translate(0px, -100%) scale(0, 0);
+        transform: translate(0px, -100%) scale(0, 0);
+
+        opacity: 0;
+        z-index: 10;
+    }
+    #donate #donate_wrapper {
+        display: table-cell;
+        vertical-align: middle;
+        /* padding-bottom: -2.5rem; */
+    }
+    #donate #close_donate {
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        cursor: pointer;
+        z-index: 100;
+    }
+    #donate #close_donate i {
+        color: white;
+        font-size: 25px;
+    }
+    #donate.open {
+        -webkit-transform: translate(0px, 0px) scale(1, 1);
+        -moz-transform: translate(0px, 0px) scale(1, 1);
+        -o-transform: translate(0px, 0px) scale(1, 1);
+        -ms-transform: translate(0px, 0px) scale(1, 1);
+        transform: translate(0px, 0px) scale(1, 1);
+        opacity: 1;
+    }
+    /* giving constraints to left and right column widths */
+    @media screen and (min-width: 992px) {
+    #div_right {
+        min-width: 195px;
+    }
+
+    #div_left {
+        min-width: 167px;
+        max-width: 350px;
+    }
+    }
+
+    .scroll {
+        max-height: 450px;
+        overflow: auto;
+    /*margin-top:80px;*/
+    }
+    #notification-dropdownone::-webkit-scrollbar {
+        width: 12px;
+    }
+    #notification-dropdownone::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+    }
+    #notification-dropdownone::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.6);
+    }
+    #notification-dropdown,
+    #notification-dropdownone,
+    #notification-dropdowntwo {
+        width: 550px;
+    }
+    .not {
+        background-color: white;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 17px;
+        margin-left: -40px;
+        margin-bottom: 1px;
+        padding-right: 10px;
+    }
+    .nota {
+    color: black;
+    font-size: 15px;
+    }
+    .unread {
+        background-color: #e9e9e9;
+    }
+    /*#notification:hover #notification-dropdown,#notification:hover #notification-dropdownone ,#notification:hover #notification-dropdowntwo{
+        display: block;
+    margin-top: 0; // remove the gap so it doesn't close
+    }*/
+    #notification-dropdown > li > a:hover,
+    #notification-dropdown > li > a:focus,
+    #notification-dropdownone > li > a:hover,
+    #notification-dropdownone > a > li:focus,
+    #notification-dropdowntwo > li > a:hover,
+    #notification-dropdowntwo > li > a:focus {
+        color: black;
+        font-weight: 400;
+        text-decoration: none;
+        color: black;
+        text-decoration: none;
+        background-color: #f4f4f4;
+    }
+    #notification-dropdownone > li:hover,
+    #notification-dropdownone > li:focus {
+        background-color: #f4f4f4;
+    }
+    #notification-dropdownone {
+        list-style: none;
+        background-color: #9b9b9b;
+    }
+    #not_read,
+    #not_mark {
+        color: white;
+        font-size: 17px;
+        font-weight: 500;
+        /* padding-bottom:5px !important;*/
+    }
+    #not_read:hover,
+    #not_mark:hover {
+        text-decoration: none;
+    }
+    .gly {
+        display: block;
+        padding: 15px;
+    }
+</style>
+    <!-- donate box -->
+    <!-- <div id="donate">
+  <span id="close_donate"><i class="fa fa-times"></i></span>
+  <div id="donate_wrapper">
+    <script src="https://donorbox.org/widget.js" paypalExpress="false"></script><iframe src="https://donorbox.org/embed/donate-for-codesdope?amount=10" height="685px" width="100%" style="max-width:500px; min-width:310px; max-height:none!important" seamless="seamless" name="donorbox" frameborder="0" scrolling="no" allowpaymentrequest></iframe>
+  </div>
+</div> -->
+
+    <div class="container-fluid text-center" style="padding-top: 0px;">
+      <div class="row">
+        <div class="col-md-2 col-sm-12 col-xs-12 col-lg-2 sidenav" id="div_left" style="margin-top: 20px">
+          
+  <ul class="nav nav-pills nav-stacked ulc">
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-introduction/">Introduction</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-analyze-your-algorithm/">Analyze Your Algorithm</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-growth-of-a-function/">Growth of a Function</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-analyze-iterative-algorithms/">Analyze Iterative Algorithms</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-recurrences/">Recurrences</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-lets-iterate/">Let's Iterate</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-now-the-recursion/">Now the Recursion</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-masters-theorem/">Master's Theorem</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-sort-it-out/">Sort It Out</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-bubble-sort/">Bubble Sort</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-count-and-sort/">Count and Sort</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-heapsort/">Heapsort</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-divide-and-conquer/">Divide and Conquer</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-merge-sort/">Merge Sort</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-quicksort/">QuickSort</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-binary-search/">Binary Search</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-dynamic-programming/">Dynamic Programming</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-knapsack-problem/">Knapsack Problem</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-rod-cutting/">Rod Cutting</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-coin-change/">Coin Change</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-backtracking/">Backtracking</a></li>
+    
+
+  
+
+    
+      <li class="menul active"><a itemprop="url" href="https://www.codesdope.com/course/algorithms-knights-tour-problem/">Knight's Tour Problem</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-greedy-algorithm/">Greedy Algorithm</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-activity-selection/">Activity Selection</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-egyptian-fraction/">Egyptian Fraction</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-huffman-codes/">Huffman Codes</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-graphs/">Graphs</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-bfs/">BFS</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-dfs/">DFS</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-minimum-spanning-tree/">Minimum Spanning Tree</a></li>
+    
+
+  
+
+    
+      <li class="menul"><a href="https://www.codesdope.com/course/algorithms-prims-algorithm/">Prim's Algorithm</a></li>
+    
+
+  
+  </ul>
+ 
+          
+          <!-- codesdope left -->
+          <!-- <div class="mob_hide" style="margin-top:25px; text-align:center;">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-4050543544420496"
+    data-ad-slot="6741956142"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div> -->
+
+          <div class="mob_hide leftnav" style="width: 257.992px;">
+            <div style="
+                  margin-top: 25px;
+                  text-align: center;
+                  margin-left: auto;
+                  margin-right: auto;
+                ">
+              <!-- 160x600 -->
+              <div id="waldo-tag-3582"></div>
+            </div>
+          </div>
+
+          <div class="mob_hide leftnav300" style="width: 257.992px;">
+            <div style="
+                  margin-top: 25px;
+                  text-align: center;
+                  margin-left: auto;
+                  margin-right: auto;
+                ">
+              <!-- 300x600 -->
+              <div id="waldo-tag-3603"></div>
+            </div>
+          </div>
+
+          <!-- <div class="codesdope_video" style="margin-top:25px; margin-left:auto; margin-right:auto;">
+    <div class="adsbyvli" data-ad-slot="vi_18994747"></div> <script> vitag.videoDiscoverConfig = { random: true, noFixedVideo: true }; (vitag.Init = window.vitag.Init || []).push(function(){viAPItag.initInstreamBanner("vi_18994747")}); </script>
+  </div> -->
+
+           
+        </div>
+
+        <div class="col-md-8 col-sm-12 col-xs-12 col-lg-8 text-left" id="div_center" style="margin-top: 20px; width: 1008.01px;">
+           
+          <div style="text-align: center">
+            <script async="" src="./Knight&#39;s tour problem using backtracking and its analysis_files/f.txt"></script>
+            <!-- codesdope top -->
+            <ins class="adsbygoogle" style="display: block" data-ad-client="ca-pub-4050543544420496" data-ad-slot="5303368507" data-ad-format="auto" data-full-width-responsive="true"><iframe id="aswift_0" style="height: 1px !important; max-height: 1px !important; max-width: 1px !important; width: 1px !important;" src="./Knight&#39;s tour problem using backtracking and its analysis_files/saved_resource(2).html"><iframe id="google_ads_frame0" src="./Knight&#39;s tour problem using backtracking and its analysis_files/saved_resource(3).html"></iframe></iframe></ins>
+            <script>
+              (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+
+            <!-- <div class="value_impression_middle_728_top" style="margin-right: auto; margin-left: auto;">
+        <div class="adsbyvli" data-ad-slot="vi_18994749"></div><script>(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_18994749")})</script>
+    </div>
+    <div class="value_impression_middle_970_top" style="margin-right: auto; margin-left: auto;">
+        <div class="adsbyvli" data-ad-slot="vi_18995337"></div><script>(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_18995337")})</script>
+    </div>
+    <div class="value_impression_middle_mobile_top" style="margin-right: auto; margin-left: auto;">
+        <div class="adsbyvli" data-ad-slot="vi_18994748"></div><script>(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_18994748")})</script>
+    </div> -->
+          </div>
+            
+<h1 id="topic" itemprop="name">Knight's Tour Problem | Backtracking</h1><hr>
+<div id="content" itemprop="articleSection">
+<p>
+  In the <a href="https://www.codesdope.com/course/algorithms-backtracking/" target="_blank">previous example of backtracking</a>, you have seen that backtracking gave us a <span class="MathJax_Preview" style="color: inherit;"></span><span id="MathJax-Element-1-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 121%; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;!&lt;/mo&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><span id="MJXc-Node-1" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-2" class="mjx-mrow"><span id="MJXc-Node-3" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.467em; padding-bottom: 0.313em;">O</span></span><span id="MJXc-Node-4" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.467em; padding-bottom: 0.571em;">(</span></span><span id="MJXc-Node-5" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.209em; padding-bottom: 0.313em;">n</span></span><span id="MJXc-Node-6" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.416em; padding-bottom: 0.364em;">!</span></span><span id="MJXc-Node-7" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.467em; padding-bottom: 0.571em;">)</span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo>!</mo><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-1">O(n!)</script> running time. Generally, backtracking is used when we need to check all the possibilities to find a solution and hence it is expensive. For the problems like N-Queen and Knight's tour, there are approaches which take lesser time than backtracking, but for a small size input like 4x4 chessboard, we can ignore the running time and the backtracking leads us to the solution.
+</p>
+<p>
+  Knight's tour is a problem in which we are provided with a NxN chessboard and a knight.
+</p>
+<p>
+<img alt="chessboard and knight" src="./Knight&#39;s tour problem using backtracking and its analysis_files/knight1.png" style="max-width:40%;height:auto;">
+</p>
+<p>
+  For a person who is not familiar with chess, the knight moves two squares horizontally and one square vertically, or two squares vertically and one square horizontally as shown in the picture given below.
+</p>
+<p>
+<img alt="movement of a knight" src="./Knight&#39;s tour problem using backtracking and its analysis_files/knight2.png" style="max-width:40%;height:auto;">
+</p>
+<p>
+<img alt="movement of a knight animation" src="./Knight&#39;s tour problem using backtracking and its analysis_files/knight.gif" style="max-width:40%;height:auto;">
+</p>
+<p>
+  Thus if a knight is at (3, 3), it can move to the (1, 2) ,(1, 4), (2, 1), (4, 1), (5, 2), (5, 4), (2, 5) and (4, 5) cells.
+</p>
+<p>
+  Thus, one complete movement of a knight looks like the letter "L", which is 2 cells long.
+</p>
+<p>
+<img alt="movement of knight to form L" src="./Knight&#39;s tour problem using backtracking and its analysis_files/knight3.png" style="max-width:40%;height:auto;">
+</p>
+<p>
+  According to the problem, we have to make the knight cover all the cells of the board and it can move to a cell only once.
+</p>
+<p>
+  There can be two ways of finishing the knight move - the first in which the knight is one knight's move away from the cell from where it began, so it can go to the position from where it started and form a loop, this is called <strong>closed tour</strong>; the second in which the knight finishes anywhere else, this is called <strong>open tour</strong>.
+</p>
+<h2>Approach to Knight's Tour Problem</h2><hr>
+<p>
+  Similar to the N-Queens problem, we start by moving the knight and if the knight reaches to a cell from where there is no further cell available to move and we have not reached to the solution yet (not all cells are covered), then we backtrack and change our decision and choose a different path.
+</p>
+<p>
+  So from a cell, we choose a move of the knight from all the moves available, and then recursively check if this will lead us to the solution or not. If not, then we choose a different path.
+</p>
+<p>
+<img alt="valid cells for movement of knight" src="./Knight&#39;s tour problem using backtracking and its analysis_files/knight4.png" style="max-width:40%;height:auto;">
+</p>
+<p>
+  As you can see from the picture above, there is a maximum of 8 different moves which a knight can take from a cell. So if a knight is at the cell (i, j), then the moves it can take are - (i+2, j+1), (i+1, j+2), (i-2,j+1), (i-1, j+2), (i-1, j-2), (i-2, j-1), (i+1, j-2) and (i+2, j-1).
+</p>
+<p>
+<img alt="tracking movement of knight" src="./Knight&#39;s tour problem using backtracking and its analysis_files/knight5.png" style="max-width:40%;height:auto;">
+</p>
+<p>
+  We keep the track of the moves in a matrix. This matrix stores the step number in which we visited a cell. For example, if we visit a cell in the second step, it will have a value of 2.
+</p>
+<p>
+<img alt="last move is NxN" src="./Knight&#39;s tour problem using backtracking and its analysis_files/knight6.png" style="max-width:40%;height:auto;">
+</p>
+<p>
+  This matrix also helps us to know whether we have covered all the cells or not. If the last visited cell has a value of N*N, it means we have covered all the cells.
+</p>
+<p>
+  Thus, our approach includes starting from a cell and then choosing a move from all the available moves. Then we check if this move will lead us to the solution or not. If not, we choose a different move. Also, we store all the steps in which we are moving in a matrix.
+</p>
+<p>
+  Now, we know the basic approach we are going to follow. So, let's develop the code for the same.
+</p>
+<h2>Code for Knight's Tour</h2><hr>
+<p>
+  Let's start by making a function to check if a move to the cell (i, j) is valid or not - <code>IS-VALID(i, j, sol)</code>. As mentioned above, 'sol' is the matrix in which we are storing the steps we have taken.
+</p>
+<p>
+  A move is valid if it is inside the chessboard (i.e., i and j are between 1 to N) and if the cell is not already occupied (i.e., <code>sol[i][j] == -1</code>). We will make the value of all the unoccupied cells equal to -1.
+</p>
+<pre style="background-color:#ebebeb;font-size:15px;border:1px solid #d4d4d4;padding-left:8px;padding-top:3px;margin-bottom:10px;margin-top:12px;line-height:25px;font-weight:700;">IS-VALID(i, j, sol)
+  if (i&gt;=1 and i&lt;=N and j&gt;=1 and j&lt;=N and sol[i][j]==-1)
+    return TRUE
+  return FALSE
+</pre>
+<p>
+  As stated above, there is a maximum of 8 possible moves from a cell (i, j). Thus, we will make 2 arrays so that we can use them to check for the possible moves.
+</p>
+<pre style="background-color:#ebebeb;font-size:15px;border:1px solid #d4d4d4;padding-left:8px;padding-top:3px;margin-bottom:10px;margin-top:12px;line-height:25px;font-weight:700;">x_move = [2, 1, -1, -2, -2, -1, 1, 2]
+y_move = [1, 2, 2, 1, -1, -2, -2, -1]
+</pre>
+<p>
+  Thus if we are on a cell (i, j), we can iterate over these arrays to find the possible move i.e., (i+2, j+1), (i+1, j+2), etc.
+</p>
+<p>
+  Now, we will make a function to find the solution. This function will take the solution matrix, the cell where currently the knight is (initially, it will be at (1, 1)), the step count of that cell and the two arrays for the move as mentioned above - <code>KNIGHT-TOUR(sol, i, j, step_count, x_move, y_move)</code>.
+</p>
+<p>
+  We will start by checking if the solution is found. If the solution is found (<code>step_count == N*N</code>), then we will just return true.
+</p>
+<p>
+<code>KNIGHT-TOUR(sol, i, j, step_count, x_move, y_move)</code><br>
+<code>&nbsp;&nbsp;if step_count == N*N</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;return TRUE</code><br>
+</p>
+<p>
+  Our next task is to move to the next possible knight's move and check if this will lead us to the solution. If not, then we will select the different move and if none of the moves are leading us to the solution, then we will return false.
+</p>
+<p>
+  As mentioned above, to find the possible moves, we will iterate over the x_move and the y_move arrays.
+</p>
+<p>
+<code>KNIGHT-TOUR(sol, i, j, step_count, x_move, y_move)</code><br>
+<code>&nbsp;&nbsp;...</code><br>
+<code>&nbsp;&nbsp;for k in 1 to 8</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;next_i = i+x_move[k]</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;next_j = j+y_move[k]</code><br>
+</p>
+<p>
+  Now, we have to check if the cell (i+x_move[k], j+y_move[k]) is valid or not. If it is valid then we will move to that cell - <code>sol[i+x_move[k]][j+y_move[k]] = step_count</code> and check if this path is leading us to the solution ot not - <code>if KNIGHT-TOUR(sol, i+x_move[k], j+y_move[k], step_count+1, x_move, y_move)</code>.
+</p>
+<p>
+<code>KNIGHT-TOUR(sol, i, j, step_count, x_move, y_move)</code><br>
+<code>&nbsp;&nbsp;...</code><br>
+<code>&nbsp;&nbsp;for k in 1 to 8</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;...</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;if IS-VALID(i+x_move[k], j+y_move[k])</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sol[i+x_move[k]][j+y_move[k]] = step_count</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if KNIGHT-TOUR(sol, i+x_move[k], j+y_move[k], step_count+1, x_move, y_move)</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return TRUE</code><br>
+</p>
+<p>
+  If the move (i+x_move[k], j+y_move[k]) is leading us to the solution - <code>if KNIGHT-TOUR(sol, i+x_move[k], j+y_move[k], step_count+1, x_move, y_move)</code>, then we are returning true.
+</p>
+<p>
+  If this move is not leading us to the solution, then we will choose a different move (loop will iterate to a different move). Also, we will again make the cell (i+x_move[k], j+y_move[k]) of solution matrix -1 as we have checked this path and it is not leading us to the solution, so leave it and thus it is backtracking.
+</p>
+<p>
+<code>KNIGHT-TOUR(sol, i, j, step_count, x_move, y_move)</code><br>
+<code>&nbsp;&nbsp;...</code><br>
+<code>&nbsp;&nbsp;for k in 1 to 8</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;...</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;sol[i+x_move[k], j+y_move[k]] = -1</code><br>
+</p>
+<p>
+  At last, if none the possible move returns us false, then we will just return false.
+</p>
+<pre style="background-color:#ebebeb;font-size:15px;border:1px solid #d4d4d4;padding-left:8px;padding-top:3px;margin-bottom:10px;margin-top:12px;line-height:25px;font-weight:700;">KNIGHT-TOUR(sol, i, j, step_count, x_move, y_move)
+  if step_count == N*N
+    return TRUE
+
+  for k in 1 to 8
+    next_i = i+x_move[k]
+    next_j = j+y_move[k]
+    if IS-VALID(next_i, next_j, sol)
+      sol[next_i][next_j] = step_count
+      if KNIGHT-TOUR(sol, next_i, next_j, step_count+1, x_move, y_move)
+        return TRUE
+      sol[next_i, next_j] = -1
+
+  return FALSE
+</pre>
+<p>
+  We have to start the KNIGHT-TOUR function by passing the solution, x_move and y_move matrices. So, let's do this.
+</p>
+<p>
+  As stated earlier, we will initialize the solution matrix by making all its element -1.
+</p>
+<p>
+<code>for i in 1 to N</code><br>
+<code>&nbsp;&nbsp;for j in 1 to N</code><br>
+<code>&nbsp;&nbsp;&nbsp;&nbsp;sol[i][j] = -1</code><br>
+</p>
+<p>
+  The next task is to make x_move and y_move arrays.
+</p>
+<p>
+<code>x_move = [2, 1, -1, -2, -2, -1, 1, 2]</code><br>
+<code>y_move = [1, 2, 2, 1, -1, -2, -2, -1]</code><br>
+</p>
+<p>
+  We will start the tour of the knight from the cell (1, 1) as its first step. So, we will make the value of the cell(1, 1) 0 and then call <code>KNIGHT-TOUR(sol, 1, 1, 1, x_move, y_move)</code>.
+</p>
+<pre style="background-color:#ebebeb;font-size:15px;border:1px solid #d4d4d4;padding-left:8px;padding-top:3px;margin-bottom:10px;margin-top:12px;line-height:25px;font-weight:700;">START-KNIGHT-TOUR()
+  sol =[][]
+  for i in 1 to N
+    for j in 1 to N
+      sol[i][j] = -1
+
+  x_move = [2, 1, -1, -2, -2, -1, 1, 2]
+  y_move = [1, 2, 2, 1, -1, -2, -2, -1]
+
+  sol[1, 1] = 0
+
+  if KNIGHT-TOUR(sol, 1, 1, 1, x_move, y_move)
+    return TRUE
+  return FALSE
+</pre>
+<ul class="lang_ul">
+<li class="tab-c">C</li>
+<li class="tab-python active-tab">Python</li>
+<li class="tab-java">Java</li>
+</ul>
+<div>
+<div class="c code-c code_eg hidden-code"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;stdio.h&gt;</span><span class="cp"></span>
+<span class="cp">#define N 8</span>
+
+<span class="kt">int</span> <span class="nf">is_valid</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sol</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">N</span> <span class="o">&amp;&amp;</span> <span class="n">j</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">N</span> <span class="o">&amp;&amp;</span> <span class="n">sol</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">knight_tour</span><span class="p">(</span><span class="kt">int</span> <span class="n">sol</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">,</span> <span class="kt">int</span> <span class="n">step_count</span><span class="p">,</span> <span class="kt">int</span> <span class="n">x_move</span><span class="p">[],</span> <span class="kt">int</span> <span class="n">y_move</span><span class="p">[])</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">step_count</span> <span class="o">==</span> <span class="n">N</span><span class="o">*</span><span class="n">N</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+
+  <span class="kt">int</span> <span class="n">k</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">int</span> <span class="n">next_i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="n">x_move</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+    <span class="kt">int</span> <span class="n">next_j</span> <span class="o">=</span> <span class="n">j</span><span class="o">+</span><span class="n">y_move</span><span class="p">[</span><span class="n">k</span><span class="p">];</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">is_valid</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="n">x_move</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">j</span><span class="o">+</span><span class="n">y_move</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">sol</span><span class="p">))</span> <span class="p">{</span>
+      <span class="n">sol</span><span class="p">[</span><span class="n">next_i</span><span class="p">][</span><span class="n">next_j</span><span class="p">]</span> <span class="o">=</span> <span class="n">step_count</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">knight_tour</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">next_i</span><span class="p">,</span> <span class="n">next_j</span><span class="p">,</span> <span class="n">step_count</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">x_move</span><span class="p">,</span> <span class="n">y_move</span><span class="p">))</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+      <span class="n">sol</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">x_move</span><span class="p">[</span><span class="n">k</span><span class="p">]][</span><span class="n">j</span><span class="o">+</span><span class="n">y_move</span><span class="p">[</span><span class="n">k</span><span class="p">]]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// backtracking</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">start_knight_tour</span><span class="p">()</span> <span class="p">{</span>
+  <span class="kt">int</span> <span class="n">sol</span><span class="p">[</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">];</span>
+
+  <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">;</span>
+  <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="n">sol</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+
+  <span class="kt">int</span> <span class="n">x_move</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">};</span>
+  <span class="kt">int</span> <span class="n">y_move</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">};</span>
+
+  <span class="n">sol</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// placing knight at cell(1, 1)</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">knight_tour</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x_move</span><span class="p">,</span> <span class="n">y_move</span><span class="p">))</span> <span class="p">{</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">for</span><span class="p">(</span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\t</span><span class="s">"</span><span class="p">,</span><span class="n">sol</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]);</span>
+      <span class="p">}</span>
+      <span class="n">printf</span><span class="p">(</span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="kt">int</span> <span class="nf">main</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="n">start_knight_tour</span><span class="p">());</span>
+  <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="python code-python code_eg active-code"><div class="highlight"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">8</span>
+
+<span class="k">def</span> <span class="nf">is_valid</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">sol</span><span class="p">):</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">N</span> <span class="ow">and</span> <span class="n">j</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="ow">and</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">):</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">==-</span><span class="mi">1</span><span class="p">):</span>
+      <span class="k">return</span> <span class="kc">True</span>
+  <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">knight_tour</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">step_count</span><span class="p">,</span> <span class="n">x_move</span><span class="p">,</span> <span class="n">y_move</span><span class="p">):</span>
+  <span class="k">if</span> <span class="p">(</span><span class="n">step_count</span> <span class="o">==</span> <span class="n">N</span><span class="o">*</span><span class="n">N</span><span class="p">):</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+  <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
+    <span class="n">next_i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="n">x_move</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+    <span class="n">next_j</span> <span class="o">=</span> <span class="n">j</span><span class="o">+</span><span class="n">y_move</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+
+    <span class="k">if</span><span class="p">(</span><span class="n">is_valid</span><span class="p">(</span><span class="n">next_i</span><span class="p">,</span> <span class="n">next_j</span><span class="p">,</span> <span class="n">sol</span><span class="p">)):</span>
+      <span class="n">sol</span><span class="p">[</span><span class="n">next_i</span><span class="p">][</span><span class="n">next_j</span><span class="p">]</span> <span class="o">=</span> <span class="n">step_count</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">knight_tour</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">next_i</span><span class="p">,</span> <span class="n">next_j</span><span class="p">,</span> <span class="n">step_count</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">x_move</span><span class="p">,</span> <span class="n">y_move</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="kc">True</span>
+      <span class="n">sol</span><span class="p">[</span><span class="n">next_i</span><span class="p">][</span><span class="n">next_j</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1"># backtracking</span>
+
+  <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">def</span> <span class="nf">start_knight_tour</span><span class="p">():</span>
+  <span class="n">sol</span> <span class="o">=</span> <span class="p">[]</span>
+
+  <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">+</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">sol</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+  <span class="n">x_move</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+  <span class="n">y_move</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+  <span class="n">sol</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># placing knight at cell(1, 1)</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="n">knight_tour</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">x_move</span><span class="p">,</span> <span class="n">y_move</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">sol</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="k">return</span> <span class="kc">True</span>
+  <span class="k">return</span> <span class="kc">False</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">'__main__'</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">start_knight_tour</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="java code-java code_eg hidden-code"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nc">Kinght</span> <span class="p">{</span>
+  <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">N</span> <span class="o">=</span> <span class="mi">8</span><span class="p">;</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">isValid</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">,</span> <span class="kt">int</span> <span class="n">sol</span><span class="o">[][]</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">N</span> <span class="o">&amp;&amp;</span> <span class="n">j</span><span class="o">&gt;=</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span><span class="p">(</span><span class="n">sol</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]==-</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">knightTour</span><span class="p">(</span><span class="kt">int</span> <span class="n">sol</span><span class="o">[][]</span><span class="p">,</span> <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="kt">int</span> <span class="n">j</span><span class="p">,</span> <span class="kt">int</span> <span class="n">stepCount</span><span class="p">,</span> <span class="kt">int</span> <span class="n">xMove</span><span class="o">[]</span><span class="p">,</span> <span class="kt">int</span> <span class="n">yMove</span><span class="o">[]</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">stepCount</span> <span class="o">==</span> <span class="n">N</span><span class="o">*</span><span class="n">N</span><span class="p">)</span>
+      <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">k</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">k</span><span class="o">&lt;</span><span class="mi">8</span><span class="p">;</span> <span class="n">k</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kt">int</span> <span class="n">nextI</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="n">xMove</span><span class="o">[</span><span class="n">k</span><span class="o">]</span><span class="p">;</span>
+      <span class="kt">int</span> <span class="n">nextJ</span> <span class="o">=</span> <span class="n">j</span><span class="o">+</span><span class="n">yMove</span><span class="o">[</span><span class="n">k</span><span class="o">]</span><span class="p">;</span>
+
+      <span class="k">if</span><span class="p">(</span><span class="n">isValid</span><span class="p">(</span><span class="n">nextI</span><span class="p">,</span> <span class="n">nextJ</span><span class="p">,</span> <span class="n">sol</span><span class="p">))</span> <span class="p">{</span>
+        <span class="n">sol</span><span class="o">[</span><span class="n">nextI</span><span class="o">][</span><span class="n">nextJ</span><span class="o">]</span> <span class="o">=</span> <span class="n">stepCount</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">knightTour</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="n">nextI</span><span class="p">,</span> <span class="n">nextJ</span><span class="p">,</span> <span class="n">stepCount</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">xMove</span><span class="p">,</span> <span class="n">yMove</span><span class="p">))</span>
+          <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="n">sol</span><span class="o">[</span><span class="n">nextI</span><span class="o">][</span><span class="n">nextJ</span><span class="o">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="c1">// backtracking</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">startKnightTour</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kt">int</span><span class="o">[][]</span> <span class="n">sol</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="o">][</span><span class="n">N</span><span class="o">+</span><span class="mi">1</span><span class="o">]</span><span class="p">;</span>
+
+    <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">sol</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="kt">int</span> <span class="n">xMove</span><span class="o">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">};</span>
+    <span class="kt">int</span> <span class="n">yMove</span><span class="o">[]</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">};</span>
+
+    <span class="n">sol</span><span class="o">[</span><span class="mi">1</span><span class="o">][</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// placing knight at cell(1, 1)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">knightTour</span><span class="p">(</span><span class="n">sol</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">xMove</span><span class="p">,</span> <span class="n">yMove</span><span class="p">))</span> <span class="p">{</span>
+      <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">for</span><span class="p">(</span><span class="kt">int</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">;</span> <span class="n">j</span><span class="o">&lt;=</span><span class="n">N</span><span class="p">;</span> <span class="n">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+          <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">print</span><span class="p">(</span><span class="n">sol</span><span class="o">[</span><span class="n">i</span><span class="o">][</span><span class="n">j</span><span class="o">]+</span><span class="s">"\t"</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">"\n"</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="p">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">startKnightTour</span><span class="p">();</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="well imp_well">
+<div class="row">
+<div class="col-md-1 col-sm-1 well_one">
+<i class="fa fa-code"></i>
+</div>
+<div class="col-md-11 col-sm-11 well_two">
+		  Take a note that the order of the x_move and y_move arrays are going to affect the running time of the algorithm drastically. Think of a case, when a person chooses 6 wrong long paths and finally reaching the goal in the 7<sup>th</sup> path and another case when the person took the correct path in the first turn. This is also similar. The order given here is a tested one.
+		</div>
+</div>
+</div>
+<div class="well imp_well">
+<div class="row">
+<div class="col-md-1 col-sm-1 well_one">
+<i class="fa fa-code"></i>
+</div>
+<div class="col-md-11 col-sm-11 well_two">
+		  As discussed in the first chapter, we should not learn anything as a rule. It's always good to have a heuristic than to apply the backtracking algorithm blindly. For example, if we know that our destination is in the east direction, then checking the paths leading in the east first is a wise technique apart from checking all the paths.
+		</div>
+</div>
+</div>
+<h2>Analysis of Code</h2><hr>
+<p>
+  We are not going into the full time complexity of the algorithm. Instead, we are going to see how bad the algorithm is.
+</p>
+<p>
+  There are N*N i.e., N<sup>2</sup> cells in the board and we have a maximum of 8 choices to make from a cell, so we can write the worst case running time as <span class="MathJax_Preview" style="color: inherit;"></span><span id="MathJax-Element-2-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 121%; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;msup&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><span id="MJXc-Node-8" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-9" class="mjx-mrow"><span id="MJXc-Node-10" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.467em; padding-bottom: 0.313em;">O</span></span><span id="MJXc-Node-11" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.467em; padding-bottom: 0.571em;">(</span></span><span id="MJXc-Node-12" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-13" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.364em; padding-bottom: 0.364em;">8</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.591em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-14" class="mjx-texatom" style=""><span id="MJXc-Node-15" class="mjx-mrow"><span id="MJXc-Node-16" class="mjx-msubsup"><span class="mjx-base" style="margin-right: -0.085em;"><span id="MJXc-Node-17" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.467em; padding-bottom: 0.261em; padding-right: 0.085em;">N</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.513em; padding-left: 0.227em; padding-right: 0.071em;"><span id="MJXc-Node-18" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.364em; padding-bottom: 0.364em;">2</span></span></span></span></span></span></span></span><span id="MJXc-Node-19" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.467em; padding-bottom: 0.571em;">)</span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><msup><mn>8</mn><mrow class="MJX-TeXAtom-ORD"><msup><mi>N</mi><mn>2</mn></msup></mrow></msup><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-2">O(8^{N^2})</script>.
+</p>
+<p>
+  But we don't have 8 choices for each cell. For example, from the first cell, we only have two choices.
+</p>
+<p>
+<img alt="movement of cells from 1" src="./Knight&#39;s tour problem using backtracking and its analysis_files/knight7.png" style="max-width:40%;height:auto;">
+</p>
+<p>
+  Even considering this, our running time will be reduced by a factor and will become <span class="MathJax_Preview" style="color: inherit;"></span><span id="MathJax-Element-3-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 121%; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;msup&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;msup&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><span id="MJXc-Node-20" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-21" class="mjx-mrow"><span id="MJXc-Node-22" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.467em; padding-bottom: 0.313em;">O</span></span><span id="MJXc-Node-23" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.467em; padding-bottom: 0.571em;">(</span></span><span id="MJXc-Node-24" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-25" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.467em; padding-bottom: 0.313em;">k</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.513em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-26" class="mjx-texatom" style=""><span id="MJXc-Node-27" class="mjx-mrow"><span id="MJXc-Node-28" class="mjx-msubsup"><span class="mjx-base" style="margin-right: -0.085em;"><span id="MJXc-Node-29" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.467em; padding-bottom: 0.261em; padding-right: 0.085em;">N</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.513em; padding-left: 0.227em; padding-right: 0.071em;"><span id="MJXc-Node-30" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.364em; padding-bottom: 0.364em;">2</span></span></span></span></span></span></span></span><span id="MJXc-Node-31" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.467em; padding-bottom: 0.571em;">)</span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><msup><mi>k</mi><mrow class="MJX-TeXAtom-ORD"><msup><mi>N</mi><mn>2</mn></msup></mrow></msup><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-3">O(k^{N^2})</script> instead of <span class="MathJax_Preview" style="color: inherit;"></span><span id="MathJax-Element-4-Frame" class="mjx-chtml MathJax_CHTML" tabindex="0" style="font-size: 121%; position: relative;" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;O&lt;/mi&gt;&lt;mo stretchy=&quot;false&quot;&gt;(&lt;/mo&gt;&lt;msup&gt;&lt;mn&gt;8&lt;/mn&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;msup&gt;&lt;mi&gt;N&lt;/mi&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/msup&gt;&lt;/mrow&gt;&lt;/msup&gt;&lt;mo stretchy=&quot;false&quot;&gt;)&lt;/mo&gt;&lt;/math&gt;" role="presentation"><span id="MJXc-Node-32" class="mjx-math" aria-hidden="true"><span id="MJXc-Node-33" class="mjx-mrow"><span id="MJXc-Node-34" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.467em; padding-bottom: 0.313em;">O</span></span><span id="MJXc-Node-35" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.467em; padding-bottom: 0.571em;">(</span></span><span id="MJXc-Node-36" class="mjx-msubsup"><span class="mjx-base"><span id="MJXc-Node-37" class="mjx-mn"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.364em; padding-bottom: 0.364em;">8</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.591em; padding-left: 0px; padding-right: 0.071em;"><span id="MJXc-Node-38" class="mjx-texatom" style=""><span id="MJXc-Node-39" class="mjx-mrow"><span id="MJXc-Node-40" class="mjx-msubsup"><span class="mjx-base" style="margin-right: -0.085em;"><span id="MJXc-Node-41" class="mjx-mi"><span class="mjx-char MJXc-TeX-math-I" style="padding-top: 0.467em; padding-bottom: 0.261em; padding-right: 0.085em;">N</span></span></span><span class="mjx-sup" style="font-size: 70.7%; vertical-align: 0.513em; padding-left: 0.227em; padding-right: 0.071em;"><span id="MJXc-Node-42" class="mjx-mn" style=""><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.364em; padding-bottom: 0.364em;">2</span></span></span></span></span></span></span></span><span id="MJXc-Node-43" class="mjx-mo"><span class="mjx-char MJXc-TeX-main-R" style="padding-top: 0.467em; padding-bottom: 0.571em;">)</span></span></span></span><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>O</mi><mo stretchy="false">(</mo><msup><mn>8</mn><mrow class="MJX-TeXAtom-ORD"><msup><mi>N</mi><mn>2</mn></msup></mrow></msup><mo stretchy="false">)</mo></math></span></span><script type="math/tex" id="MathJax-Element-4">O(8^{N^2})</script>. This is also indeed an extremely bad running time.
+</p>
+<p>
+  So, this chapter was to make you familiar with the backtracking algorithm and not about the optimization. You can look for more examples on the backtracking algorithm with the <a href="https://www.codesdope.com/blog/tag/backtracking/?tag=backtracking" target="_blank">backtracking tag of the BlogsDope</a>.
+</p>
+<div id="quote">
+<div><span>The computer was born to solve problems that did not exist before.</span></div>
+<div><span>- Bill Gates</span></div>
+</div>
+<hr>
+</div>
+<div id="traverse">
+<a href="https://www.codesdope.com/course/algorithms-backtracking/" title="Backtracking"><span class="traverse_btn fa fa-long-arrow-left" id="traverse_left"><span>PREV</span></span></a>
+<a href="https://www.codesdope.com/course/algorithms-greedy-algorithm/" title="{current_topic.next_topic.title}"><span class="traverse_btn fa fa-long-arrow-right" id="traverse_right"><span>NEXT</span></span></a>
+</div>
+
+
+          <!--further article-->
+          <div id="further">
+            <hr>
+            
+          </div>
+        </div>
+
+        <div class="col-md-3 col-sm-12 col-lg-3 col-xs-12 sidenav" id="div_right" style="background-color: white">
+          <!-- <div class="app">
+            <div class="app_top">Download Our App.</div>
+            <div class="app_middle">
+              <img src="/staticroot/images/app2.png" style="width: 80%; height: auto; margin: 0"
+                alt="BlogsDope App" />
+            </div>
+            <div class="app_down">
+              <a rel="noopener"
+                href="https://play.google.com/store/apps/details?id=com.blogsdope&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1"
+                target="_blank"><img style="width: 90%; height: auto; margin: 0" alt="Get it on Google Play"
+                  src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" /></a>
+            </div>
+          </div> -->
+
+          <div>
+            <style>
+              /*PRO*/
+              .pro-side-banner-primary {
+                box-sizing: border-box;
+                margin-top: 30px;
+                padding: 0 0 22px;
+                max-width: 240px;
+                width: 100%;
+                -webkit-box-shadow: 0 0 19px -1px rgb(92 91 92 / 80%);
+                -moz-box-shadow: 0 0 19px -1px rgba(92, 91, 92, 0.8);
+                box-shadow: 0 0 19px -1px rgb(92 91 92 / 80%);
+              }
+              .pro-side-banner-primary-child1 {
+                font-size: 13px;
+                text-align: center;
+                color: black;
+              }
+              .pro-side-banner-primary-child2 {
+                margin-top: 8px;
+                font-size: 13px;
+                text-align: center;
+                color: black;
+              }
+              .pro-banner-special-span {
+                display: inline-block;
+                font-size: 15.5px;
+                font-weight: 500;
+                padding: 3px 5px;
+                background-color: #feae00;
+                color: black;
+                border-radius: 2px;
+              }
+              #special-span1 {
+                transform: rotate(1deg);
+              }
+              #special-span2 {
+                transform: rotate(-1deg);
+              }
+              .pro-primary-logo-codesdope {
+                font-size: 10px;
+                letter-spacing: 1px;
+                font-weight: 700;
+              }
+              .pro-primary-logo-pro {
+                padding: 3px 5px;
+                background-color: #feae00;
+                font-size: 10px;
+                letter-spacing: 1px;
+                font-weight: 700;
+                border-radius: 2px;
+              }
+              .pro-side-banner-primary-logo {
+                background-color: #802bb1;
+                margin-bottom: 20px;
+                text-align: center;
+                padding: 13px 7px;
+              }
+              .pro-primary-logo-codesdope {
+                color: white;
+                font-size: 15px;
+                letter-spacing: 1px;
+                font-weight: 500;
+              }
+              .pro-primary-logo-pro {
+                padding: 3px 5px;
+                background-color: #feae00;
+                font-size: 15px;
+                color: black;
+                letter-spacing: 1px;
+                font-weight: 500;
+                border-radius: 2px;
+              }
+              /* secondary banner */
+              .upper-wrapper {
+                padding-top: 10px;
+              }
+              .pro-side-banner-secondary {
+                box-sizing: border-box;
+                margin-top: 10px;
+                max-width: 240px;
+                width: 100%;
+                -webkit-box-shadow: 0 0 19px -1px rgb(92 91 92 / 80%);
+                -moz-box-shadow: 0 0 19px -1px rgba(92, 91, 92, 0.8);
+                box-shadow: 0 0 19px -1px rgb(92 91 92 / 80%);
+              }
+              .pro-side-banner-secondary-child1 {
+                padding: 10px 5px 0;
+                text-align: center;
+                font-size: 17px;
+                font-weight: 500;
+                letter-spacing: 0.5px;
+                color: black;
+              }
+              .underline {
+                width: 112px;
+                height: 27px;
+                border-bottom: 3px solid #802bb1;
+                -webkit-transform: translateY(-25px);
+                transform: translateY(-25px);
+                margin-left: auto;
+                margin-right: auto;
+              }
+              .pro-banner-body {
+                margin-top: -10px;
+                padding: 0 10px 21px;
+                text-align: left;
+              }
+              .pro-banner-body-list {
+                margin-top: 8px;
+                font-size: 14px;
+              }
+              .pro-banner-list-span {
+                font-size: 17px;
+                font-weight: 500;
+                color: black;
+                border-radius: 2px;
+              }
+              .list-icon {
+                width: 20px;
+                color: #802bb1;
+                margin-right: 8px !important;
+                font-size: 15px;
+              }
+              .list-text {
+                color: black;
+              }
+              .pro-banner-off-wrapper {
+                padding: 10px;
+                background-color: #802bb1;
+                text-align: center;
+                font-weight: 500;
+                font-size: 15px;
+                color: #efefef;
+              }
+              .pro-off-text {
+                font-weight: 700;
+                font-size: 18px;
+                margin-left: 4px !important;
+                color: white;
+                letter-spacing: 1px;
+              }
+              .pro-footer-website-text {
+                margin-left: 6px;
+                color: white;
+              }
+              /* general */
+              .pro-banner-bold-500 {
+                font-weight: 500;
+              }
+              .pro-banner-bold-700 {
+                font-weight: 700;
+              }
+              .blue-color {
+                color: #802bb1;
+              }
+              .yellow-color {
+                color: #feae00;
+              }
+              .text-decoration-none {
+                text-decoration: none !important;
+              }
+              .italic-style {
+                font-style: italic;
+              }
+              /* Offer */
+              .pro-banner-offer {
+                 padding: 12px 5px;
+                 background-color: #feae00;
+                 font-size: 15px;
+                 color: #121212;
+                 font-weight: 500;
+               }
+               .pro-banner-offer-off {
+                 font-size: 23px;
+                 color: #121212;
+                 font-weight: 800;
+                 letter-spacing: 1px;
+               }
+               .pro-banner-offer-text {
+                 font-size: 14px;
+                 color: #121212;
+                 font-weight: 800;
+                 letter-spacing: 1px;
+               }
+               .pro-banner-offer-text-secondary {
+                 font-size: 16px;
+                 color: #121212;
+                 font-weight: 800;
+                 letter-spacing: .2px;
+               }
+               .pro-banner-offer-secondary-span {
+                 margin-left: 2px !important;
+               }
+               #offer-off-text {
+                 display: none;
+               }
+               /* counter */
+               #countdown {
+                 margin-bottom: 10px;
+                 text-align: center;
+                 letter-spacing: 1px;
+                 background-color: #f7f7f7;
+                 box-shadow: 0 0 5px 2px rgb(18 18 18 / 20%);
+                 -webkit-box-shadow: 0 0 5px 2px rgb(18 18 18 / 20%);
+                 -moz-box-shadow: 0 0 5px 2px rgb(18 18 18 / 20%);
+               }
+               #countdown ul {
+                 padding-left: 0;
+                 margin: 0;
+               }
+               #countdown li {
+                 display: inline-block;
+                 font-size: 12px;
+                 list-style-type: none;
+                 padding: 5px;
+                 text-transform: uppercase;
+                 color: black;
+               }
+               #countdown li span {
+                 display: block;
+                 font-size: 20px;
+                 color: #802bb1;
+                 font-weight: 700;
+               }
+            </style>
+            <script>
+              (function () {
+                const second = 1000,
+                  minute = second * 60,
+                  hour = minute * 60,
+                  day = hour * 24;
+
+                let date = "Nov 27, 2021 23:59:00",
+                  countDown = new Date(date).getTime(),
+                  x = setInterval(function () {
+                    let currentOffset = new Date().getTimezoneOffset();
+                     let ISTOffset = 330;
+                     let now = new Date(
+                        new Date().getTime() +
+                          (ISTOffset + currentOffset) * 60000
+                      ),
+                      distance = countDown - now;
+
+                    (document.getElementById("days").innerText = Math.floor(distance / day)),
+                      (document.getElementById("hours").innerText = Math.floor(
+                        (distance % day) / hour
+                      )),
+                      (document.getElementById("minutes").innerText = Math.floor(
+                        (distance % hour) / minute
+                      )),
+                      (document.getElementById("seconds").innerText = Math.floor(
+                        (distance % minute) / second
+                      ));
+                      // If the count down is over, write some text 
+                      if (distance < 0) {
+                        clearInterval(x);
+                        document.getElementById("offer-counter-banner").style.display = "none";
+                      }
+                  }, 0);
+              })();
+            </script>
+            <div class="pro-side-banner-primary">
+              <a href="https://codop.es/pro" target="_blank" class="text-decoration-none">
+                <div class="text-decoration-none">
+                  <div class="pro-side-banner-primary-logo">
+                    <span class="pro-primary-logo-codesdope">CODESDOPE</span>
+                    <span class="pro-primary-logo-pro">PRO</span>
+                  </div>
+                  <div class="pro-side-banner-primary-child1">
+                    It's
+                    <div class="pro-banner-special-span" id="special-span1">
+                      Simple and Conceptual
+                    </div>
+                  </div>
+                  <div class="pro-side-banner-primary-child2">
+                    with
+                    <span class="pro-banner-special-span" id="special-span2">Chance for Internship*
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Offer banner -->
+            <div id="offer-counter-banner" class="pro-side-banner-secondary" style="display: none;">
+              <a href="https://pro.codesdope.com/courses/cpp/cpp-how-hello-world-is-printed/" target="_blank" class="text-decoration-none">
+                <div class="pro-banner-offer">
+                  <div class="pro-banner-offer-off">C++ in English</div>
+                  <div class="pro-banner-offer-text">Launched</div>
+                  <div class="pro-banner-offer-text-secondary" style="margin-top:10px">Get <span class="blue-color">C++ (English)</span> course for <span class="pro-banner-offer-secondary-span blue-color"><i class="fa fa-inr" style="font-size: 15px" aria-hidden="true"></i><span style="font-size: 18px">999</span></span></div>
+                  <!-- <div class="pro-banner-offer-text" style="margin-top:10px">Ending in:</div> -->
+                </div>
+                <div id="countdown">
+                  <ul>
+                    <li><span id="days">-803</span>Days</li>
+                    <li><span id="hours">-19</span>Hours</li>
+                    <li><span id="minutes">-35</span>Min</li>
+                    <li><span id="seconds">-57</span>Sec</li>
+                  </ul>
+                </div>
+              </a>
+            </div>
+        
+            <!-- Secondary banner -->
+            <div class="pro-side-banner-secondary">
+              <a href="https://pro.codesdope.com/" target="_blank" class="text-decoration-none">
+                <div class="upper-wrapper">
+                  <div class="pro-side-banner-secondary-child1">
+                    Pro Course Features
+                    <div class="underline"></div>
+                  </div>
+                  <div class="pro-banner-body">
+                    <div class="pro-banner-body-list">
+                      <span class="list-icon"><i class="fa fa-video-camera" aria-hidden="true"></i></span>
+                      <span class="list-text"><span class="pro-banner-list-span">Simple</span> Videos</span>
+                    </div>
+                    <div class="pro-banner-body-list">
+                      <span class="list-icon"><i class="fa fa-pencil" aria-hidden="true"></i></span><span class="list-text"><span class="pro-banner-list-span">Questions</span> to
+                        Practice</span>
+                    </div>
+                    <div class="pro-banner-body-list">
+                      <span class="list-icon"><i class="fa fa-check"></i></span><span class="list-text"><span class="pro-banner-list-span">Solved</span> 
+                        Examples</span>
+                    </div>
+                    <div class="pro-banner-body-list">
+                      <span class="list-icon"><i class="fa fa-graduation-cap" aria-hidden="true"></i></span><span class="list-text"><span class="pro-banner-list-span">Internship</span> Chance*
+                      </span>
+                    </div>
+                    <div class="pro-banner-body-list">
+                      <span class="list-icon"><i class="fa fa-certificate" aria-hidden="true"></i></span><span class="list-text"><span class="pro-banner-list-span">Certificate</span> of
+                        Completion</span>
+                    </div>
+                    <div class="pro-banner-body-list">
+                      <span class="list-icon"><i class="fa fa-comments" aria-hidden="true"></i></span><span class="list-text"><span class="pro-banner-list-span">Discussion</span> with
+                        Experts</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="pro-banner-off-wrapper">
+                  Learn for <span class="pro-off-text">FREE</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <style>
+              .ca-banner {
+                margin-top: 30px;
+                max-width: 240px;
+                width: 100%;
+                -webkit-box-shadow: 0 0 19px -1px rgb(92 91 92 / 80%);
+                -moz-box-shadow: 0 0 19px -1px rgba(92, 91, 92, 0.8);
+                box-shadow: 0 0 19px -1px rgb(92 91 92 / 80%);
+                background-color: #802bb1;
+                text-align: center;
+              }
+              .ca-banner-heading1 {
+                letter-spacing: .5px;
+                padding-top: 18px;
+                color: white;
+                font-size: 17px;
+                font-weight: 500;
+              }
+              .ca-banner-heading2 {
+                margin-top: 20px;
+                letter-spacing: 1px;
+                color: white;
+                font-size: 23px;
+                font-weight: 500;
+              }
+              .ca-button {
+                display: inline-block;
+                margin-top: 25px;
+                margin-left: auto;
+                margin-right: auto;
+                font-size: 13px;
+                letter-spacing: 2px;
+                font-weight: 700;
+                color: white;
+                background-color: #121212;
+                padding: 11px 16px;
+              }
+              .ca-image-wrapper {
+                position: relative;
+              }
+              .ca-image {
+                margin-top: 20px;
+                width: 80%;
+              }
+              .ca-logo {
+                position: absolute;
+                bottom: 5px;
+                right:5px;
+                width: 20px;
+
+              }
+            </style>
+            <div class="ca-banner">
+              <a href="https://forms.gle/YWUXdKkZ7pbaX8Wr5" target="_blank" class="text-decoration-none">
+                <div class="ca-banner-heading1">
+                  We're Hiring
+                </div>
+                <div class="ca-banner-heading2">
+                  Campus Ambassadors
+                </div>
+                <div class="ca-button">Register</div>
+                <div class="ca-image-wrapper">
+                  <img class="ca-image" src="./Knight&#39;s tour problem using backtracking and its analysis_files/ca.png" alt="campus ambassador">
+                  <img class="ca-logo" src="./Knight&#39;s tour problem using backtracking and its analysis_files/cd_logo_white.png" alt="codesdope logo">
+                </div>
+              </a>
+            </div>
+          </div>
+          
+
+           
+          <!-- <div class="mob_hide" style="margin-left: auto; margin-right: auto; margin-top:15px;">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+          <!-- codesdope right top -->
+          <!-- <ins class="adsbygoogle"
+         style="display:inline-block;width:300px;height:600px"
+         data-ad-client="ca-pub-4050543544420496"
+         data-ad-slot="9210113488"></ins>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div> -->
+          <div class="mob_hide right_newor_ad" style="text-align: center; margin-top: 15px">
+            <div id="waldo-tag-3531"></div></div>
+            <!-- PixFuture Display Ad Tag -->
+            <!-- <div id="25986x160x600x4390x_ADSLOT1" clicktrack="%%CLICK_URL_ESC%%"></div>
+            <script type="text/javascript">
+              if (screen && screen.width > 1024) {
+                var script = document.createElement("script");
+                script.src =
+                  "//served-by.pixfuture.com/www/delivery/headerbid.js";
+                script.setAttribute("slotId", "25986x160x600x4390x_ADSLOT1");
+                script.setAttribute("refreshInterval", 30);
+                script.setAttribute("refreshTime", 5);
+                document
+                  .getElementById("25986x160x600x4390x_ADSLOT1")
+                  .appendChild(script);
+              }
+            </script>
+          </div> -->
+
+          <div class="mob_hide right_newor_ad_600" style="text-align: center; margin-top: 15px">
+            <!-- 300x600 -->
+            <div id="waldo-tag-3602"></div>
+            <!-- PixFuture Display Ad Tag -->
+            <!-- <div id="25988x300x600x4390x_ADSLOT1" clicktrack="%%CLICK_URL_ESC%%"></div>
+            <script type="text/javascript">
+              if (screen && screen.width > 1024) {
+                var script = document.createElement("script");
+                script.src =
+                  "//served-by.pixfuture.com/www/delivery/headerbid.js";
+                script.setAttribute("slotId", "25988x300x600x4390x_ADSLOT1");
+                script.setAttribute("refreshInterval", 30);
+                script.setAttribute("refreshTime", 5);
+                document
+                  .getElementById("25988x300x600x4390x_ADSLOT1")
+                  .appendChild(script);
+              }
+            </script> -->
+          </div>
+            		<div class="course_ques">
+			<table id="ques_table">
+				<tbody><tr>
+					<th>
+						New Questions
+					</th>
+				</tr>
+				
+				<tr><td>
+					<a href="https://www.codesdope.com/discussion/windows-activation" target="_blank"><div>Windows activation<span style="float:right;clear:both;"> - Other</span></div></a>
+				</td></tr>
+				
+				<tr><td>
+					<a href="https://www.codesdope.com/discussion/how-to-convert-ost-to-pst-file" target="_blank"><div>How to Convert OST to PST File?<span style="float:right;clear:both;"> - Data Structures</span></div></a>
+				</td></tr>
+				
+				<tr><td>
+					<a href="https://www.codesdope.com/discussion/honeywell-gas-valve-solenoid-coils" target="_blank"><div>Honeywell Gas Valve Solenoid Coils<span style="float:right;clear:both;"> - Java</span></div></a>
+				</td></tr>
+				
+				<tr><td>
+					<a href="https://www.codesdope.com/discussion/idade-do-jogador-em-um-cassino-online" target="_blank"><div>Idade do jogador em um cassino online.<span style="float:right;clear:both;"> - Java</span></div></a>
+				</td></tr>
+				
+				<tr><td>
+					<a href="https://www.codesdope.com/discussion/elevate-your-500-651-exam-dumps-preparation" target="_blank"><div>Elevate Your 500-651 Exam Dumps Preparation<span style="float:right;clear:both;"> - Java</span></div></a>
+				</td></tr>
+				
+				<tr><td>
+					<a href="https://www.codesdope.com/discussion/achieve-500-650-pdf-exam-dumps" target="_blank"><div>Achieve 500-650 PDF Exam Dumps<span style="float:right;clear:both;"> - Java</span></div></a>
+				</td></tr>
+				
+				<tr><td>
+					<a href="https://www.codesdope.com/discussion/increase-your-500-560-dumps-pdf-readiness" target="_blank"><div>Increase Your 500-560 Dumps PDF Readiness<span style="float:right;clear:both;"> - Java</span></div></a>
+				</td></tr>
+				
+			</tbody></table>
+		</div>
+		<div style="text-align:center;">
+		<a class="below_ques" href="https://www.codesdope.com/add_question/" target="_blank">
+			<div>Ask Yours</div>
+		</a>
+		</div>
+
+
+          <!-- 3 icons -->
+          <div id="icons">
+            <ul>
+              <li>
+                <a class="fa-stack fa-lg" href="https://www.codesdope.com/discussion/" target="_blank" data-toggle="tooltip" data-placement="bottom" title="DISCUSSION">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-comments fa-stack-1x"></i>
+                </a>
+              </li>
+              <li>
+                <a class="fa-stack fa-lg" href="https://www.codesdope.com/practice/" target="_blank" style="margin-left: 5px" data-toggle="tooltip" data-placement="bottom" title="PRACTICE">
+                  <i class="fa fa-pencil-square-o fa-2x"></i>
+                </a>
+              </li>
+              <li>
+                <a class="fa-stack fa-lg" href="https://codesdope-media.nyc3.cdn.digitaloceanspaces.com/prod/media/pdf/ASCII.pdf" target="_blank" style="margin-left: 5px" data-toggle="tooltip" data-placement="bottom" title="ASCII Table">
+                  <i class="fa fa-square-o fa-stack-2x"></i>
+                  <i class="fa fa-file-pdf-o fa-stack-1x"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!--
+side social icons
+-->
+          <div id="social-buttons">
+            <ul>
+              <li id="li_facebook">
+                <a rel="noopener" aria-label="Facebook" href="https://www.facebook.com/codesdope/" target="_blank"><i class="fa fa-facebook"></i></a>
+              </li>
+              <li id="li_twitter">
+                <a rel="noopener" aria-label="Twitter" href="https://twitter.com/CodesDope" target="_blank"><i class="fa fa-twitter"></i></a>
+              </li>
+              <li id="li_linkedin">
+                <a rel="noopener" aria-label="Linkedin" href="https://www.linkedin.com/company/codesdope" target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+              </li>
+            </ul>
+          </div>
+
+           			
+            <div class="website_recent container-fluid">
+				<div class="recent_web">Recent Posts</div>
+				
+				<a href="https://www.codesdope.com/blog/article/pow-in-python/" target="_blank">
+					<div class="web_recent">
+						<div class="web_img">
+							<img src="https://codesdope-media.nyc3.cdn.digitaloceanspaces.com/prod/media/blog_images/2950/blog_cover_pics/article_2950_small.jpeg" alt="pow() in Python">
+						</div>
+						<div class="web_title">
+							<span>pow() in Python</span>
+						</div>
+					</div>
+				</a>
+				
+				<a href="https://www.codesdope.com/blog/article/dutch-national-flag-algorithm/" target="_blank">
+					<div class="web_recent">
+						<div class="web_img">
+							<img src="https://codesdope-media.nyc3.cdn.digitaloceanspaces.com/prod/media/blog_images/2946/blog_cover_pics/article_2946_small.jpeg" alt="Dutch National Flag problem - Sort 0, 1, 2 in an array">
+						</div>
+						<div class="web_title">
+							<span>Dutch National Flag problem - Sort 0, 1, 2 in an array</span>
+						</div>
+					</div>
+				</a>
+				
+				<a href="https://www.codesdope.com/blog/article/memoryview-in-python/" target="_blank">
+					<div class="web_recent">
+						<div class="web_img">
+							<img src="https://codesdope-media.nyc3.cdn.digitaloceanspaces.com/prod/media/blog_images/2936/blog_cover_pics/article_2936_small.jpeg" alt="memoryview() in Python">
+						</div>
+						<div class="web_title">
+							<span>memoryview() in Python</span>
+						</div>
+					</div>
+				</a>
+				
+				<a href="https://www.codesdope.com/blog/article/next-in-python/" target="_blank">
+					<div class="web_recent">
+						<div class="web_img">
+							<img src="https://codesdope-media.nyc3.cdn.digitaloceanspaces.com/prod/media/blog_images/2934/blog_cover_pics/article_2934_small.jpeg" alt="next() in Python">
+						</div>
+						<div class="web_title">
+							<span>next() in Python</span>
+						</div>
+					</div>
+				</a>
+				
+
+			</div>
+      <div style="text-align:center;">
+        <a class="below_recent" href="https://www.codesdope.com/blog/submit-article/" target="_blank">
+            <div>Post Yours</div>
+        </a>
+      </div>
+  
+          <!-- codesdope below recent post -->
+          <!-- <div class="mob_hide" style="text-align:center; margin-top:25px;">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <ins class="adsbygoogle"
+    style="display:block"
+    data-ad-client="ca-pub-4050543544420496"
+    data-ad-slot="2565648237"
+    data-ad-format="auto"
+    data-full-width-responsive="true"></ins>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+  </div> -->
+
+          <div class="mob_hide rightnav" style="width: 402px; position: static; top: 43px;">
+            <div style="
+                  margin-top: 25px;
+                  text-align: center;
+                  margin-left: auto;
+                  margin-right: auto;
+                ">
+              <div id="waldo-tag-3584"></div>
+            </div>
+          </div>
+          <div class="mob_hide rightnav1" style="width: 402px; position: static; top: 43px;">
+            <div style="
+                  margin-top: 25px;
+                  text-align: center;
+                  margin-left: auto;
+                  margin-right: auto;
+                ">
+              <div id="waldo-tag-3588"></div>
+            </div>
+          </div>
+
+           
+
+        
+  <!-- ask question circle at bottom-right -->
+  <a href="https://www.codesdope.com/add_question/" target="_blank" id="doubt">
+  	<i class="fa fa-question fa-stack-1x"></i><span>Doubt? Ask question</span>
+  </a>
+
+      </div>
+    </div>
+
+     
+    <div style="
+          margin-top: 15px;
+          text-align: center;
+          margin-bottom: 40px;
+          clear: both;
+        ">
+      <script async="" src="./Knight&#39;s tour problem using backtracking and its analysis_files/f.txt"></script>
+      <!-- codesdope middle last large 970x250 -->
+      <ins class="adsbygoogle" style="display: inline-block; width: 970px; height: 250px" data-ad-client="ca-pub-4050543544420496" data-ad-slot="5561855975"><iframe id="aswift_1" style="height: 1px !important; max-height: 1px !important; max-width: 1px !important; width: 1px !important;" src="./Knight&#39;s tour problem using backtracking and its analysis_files/saved_resource(4).html"><iframe id="google_ads_frame1" src="./Knight&#39;s tour problem using backtracking and its analysis_files/saved_resource(5).html"></iframe></iframe></ins>
+      <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+
+      <!--Value Impression-->
+
+      <!-- <div class="value_impression_middle_728" style="margin-right: auto; margin-left: auto;">
+      <div class="adsbyvli" data-ad-slot="vi_18994749"></div><script>(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_18994749")})</script>
+  </div>
+  <div class="value_impression_middle_970" style="margin-right: auto; margin-left: auto;">
+      <div class="adsbyvli" data-ad-slot="vi_18995337"></div><script>(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_18995337")})</script>
+  </div>
+  <div class="value_impression_middle_mobile" style="margin-right: auto; margin-left: auto;">
+      <div class="adsbyvli" data-ad-slot="vi_18994748"></div><script>(vitag.Init = window.vitag.Init || []).push(function(){viAPItag.display("vi_18994748")})</script>
+  </div> -->
+    </div>
+      
+
+
+<footer class="container-fluid">
+    <div id="footer_up" class="row">
+
+        <!-- footer left -->
+        <div id="foot1" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div id="footer_logo1">
+                <img class="footer_img" src="./Knight&#39;s tour problem using backtracking and its analysis_files/logo_foot.png" alt="codesdope logo" height="50">
+            </div>
+            <div id="footer_logo2">
+                <img class="footer_img" src="./Knight&#39;s tour problem using backtracking and its analysis_files/codesdope_foot.png" alt="codesdope text">
+            </div>
+            <div id="footer_follow">FOLLOW US</div>
+            <div id="footer_icons">
+                <a rel="noopener" aria-label="Facebook" class="afacebook" href="https://www.facebook.com/codesdope" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a rel="noopener" aria-label="Twitter" class="atwitter" href="https://twitter.com/CodesDope" target="_blank"><i class="fa fa-twitter"></i></a>
+                <a rel="noopener" aria-label="Pinterest" class="apinterest" href="https://www.pinterest.com/codesdope/" target="_blank"><i class="fa fa-pinterest"></i></a>
+                <a rel="noopener" aria-label="Linkedin" class="alinkedin" href="https://www.linkedin.com/company/codesdope" target="_blank"><i class="fa fa-linkedin"></i></a>
+            </div>
+        </div>
+
+        <!-- footer middle -->
+        <div id="foot2" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+            <div id="footer_category">CATEGORIES</div>
+            <div id="footer_categories">
+              <div>
+                <a href="https://pro.codesdope.com/" target="_blank">PRO</a>
+            </div>
+                <div>
+                    <a href="https://www.codesdope.com/about/">ABOUT</a>
+                </div>
+                <div>
+                    <a href="https://www.codesdope.com/blog/">BLOG</a>
+                </div>
+                <div>
+                    <a href="https://www.codesdope.com/course/">COURSES</a>
+                </div>
+                <div>
+                    <a href="https://www.codesdope.com/practice/">PRACTICE</a>
+                </div>
+                <div>
+                    <a href="https://www.codesdope.com/discussion/">DISCUSSION</a>
+                </div>
+                <div>
+                    <a href="https://www.codesdope.com/terms-of-use/">TERMS OF USE</a>
+                </div>
+                <div>
+                    <a href="https://www.codesdope.com/privacy-policy/">PRIVACY POLICY</a>
+                </div>
+                <div>
+                    <a href="https://www.codesdope.com/contact-us/">CONTACT US</a>
+                </div>
+                <div>
+                  <a href="https://www.codesdope.com/advertise-with-us/">ADVERTISEMENT</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- footer right -->
+        <div id="foot3" class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <div id="footer_touch">KEEP IN TOUCH</div>
+            <div id="footer_contact">
+                <a href="mailto:help@codesdope.com"><i class="fa fa-envelope-o"></i><span>help@codesdope.com</span></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- footer bottom -->
+    <div id="footer_down">
+        © | <a href="https://www.codesdope.com/">www.<span itemprop="author" itemscope="" itemtype="http://schema.org/Person"><span itemprop="name">codesdope</span>.com</span></a> | All rights reserved.
+    </div>
+</footer>
+<style>
+footer {
+  background-color: var(--main-bg-color7);
+  font-family: var(--main-font2);
+  margin-top: 40px;
+}
+#footer_up {
+  padding: 45px 20px 65px;
+  text-align: center;
+}
+#foot1 {
+  margin-top: 40px;
+}
+#foot2 {
+  margin-top: 40px;
+}
+#foot3 {
+  margin-top: 40px;
+}
+
+/* footer left */
+
+#footer_logo2 {
+  margin-top: 8px;
+}
+#footer_logo3 {
+  margin-top: 7px;
+}
+#footer_follow {
+  margin-top: 25px;
+  font-size: 13px;
+  color: var(--main-color5);
+  letter-spacing: 2px;
+  word-spacing: 2px;
+}
+#footer_icons {
+  margin-top: 10px;
+}
+#footer_icons a {
+  margin: 5px;
+  color: var(--main-color6);
+  font-size: 20px;
+}
+.afacebook:hover i,
+.afacebook:focus i {
+  color: #3b5998;
+}
+.atwitter:hover i,
+.atwitter:focus i {
+  color: #55acee;
+}
+.apinterest:hover i,
+.apinterest:focus i {
+  color: #cc2127;
+}
+.alinkedin:hover i,
+.alinkedin:focus i {
+  color: #0077b5;
+}
+.agoogle:hover i,
+.agoogle:focus i {
+  color: #dd4b39;
+}
+
+/* footer middle */
+
+#footer_category {
+  font-size: 13px;
+  color: var(--main-color5);
+  letter-spacing: 2px;
+  word-spacing: 2px;
+}
+#footer_categories {
+  margin-top: 18px;
+}
+#footer_categories a {
+  color: var(--main-color6);
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+#footer_categories a:hover,
+#footer_categories a:focus {
+  color: var(--main-color7);
+}
+
+/* footer right */
+
+#footer_touch {
+  font-size: 13px;
+  color: var(--main-color5);
+  letter-spacing: 2px;
+  word-spacing: 2px;
+}
+#footer_contact {
+  margin-top: 2px;
+}
+#footer_contact a {
+  display: block;
+  margin-top: 20px;
+  color: var(--main-color6);
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+#footer_contact span {
+  margin-left: 17px;
+}
+#footer_contact i,
+#footer_contact i {
+  color: #8f8f8f;
+}
+
+/* footer bottom */
+
+#footer_down {
+  background-color: var(--main-bg-color8);
+  color: #dbdbdb;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+#footer_down a {
+  color: #dbdbdb;
+}
+.footer_img {
+  margin-left: 0;
+}
+</style>
+  </div>
+
+  <script src="./Knight&#39;s tour problem using backtracking and its analysis_files/jquery.min.js"></script>
+<script src="./Knight&#39;s tour problem using backtracking and its analysis_files/bootstrap.min.js"></script>
+<script src="./Knight&#39;s tour problem using backtracking and its analysis_files/jquery-ui.min.js"></script>
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-79240920-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+<!-- Facebook Pixel Code -->
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '719565291712594');
+  fbq('track', 'PageView');
+</script>
+<noscript>
+  <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=719565291712594&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Facebook Pixel Code -->
+
+<!-- DO NOT MODIFY -->
+<!-- Quora Pixel Code (JS Helper) -->
+<script>
+  !function(q,e,v,n,t,s){if(q.qp) return; n=q.qp=function(){n.qp?n.qp.apply(n,arguments):n.queue.push(arguments);}; n.queue=[];t=document.createElement(e);t.async=!0;t.src=v; s=document.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s);}(window, 'script', 'https://a.quora.com/qevents.js');
+  qp('init', 'c91556d740e147559dd8c63f179fe4c6');
+  qp('track', 'ViewContent');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://q.quora.com/_/ad/c91556d740e147559dd8c63f179fe4c6/pixel?tag=ViewContent&noscript=1"/></noscript>
+<!-- End of Quora Pixel Code -->
+
+<!--Quora-->
+<script>qp('track', 'Generic');</script>
+
+
+
+<!--EU Cookie Consent-->
+<link rel="stylesheet" type="text/css" href="./Knight&#39;s tour problem using backtracking and its analysis_files/cookieconsent.min.css">
+<script src="./Knight&#39;s tour problem using backtracking and its analysis_files/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000000",
+      "text": "#ffffff"
+    },
+    "button": {
+      "background": "#ffffff",
+      "text": "#000000"
+    }
+  },
+  "theme": "edgeless",
+  "content": {
+    "href": "https://www.codesdope.com/privacy-policy/"
+  }
+})});
+</script>
+  <script src="./Knight&#39;s tour problem using backtracking and its analysis_files/normal_base.js"></script>
+  
+  <!-- <script async src="https://cdn.ad.plus/player/adplus.js"></script>
+<script>
+var contentDiv = document.getElementById("content");
+if(contentDiv) {
+  var requiredParagraph = contentDiv.getElementsByTagName("p")[3]; //4th paragraph
+}
+if(requiredParagraph) {
+  var adScriptSource = document.createElement("script");
+  adScriptSource.src = "https://cdn.ad.plus/player/adplus.js";
+  adScriptSource.async = true;
+  var adScript = document.createElement("script");
+  adScript.setAttribute("data-playerPro", "current");
+  adScript.innerHTML = "(function(){var s=document.querySelector(\'script[data-playerPro=\"current\"]\');s.removeAttribute(\"data-playerPro\");(playerPro=window.playerPro||[]).push({id:\"SyL8l43fSmrc\",after:s});})();"
+  requiredParagraph.parentNode.insertBefore(adScriptSource, requiredParagraph.nextSibling);
+  adScriptSource.parentNode.insertBefore(adScript, adScriptSource.nextSibling);
+}
+</script> -->
+
+  <script>
+      // var contentDiv = document.getElementById("content");
+      // if(contentDiv) {
+      //   var requiredParagraph = contentDiv.getElementsByTagName("p")[3]; //4th paragraph
+      // }
+      // if(requiredParagraph) {
+      //   var adScriptdiv = document.createElement("div");
+      //   adScriptdiv.id = "pixfuture160";
+      //   adScriptdiv.style = "height:1px;";
+      //   var adScript = document.createElement("script");
+      //   adScript.type = "text/javascript";
+      //   adScript.innerHTML = "var corner_video = 'none'; var zone_id = 160; var mobile_allowed = true; var site_id = 4390;";
+      //   requiredParagraph.parentNode.insertBefore(adScriptdiv, requiredParagraph.nextSibling);
+      //   adScriptdiv.parentNode.insertBefore(adScript, adScriptdiv.nextSibling);
+      //   var scriptEndPoint = document.createElement("script");
+      //   scriptEndPoint.type = "text/javascript";
+      //   scriptEndPoint.src = "https://serv-vdo.pixfuture.com/vpaid/ads.js";
+      //   adScript.parentNode.insertBefore(scriptEndPoint, adScript.nextSibling);
+      // }
+  </script>
+
+
+</div><div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility 0s linear 0.3s, opacity 0.3s linear 0s; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;"></div><div class="g-recaptcha-bubble-arrow" style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;"></div><div class="g-recaptcha-bubble-arrow" style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;"></div><div style="z-index: 2000000000; position: relative;"><iframe title="текущую проверку reCAPTCHA можно пройти в течение ещё двух минут" name="c-sc4gssol1n8u" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="./Knight&#39;s tour problem using backtracking and its analysis_files/bframe.html" style="width: 100%; height: 100%;"></iframe></div></div></body></html>
