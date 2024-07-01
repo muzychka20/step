@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first project</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+    input[type="text"],
+    input[type="number"],
+    input[type="password"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 20px;
+      border-radius: 4px;
+      border: 1px solid #ddd;
+      box-sizing: border-box; /* Это гарантирует, что padding не увеличит размер поля ввода */
+    }
+    input[type="submit"] {
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    input[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    input[type="radio"],
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+    textarea {
+      height: 100px; /* Задаем фиксированную высоту для области текста */
+    }
+  </style>
+</head>
+<body>
+  <form name="" action="" method="">
+    <!-- Комментарий: Форма для ввода информации пользователя -->
+    <label for="user_name">Your name:</label>
+    <input type="text" name="user_name" placeholder="Your name" id="user_name">
+    <label for="user_age">Your age:</label>
+    <input type="number" name="user_age" id="user_age" placeholder="Your age">
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" placeholder="Password">
+    <!-- Радио-кнопки для выбора пола -->
+    <input type="radio" name="gender" value="male" id="male"><label for="male">Male</label>
+    <input type="radio" name="gender" value="female" id="female"><label for="female">Female</label>
+    <!-- Чекбокс для опции "Запомнить меня" -->
+    <label for="remember">Remember me</label>
+    <input type="checkbox" name="remember" id="remember">
+    <select name="city">
+      <option value="lviv">Lviv</option>
+      <option value="kyiv">Kyiv</option>
+    </select>
+    <label for="message">Message:</label>
+    <textarea id="message" name="message"></textarea>
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
