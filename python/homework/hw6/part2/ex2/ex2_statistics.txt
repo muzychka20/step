@@ -1,0 +1,5 @@
+amount_chars: 202
+amount_lines: 5
+amount_vowels: 48
+amount_consonants: 93
+amount_digits: 18
