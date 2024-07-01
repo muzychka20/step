@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Визначення тегу</title>
+<style>
+  .definition-container {
+    background-color: #009688; /* Світліший фон для всього контейнера */
+    padding: 10px; /* Відступ всередині контейнера */
+    width: auto; /* Автоматична ширина контейнера */
+    margin: 20px; /* Відступ зверху та знизу */
+    border-radius: 4px; /* Закруглені кути контейнера */
+  }
+
+  .tag {
+    background-color: #00796B; /* Темніший фон для верхнього <p> */
+    color: #FFFFFF; /* Білий текст */
+    font-weight: bold; /* Жирний текст */
+    margin: 0; /* Відступи знижені до нуля */
+    padding: 10px; /* Відступ для <p> */
+    border-radius: 4px; /* Закруглені кути для <p> */
+  }
+
+  .definition {
+    background-color: #009688; /* Фон такий самий, як у контейнера */
+    color: #FFFFFF; /* Білий текст */
+    margin: 0; /* Відступи знижені до нуля */
+    padding: 10px; /* Відступ для <p> */
+    padding-top: 0; /* Відступ зверху знижений до нуля, щоб не було додаткового простору між <p> */
+  }
+
+  .reference {
+    font-size: 0.8em; /* Розмір шрифту для виноски */
+    color: #FFFFFF; /* Білий колір для виноски */
+    vertical-align: super; /* Виноска розміщена вище базової лінії тексту */
+  }
+</style>
+</head>
+<body>
+
+<div class="definition-container">
+  <p class="tag">Tag</p>
+  <p class="definition">In information systems, a tag is a keyword or term assigned to a piece of information...<sup class="reference">[1]</sup></p>
+</div>
+
+</body>
+</html>

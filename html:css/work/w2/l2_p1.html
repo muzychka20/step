@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Сезоны года</title>
+    <style>
+        ul {
+            list-style-type: none; /* Убираем стандартные маркеры списка */
+            padding: 0; /* Убираем отступы у списка */
+        }
+        .season {
+            font-weight: bold; /* Делаем название сезона жирным */
+            margin-top: 20px; /* Добавляем отступ сверху для каждого сезона */
+        }
+        .season::before {
+            content: "> "; /* Добавляем символ перед названием сезона */
+        }
+        .month {
+            margin-left: 20px; /* Добавляем отступ слева для месяцев */
+        }
+        .month::before {
+            content: ""; /* Подготовка к вставке иконок перед каждым месяцем */
+            padding-right: 5px; /* Отступ справа от иконки */
+        }
+        /* Стили для иконок сезонов */
+        .winter::before { content: url('winter_16.png'); }
+        .spring::before { content: url('spring_16.png'); }
+        .summer::before { content: url('summer_16.png'); }
+        .autumn::before { content: url('autumn_16.png'); }
+    </style>
+</head>
+<body>
+
+<h1>Сезоны года</h1>
+
+<ul>
+    <li class="season winter">Зима
+        <ul>
+            <li class="month winter">Декабрь</li>
+            <li class="month winter">Январь</li>
+            <li class="month winter">Февраль</li>
+        </ul>
+    </li>
+    <li class="season spring">Весна
+        <ul>
+            <li class="month spring">Март</li>
+            <li class="month spring">Апрель</li>
+            <li class="month spring">Май</li>
+        </ul>
+    </li>
+    <li class="season summer">Лето
+        <ul>
+            <li class="month summer">Июнь</li>
+            <li class="month summer">Июль</li>
+            <li class="month summer">Август</li>
+        </ul>
+    </li>
+    <li class="season autumn">Осень
+        <ul>
+            <li class="month autumn">Сентябрь</li>
+            <li class="month autumn">Октябрь</li>
+            <li class="month autumn">Ноябрь</li>
+        </ul>
+    </li>
+</ul>
+
+</body>
+</html>
