@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Демонстрация работы с массивами</title>
+    <script>
+        // Создание массива
+        let numbers = [10, 20, 30, 40, 50];
+
+        // Добавление элементов
+        numbers.push(60); // Добавляем в конец
+        console.log("После добавления в конец:", numbers);
+
+        numbers.unshift(0); // Добавляем в начало
+        console.log("После добавления в начало:", numbers);
+
+        // Удаление элементов
+        numbers.pop(); // Удалить последний элемент
+        console.log("После удаления последнего элемента:", numbers);
+
+        numbers.shift(); // Удалить первый элемент
+        console.log("После удаления первого элемента:", numbers);
+
+        // Поиск по значению
+        let index = numbers.indexOf(30); // Найти индекс элемента 30
+        console.log("Индекс элемента 30:", index);
+
+        // Перебор элементов массива
+        console.log("Перебор элементов массива:");
+        numbers.forEach(function(number) {
+            console.log(number);
+        });
+
+        // Сортировка массива
+        numbers.sort(function(a, b) {
+            return a - b;
+        });
+        console.log("Отсортированный массив:", numbers);
+
+        // Обратный порядок
+        numbers.reverse();
+        console.log("Массив в обратном порядке:", numbers);
+    </script>
+</head>
+<body>
+    <h1>Демонстрация работы с массивами в JavaScript</h1>
+    <p>Откройте консоль разработчика, чтобы увидеть результаты.</p>
+</body>
+</html>

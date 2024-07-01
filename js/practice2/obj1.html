@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Демонстрация работы с объектами</title>
+    <script>
+        // Создание объекта с помощью литерала объекта
+        // let person = {
+        //     name: "Иван",
+        //     age: 30,
+        //     greet: function() {
+        //         console.log("Привет! Меня зовут " + this.name + ".");
+        //     }
+        // };
+
+        // let object = {
+        //     key1: 1,
+        //     key2: 2,
+        //     key3: 3,
+        //     key4: 4,
+        //     key5: 5,
+        //     show: function() {
+        //         for (let key in object)
+        //         {                    
+        //             console.log(object[key])
+        //         }
+        //     }
+        // };
+
+        // for (let key in object)
+        // {
+        //     console.log(object[key])
+        // }
+
+        // object.show()
+
+        car1 = {
+            brand: "Skoda",
+            price: 20000,
+            show_info: function() {
+                console.log("Brand: " + this.brand + "\nPrice: " + this.price)
+            }
+        }
+
+        car2 = {
+            brand: "Honda",
+            price: 22000,
+            show_info: function() {
+                console.log("Brand: " + this.brand + "\nPrice: " + this.price)
+            }
+        }
+
+        car3 = {
+            brand: "BMW",
+            price: 18000,
+            show_info: function() {
+                console.log("Brand: " + this.brand + "\nPrice: " + this.price)
+            }
+        }
+
+        let arr = [car1, car2]
+        arr.push(car3)
+        console.log(arr)
+        arr[0].show_info()
+        arr[1].show_info()
+        arr[2].show_info()
+        //car1.show_info()
+
+        //car.amount = 5
+       
+
+        // Демонстрация доступа к свойствам
+        // console.log("Имя: " + person.name);
+        // console.log("Возраст: " + person['age']);
+
+        // // Добавление свойства
+        // person.job = "Инженер";
+        // console.log("Профессия: " + person.job);
+
+        // // Вызов метода
+        // person.greet();
+
+        // // Удаление свойства
+        // delete person.age;
+        // console.log("Возраст после удаления: " + person.age); // undefined
+
+        // // Перебор всех свойств объекта
+        // console.log("Все свойства объекта:");
+        // for (let key in person) {
+        //     console.log(key + ": " + person[key]);
+        // }
+    </script>
+</head>
+<body>
+    <h1>Демонстрация работы с объектами в JavaScript</h1>
+    <p>Откройте консоль разработчика, чтобы увидеть результаты.</p>
+    <script src="script.js"></script>
+</body>
+</html>
