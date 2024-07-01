@@ -1,0 +1,31 @@
+.container {
+    display: flex; /* Используем flexbox для выравнивания блоков в ряд */
+    justify-content: space-around; /* Распределяем блоки равномерно */
+    padding: 20px; /* Внутренний отступ контейнера */
+    background-color: #f0f0f0; /* Фон контейнера */
+}
+
+.box {
+    padding: 10px; /* Внутренний отступ для каждого блока */
+    border: 1px solid #ccc; /* Граница блока */
+    background-color: white; /* Фон блока */
+    text-align: center; /* Выравнивание текста по центру */
+}
+
+.box p {
+    color: #333; /* Цвет текста в блоках */
+}
+
+.btn {
+    padding: 8px 15px; /* Отступы кнопки */
+    background-color: #007bff; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Убираем границу кнопки */
+    cursor: pointer; /* Курсор в виде указателя */
+    border-radius: 4px; /* Скругляем углы кнопки */
+    margin-top: 10px; /* Верхний отступ кнопки */
+}
+
+.btn:hover {
+    background-color: #0056b3; /* Цвет фона кнопки при наведении */
+}

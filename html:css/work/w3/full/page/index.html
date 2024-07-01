@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1 class="title">Main Header Here</h1>
+            <h2 class="title">And small sub header</h2>
+        </div>       
+    </header>
+    <div class="menu">
+        <div class="container">  
+            <div class="bar">
+                <nav>
+                    <ul class="menu__list">
+                        <li class="menu__list__item"><a href="#">Home</a></li>
+                        <li class="menu__list__item"><a href="#">About</a></li>
+                        <li class="menu__list__item"><a href="#">Contacts</a></li>
+                    </ul>
+                </nav>
+                <form>                
+                    <input id="login" type="text" required="required" name="login" placeholder="Login" class="form__input" />                
+                    <input id="password" type="text" required="required" name="password" placeholder="Password" class="form__input" />
+                    <input type="submit" value="Sign In" class="form__button" />
+                </form>
+            </div>             
+        </div>
+    </div>    
+    <main>
+        <div class="container">
+            
+            <div class="image_collection">
+                <div class="heading">
+                    <h2 class="heading__title">Image Collection</h2>
+                    <h3 class="heading__subheading">Visualize Quality</h3>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="card">
+                         <img src="images/profile.jpg" alt="element" class="card__image">   
+                         <div class="card__text">
+                            <h3 class="card__title">1 element</h3>
+                            <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, illo ad laborum quibusdam tenetur, quis possimus iure non ipsa pariatur animi consequatur? Dolores, enim saepe amet repellendus minima sunt</p>
+                            <button class="card__button" onClick="hide()">More</button>
+                         </div>
+                    </div>
+                    <div class="card">
+                        <img src="images/profile.jpg" alt="element" class="card__image">   
+                        <div class="card__text">
+                           <h3 class="card__title">2 element</h3>
+                           <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, illo ad laborum quibusdam tenetur, quis possimus iure non ipsa pariatur animi consequatur? Dolores, enim saepe amet repellendus minima sunt</p>
+                           <button class="card__button">More</button>
+                        </div>                     
+                   </div>
+                   <div class="card" id="card_for_hiding">
+                    <img src="images/profile.jpg" alt="element" class="card__image">   
+                    <div class="card__text">
+                       <h3 class="card__title">3 element</h3>
+                       <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, illo ad laborum quibusdam tenetur, quis possimus iure non ipsa pariatur animi consequatur? Dolores, enim saepe amet repellendus minima sunt</p>
+                       <button class="card__button">More</button>
+                    </div>                     
+               </div>
+            </div>
+           
+            
+            </div>     
+            <div class="video_collection">
+                <div class="heading">
+                    <h2 class="heading__title">Video Collection</h2>
+                    <h3 class="heading__subheading">Visualize Quality</h3>
+                </div>
+                <hr>
+                <div class="row">
+                    <div class="card">
+                        <video
+                            width="100%"                            
+                            controls="controls"                        
+                        >                            
+                            <source src="video/movie.mp4" />
+                        </video>
+                        <div class="card__text">
+                            <h3 class="card__title">1 elem of video</h3>
+                            <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, illo ad laborum quibusdam tenetur, quis possimus iure non ipsa pariatur animi consequatur? Dolores, enim saepe amet repellendus minima sunt</p>
+                            <button class="card__button">Read More...</button>
+                        </div>                     
+                    </div>
+                    <div class="card">
+                        <video
+                            width="100%"                            
+                            controls="controls"                        
+                        >                            
+                            <source src="video/movie.mp4" />
+                        </video>
+                        <div class="card__text">
+                            <h3 class="card__title">2 elem of video</h3>
+                            <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, illo ad laborum quibusdam tenetur, quis possimus iure non ipsa pariatur animi consequatur? Dolores, enim saepe amet repellendus minima sunt</p>
+                            <button class="card__button">Read More...</button>
+                        </div>                     
+                    </div>
+                    <div class="card">
+                        <video
+                            width="100%"                            
+                            controls="controls"                        
+                        >                            
+                            <source src="video/movie.mp4" />
+                        </video>
+                        <div class="card__text">
+                            <h3 class="card__title">3 elem of video</h3>
+                            <p class="card__description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis, illo ad laborum quibusdam tenetur, quis possimus iure non ipsa pariatur animi consequatur? Dolores, enim saepe amet repellendus minima sunt</p>
+                            <button class="card__button">Read More...</button>
+                        </div>                     
+                    </div>                                        
+               </div>
+            </div>       
+        </div>       
+    </main>
+    <footer>
+        <div class="container">
+            <p>Copyright <span>&copy;</span> Example.com 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        function hide() {
+            document.getElementById("card_for_hiding").classList.toggle("hide");
+        }
+    </script>
+</body>
+</html>

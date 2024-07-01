@@ -1,0 +1,74 @@
+.left-side {
+    display: grid; /* Используем сетку (grid) для расположения блоков */
+    grid-template-columns: repeat(3, 1fr); /* Три колонки с равной шириной */
+    gap: 20px; /* Отступы между блоками */
+    padding: 20px; /* Внутренний отступ контейнера */
+    background-color: #eaeaea; /* Фон контейнера */
+}
+
+.left-side .box {
+    padding: 20px; /* Внутренний отступ для каждого блока */
+    border: 2px solid #008080; /* Граница блока */
+    background-color: #fafafa; /* Фон блока */
+    text-align: left; /* Выравнивание текста по левому краю */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень блока */
+}
+
+.left-side .box p {
+    color: #555; /* Цвет текста в блоках */
+    font-weight: bold; /* Жирный шрифт для текста */
+}
+
+.left-side .btn {
+    padding: 10px 20px; /* Отступы кнопки */
+    background-color: #ff4500; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Убираем границу кнопки */
+    cursor: pointer; /* Курсор в виде указателя */
+    border-radius: 6px; /* Скругляем углы кнопки */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+.left-side .btn:hover {
+    background-color: #cc3700; /* Цвет фона кнопки при наведении */
+}
+
+.right-side {
+    display: flex; /* Используем flexbox для выравнивания блоков */
+    flex-direction: column; /* Блоки располагаются вертикально */
+    align-items: center; /* Выравниваем блоки по центру по горизонтали */
+    padding: 10px; /* Внутренний отступ контейнера */
+    background-color: #fff; /* Белый фон контейнера */
+}
+
+.right-side .box {
+    width: 80%; /* Ширина каждого блока */
+    margin: 10px 0; /* Вертикальный отступ между блоками */
+    padding: 15px; /* Внутренний отступ для каждого блока */
+    border: 1px solid #ddd; /* Граница блока */
+    background-color: #f7f7f7; /* Светлый фон блока */
+    border-radius: 8px; /* Скругление углов блока */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15); /* Тень блока */
+}
+
+.right-side .box p {
+    color: #333; /* Цвет текста в блоках */
+    font-size: 14px; /* Размер шрифта текста */
+}
+
+.right-side .btn {
+    padding: 8px 12px; /* Отступы кнопки */
+    background-color: #008CBA; /* Синий цвет фона кнопки */
+    color: white; /* Белый цвет текста кнопки */
+    border: none; /* Убираем границу кнопки */
+    cursor: pointer; /* Курсор в виде указателя */
+    border-radius: 4px; /* Скругляем углы кнопки */
+    font-size: 12px; /* Размер шрифта кнопки */
+    margin-top: 8px; /* Верхний отступ кнопки */
+    transition: all 0.2s ease-in-out; /* Плавный переход всех свойств */
+}
+
+.right-side .btn:hover {
+    background-color: #007B9E; /* Темно-синий цвет фона кнопки при наведении */
+    box-shadow: 0 0 8px rgba(0, 140, 186, 0.6); /* Тень вокруг кнопки при наведении */
+}

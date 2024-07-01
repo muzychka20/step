@@ -1,0 +1,42 @@
+.page-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.left-side, .right-side {
+    width: 45%;
+}
+
+/* Стили для левой стороны */
+.left-side .styled-list {
+    /* Стилизация списка */
+}
+
+.left-side .styled-button {
+    /* Стилизация кнопки */
+}
+
+.left-side .dropdown .dropbtn {
+    /* Стилизация кнопки выпадающего меню */
+}
+
+.left-side .dropdown-content {
+    /* Стилизация выпадающего списка */
+}
+
+/* Стили для правой стороны */
+.right-side .styled-list {
+    /* Другая стилизация списка */
+}
+
+.right-side .styled-button {
+    /* Другая стилизация кнопки */
+}
+
+.right-side .dropdown .dropbtn {
+    /* Другая стилизация кнопки выпадающего меню */
+}
+
+.right-side .dropdown-content {
+    /* Другая стилизация выпадающего списка */
+}

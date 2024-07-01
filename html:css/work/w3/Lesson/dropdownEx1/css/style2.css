@@ -1,0 +1,42 @@
+/* Стилизация кнопки */
+.dropbtn {
+    background-color: #007bff; /* Синий цвет фона кнопки */
+    color: white; /* Белый цвет текста */
+    padding: 8px 15px; /* Отступы кнопки */
+    border: 1px solid #007bff; /* Граница кнопки того же цвета */
+    cursor: pointer; /* Курсор в виде указателя */
+    border-radius: 3px; /* Небольшое скругление углов кнопки */
+}
+
+/* Стилизация контейнера выпадающего списка */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Скрытие выпадающего списка */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white; /* Белый фон выпадающего списка */
+    min-width: 160px; /* Минимальная ширина списка */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Легкая тень для списка */
+    border: 1px solid #ddd; /* Легкая граница вокруг списка */
+    z-index: 1;
+}
+
+/* Стилизация ссылок внутри выпадающего списка */
+.dropdown-content a {
+    color: black;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Изменение стиля ссылок при наведении */
+.dropdown-content a:hover {
+    background-color: #f8f8f8; /* Очень светло-серый фон при наведении */
+}
+
+/* Показывает выпадающий список при добавлении класса .show */
+.show { display: block; }

@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: #9acd32;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.title {
+    color: #adff2f;   
+}
+
+.title:nth-child(2) {  
+    margin-top: 40px;
+}
+
+.menu {    
+    background-color: #222222;
+}
+
+
+
+
+
+.bar {
+    display: flex;    
+    align-items: baseline;
+    justify-content: space-between;
+    height: fit-content;
+}
+
+.menu__list {
+    display: flex;    
+    list-style: none;
+}
+
+.menu__list__item {
+    padding: 20px 0;
+}
+
+.menu__list__item a {
+    text-decoration: none;
+    color: #9d9d9d;
+    font-weight: bold;  
+    padding: 20px;
+}
+
+.menu__list__item a:hover {
+    color: #9acd32;
+    background-color: #000;
+}
+
+.hide {
+    display: none;
+}
+
+.form__input {
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding-left: 5px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.form__button {
+    height: 25px;
+    width: 60px;
+    border-radius: 5px;
+    border: none;
+}
+
+.form__button:hover {
+    background-color: #999999;
+}
+
+.heading {
+    display: flex;
+    align-items: baseline;
+    margin-top: 20px;
+}
+
+.heading__title {
+    font-size: 38px;
+    margin-right: 10px;
+}
+
+.heading__subheading {
+    color: #777777;
+    font-size: 26px;
+}
+
+.row {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card {
+    border: 1px solid #d6d6d6;
+    width: 32%;
+}
+
+.card__title {
+    margin-top: 20px;
+    color: #b2d962;
+}
+
+.card__image {
+    width: 100%;
+}
+
+.card__description {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.card__button {
+    margin-top: 20px;
+    background-color: #f0f0f0;    
+    border: none;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.card__button:hover {
+    background-color: #636363;
+}
+
+.card__text {
+    padding: 0 20px 20px 20px;
+}
+
+main {
+    margin-bottom: 20px;
+}
+
+footer {
+    color: #fff;
+    background-color: #9acd32;
+    padding: 30px;
+}

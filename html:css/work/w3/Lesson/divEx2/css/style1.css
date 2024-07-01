@@ -1,0 +1,34 @@
+.container {
+    display: grid; /* Используем сетку (grid) для расположения блоков */
+    grid-template-columns: repeat(3, 1fr); /* Три колонки с равной шириной */
+    gap: 20px; /* Отступы между блоками */
+    padding: 20px; /* Внутренний отступ контейнера */
+    background-color: #eaeaea; /* Фон контейнера */
+}
+
+.box {
+    padding: 20px; /* Внутренний отступ для каждого блока */
+    border: 2px solid #008080; /* Граница блока */
+    background-color: #fafafa; /* Фон блока */
+    text-align: left; /* Выравнивание текста по левому краю */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Тень блока */
+}
+
+.box p {
+    color: #555; /* Цвет текста в блоках */
+    font-weight: bold; /* Жирный шрифт для текста */
+}
+
+.btn {
+    padding: 10px 20px; /* Отступы кнопки */
+    background-color: #ff4500; /* Цвет фона кнопки */
+    color: white; /* Цвет текста кнопки */
+    border: none; /* Убираем границу кнопки */
+    cursor: pointer; /* Курсор в виде указателя */
+    border-radius: 6px; /* Скругляем углы кнопки */
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+.btn:hover {
+    background-color: #cc3700; /* Цвет фона кнопки при наведении */
+}

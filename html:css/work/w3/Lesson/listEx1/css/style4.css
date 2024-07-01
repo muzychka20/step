@@ -1,0 +1,39 @@
+.container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Зміна шрифту контейнера */
+    margin: 10px auto; /* Зменшення зовнішніх відступів і центрування */
+    padding: 15px; /* Зменшення внутрішніх відступів */
+    border: 2px dashed #4CAF50; /* Заміна суцільної рамки на пунктирну */
+    max-width: 500px; /* Зменшення максимальної ширини */
+    background-color: #f2f2f2; /* Світлий фон для контейнера */
+}
+
+.main-list {
+    list-style-type: disc; /* Зміна маркерів на диски */
+    padding-left: 40px; /* Збільшення внутрішнього лівого відступу */
+}
+
+.main-list > li {
+    background-color: #ffffff; /* Білий фон для пунктів основного списку */
+    margin-bottom: 5px; /* Зменшення відступу знизу між пунктами */
+    padding: 8px; /* Зменшення внутрішнього відступу */
+    border-left: 4px solid #4CAF50; /* Додає ліву рамку як акцент */
+    color: #333; /* Зміна кольору тексту */
+    transition: transform 0.3s ease; /* Додає анімацію розміру */
+}
+
+.main-list > li:hover {
+    transform: scale(1.05); /* Збільшення пункту при наведенні */
+    background-color: #e8e8e8; /* Зміна фону при наведенні */
+}
+
+.sub-list {
+    list-style-type: decimal; /* Цифрові маркери для підсписку */
+    padding-left: 30px; /* Зменшення внутрішнього лівого відступу для підсписку */
+}
+
+.sub-list > li {
+    background-color: #f9f9f9; /* Світліший фон для пунктів підсписку */
+    margin: 3px 0; /* Зменшення відступу між пунктами підсписку */
+    padding: 5px; /* Зменшення внутрішнього відступу пунктів підсписку */
+    border-left: 2px solid #ffa500; /* Оранжева ліва рамка для підсписку */
+}
