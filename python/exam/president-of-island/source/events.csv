@@ -1,0 +1,4 @@
+event,rate,name_ru
+fire,10,Пожар
+flood,5,Потоп
+earthquake,15,Землетрясение
