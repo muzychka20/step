@@ -1,0 +1,66 @@
+#include <iostream>
+#include <vector>
+
+class VectorWrapper {
+private:
+    std::vector<int> vec;
+
+public:
+    // Конструктор по умолчанию
+    VectorWrapper() {}
+
+    // Конструктор с инициализацией
+    VectorWrapper(const std::vector<int>& initialVec) : vec(initialVec) {}
+
+    // Метод для добавления элемента
+    void addElement(int value) {
+        vec.push_back(value);
+    }
+
+    // Метод для удаления последнего элемента
+    void removeLastElement() {
+        if (!vec.empty()) {
+            vec.pop_back();
+        }
+    }
+
+    // Метод для получения размера вектора
+    size_t getSize() const {
+        return vec.size();
+    }
+
+    // Метод для получения элемента по индексу
+    int getElementAt(size_t index) const {
+        if (index < vec.size()) {
+            return vec.at(index);
+        } else {
+            throw std::out_of_range("Index out of range");
+        }
+    }
+
+    // Метод для печати всех элементов вектора
+    void printElements() const {
+        for (int elem : vec) {
+            std::cout << elem << " ";
+        }
+        std::cout << std::endl;
+    }
+};
+
+int main() {
+    VectorWrapper vw;
+    vw.addElement(10);
+    vw.addElement(20);
+    vw.addElement(30);
+
+    std::cout << "Vector elements: ";
+    vw.printElements();
+
+    std::cout << "Element at index 1: " << vw.getElementAt(1) << std::endl;
+
+    vw.removeLastElement();
+    std::cout << "Vector after removing last element: ";
+    vw.printElements();
+
+    return 0;
+}
