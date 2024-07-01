@@ -1,0 +1,33 @@
+body {
+    background-color: antiquewhite;
+}
+
+.container {
+    width: 90%;
+    background-color: white;    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    height: 90%;
+    display: flex;
+    align-content: space-between;
+    flex-flow: column wrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.block {
+    width: 200px;
+    height: 200px;    
+    background-color: aqua;          
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+}
+
+.two {            
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);    
+}

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>President of Island</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: sans-serif;
+        font-size: 18px;
+      }
+
+      header {
+        background: linear-gradient(45deg, #007965, #00b38f);
+        padding: 15px;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #abbab1;
+        color: #5c5b5b;
+      }
+
+      h1 {
+        color: #ffffff;
+        font-weight: bold;
+        text-align: center;
+      }
+
+      h3 {
+        margin-top: 40px;
+      }
+
+      section {
+        width: 80%;
+        margin: auto;
+      }
+
+      .table {
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      .styled-table {
+        border-collapse: collapse;
+        margin: 25px 0;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .styled-table thead tr {
+        background-color: #009879;
+        color: #ffffff;
+        text-align: left;
+      }
+
+      .styled-table th,
+      .styled-table td {
+        padding: 12px 15px;
+      }
+
+      .styled-table tbody tr {
+        border-bottom: 1px solid #dddddd;
+      }
+
+      .styled-table tbody tr:nth-of-type(even) {
+        background-color: #f3f3f3;
+      }
+
+      .styled-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009879;
+      }
+
+      .interface__block {
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        width: fit-content;
+        padding: 10px;
+        color: #ddd;
+        background-color: #282c34;
+      }
+
+      .interface {
+        border-collapse: collapse;
+        width: 100%;
+      }
+
+      .interface th,
+      .interface td {
+        padding: 5px;
+        border: 1px dashed #ddd;
+      }
+
+      .interface tr {
+        background-color: #282c34;
+      }
+
+      .menu {
+        margin-left: 20px;
+      }
+
+      .seed {
+        color: #d3d83e;
+      }
+
+      .people {
+        color: #ff6565;
+      }
+
+      .money {
+        color: #2a9616;
+      }
+
+      .land {
+        color: #cb6116;
+      }
+
+      .interface__screens {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 30px;
+      }
+
+      .screen {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        gap: 20px;
+      }
+
+      .rules {
+        list-style-type: none;
+        margin-top: 10px;
+      }
+
+      .parameters {
+        margin-top: 10px;
+        margin-left: 80px;
+      }
+
+      .parameters li {
+        padding: 5px;
+      }
+
+      .resource__item,
+      .process__item,
+      .screen__item,
+      .rules__item {
+        list-style-type: none;
+        padding: 10px 0px;
+        margin: 10px 0px;
+      }
+
+      .screen__item::before,
+      .process__item::before,
+      .resource__item::before,
+      .rules__item::before {
+        width: 16px;
+        height: 16px;
+        margin-right: 10px;
+        display: inline-block;
+      }
+      .screen__item::before {
+        content: url("img/interface__icon.svg");
+      }
+
+      .resource__item::before {
+        content: url("img/resource__icon.svg");
+      }
+
+      .process__item::before {
+        content: url("img/process.svg");
+      }
+
+      .rules__item::before {
+        content: url("img/arrow.svg");
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Game: President of Island</h1>
+    </header>
+    <section>
+      <h3>Правила игры:</h3>
+      <ol class="rules">
+        <li class="rules__item">
+          Вы президент острова. Ваша задача продержаться как можно дольше.
+        </li>
+        <li class="rules__item">Денежная единица - 1 галлеон.</li>
+        <li class="rules__item">
+          Бюджет острова составляют доходы от сельского хозяйства. Сельским
+          хозяйством занимаются местные жители, которых необходимо прокормить.
+        </li>
+        <li class="rules__item">
+          Если население меньше 200 человек, то вы проиграли.
+        </li>
+        <li class="rules__item">
+          Количество земли, которую можно засеять ограничивается тремя показателями:
+            <ol class="parameters"> 
+              <li>Бюджет позволяет засеять: Бюджет / Стоимость засева</li>
+              <li>
+                Люди могут засеять: количеств людей * 2
+              </li>
+              <li>В наличии земля для засева (км<sup>2</sup>)</li>
+            </ol>
+        </li>
+        <li class="rules__item">
+          Если оставшегося зерна после засева не хватает на население, то люди умирают от голода.
+        </li>
+      </ol>
+    </section>
+    <section>
+      <h3>Ресурсы:</h3>
+      <ul class="resources">
+        <li class="resource__item">Деньги</li>
+        <li class="resource__item">Люди</li>
+        <li class="resource__item">Земля</li>
+        <li class="resource__item">Зерно</li>
+      </ul>
+    </section>
+    <section>
+      <h3>На старте игры:</h3>
+      <div class="table">
+        <table class="styled-table">
+          <thead>
+            <tr>
+              <th>Показатели</th>
+              <th>Количество</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Бюджет</td>
+              <td>50 000 галлеон</td>
+            </tr>
+            <tr>
+              <td>Население острова</td>
+              <td>500 человек</td>
+            </tr>
+            <tr>
+              <td>Земля для засева</td>
+              <td>1000 км<sup>2</sup></td>
+            </tr>
+            <tr>
+              <td>Зерно</td>
+              <td>100 000 кг</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section>
+      <h3>Процессы:</h3>
+      <ul class="processes">
+        <li class="process__item">Зерно</li>
+        <div class="table">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Операция</th>
+                <th>Доходы / Затраты</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Купить</td>
+                <td>2-5 галлеон за 1 кг (цена меняется каждый год)</td>
+              </tr>
+              <tr>
+                <td>Продать</td>
+                <td>2-5 галлеон за 1 кг (цена меняется каждый год)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <li class="process__item">Люди</li>
+        <div class="table">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Операция</th>
+                <th>Доходы / Затраты</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Нанять</td>
+                <td>-100 галлеон за 1 человека</td>
+              </tr>
+              <tr>
+                <td>Уволить</td>
+                <td>-1 человек</td>
+              </tr>
+              <tr>
+                <td>Накормить</td>
+                <td>1 человек 500 кг зерна</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <li class="process__item">Земля</li>
+        <div class="table">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>Операция</th>
+                <th>Доходы / Затраты</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Купить</td>
+                <td>90-120 галлеонов за 1 км<sup>2</sup></td>
+              </tr>
+              <tr>
+                <td>Продать</td>
+                <td>90-120 галлеонов за 1 км<sup>2</sup></td>
+              </tr>
+              <tr>
+                <td>Засеять</td>
+                <td>Затраты 10-15 галлеонов и 2 000 кг на 1 км<sup>2</sup></td>
+              </tr>
+              <tr>
+                <td>Собрать</td>
+                <td>
+                  Затраты 10-15 галлеонов на 1 км<sup>2</sup>. Прибыль 7 000 кг
+                  при благоприятных условиях с 1 км<sup>2</sup>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <li class="process__item">События</li>
+        <div class="table">
+          <table class="styled-table">
+            <thead>
+              <tr>
+                <th>ЧП</th>
+                <th>Потери</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Буря</td>
+                <td>
+                  <ul>
+                    <li>Урожай - 30%</li>
+                    <li>Люди - 5%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>Землетрясение</td>
+                <td>
+                  <ul>
+                    <li>Урожай - 60%</li>
+                    <li>Люди - 50%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>Цунами</td>
+                <td>
+                  <ul>
+                    <li>Урожай - 50%</li>
+                    <li>Люди - 40%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>Ливень</td>
+                <td>
+                  <ul>
+                    <li>Урожай - 2%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>Град</td>
+                <td>
+                  <ul>
+                    <li>Урожай - 3%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>Пожар</td>
+                <td>
+                  <ul>
+                    <li>Люди - 3%</li>
+                    <li>Урожай - 40%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>Засуха</td>
+                <td>
+                  <ul>
+                    <li>Урожай - 7%</li>
+                  </ul>
+                </td>
+              </tr>
+              <tr>
+                <td>Заморозки</td>
+                <td>
+                  <ul>
+                    <li>Урожай - 15%</li>
+                  </ul>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ul>
+    </section>
+    <section>
+      <h3>Интерфейс:</h3>
+      <ul class="interface__screens">
+        <div class="screen">
+          <li class="screen__item">Первый экран</li>
+          <div class="interface__block">
+            <table class="interface">
+              <tr>
+                <td>
+                  <span class="seed">Зерно: 100 000 кг </span>
+                  <span class="people">Люди: 500 </span>
+                  <span class="money">Деньги: 50 000 галлеон </span>
+                  <span class="land"> Земля: 1000 км<sup>2</sup></span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="land">Cтоимотсь земли: 105 / 98</p>
+                  <p class="seed">Cтоимотсь зерна: 3 / 4</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="people">Прокормить 1 человека: 1000 кг зерна</p>
+                  <p class="people">
+                    Нанять / уволить 1 человека: 100 галлеонов
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Выберите</p>
+                  <ol class="menu">
+                    <li>Люди</li>
+                    <li>Земля</li>
+                    <li>Зерно</li>
+                    <li>След год</li>
+                    <li>Выйти</li>
+                  </ol>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="screen">
+          <li class="screen__item">Второй экран</li>
+          <div class="interface__block">
+            <table class="interface">
+              <tr>
+                <td>
+                  <span class="seed">Зерно: 100 000 кг </span>
+                  <span class="people">Люди: 500 </span>
+                  <span class="money">Деньги: 50 000 галлеон </span>
+                  <span class="land"> Земля: 1000 км<sup>2</sup></span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="land">Cтоимотсь земли: 105 / 98</p>
+                  <p class="seed">Cтоимотсь зерна: 3 / 4</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="people">Прокормить 1 человека: 1000 кг зерна</p>
+                  <p class="people">
+                    Нанять / уволить 1 человека: 100 галлеонов
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Выберите</p>
+                  <ol class="menu">
+                    <li>Нанять</li>
+                    <li>Уволить</li>
+                    <li>Вернуться назад</li>
+                  </ol>
+                  <p>Сколько людей Вы хотите уволить? __</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="screen">
+          <li class="screen__item">Третий экран</li>
+          <div class="interface__block">
+            <table class="interface">
+              <tr>
+                <td>
+                  <span class="seed">Зерно: 100 000 кг </span>
+                  <span class="people">Люди: 500 </span>
+                  <span class="money">Деньги: 50 000 галлеон </span>
+                  <span class="land"> Земля: 1000 км<sup>2</sup></span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="land">Cтоимотсь земли: 105 / 98</p>
+                  <p class="seed">Cтоимотсь зерна: 3 / 4</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="people">Прокормить 1 человека: 1000 кг зерна</p>
+                  <p class="people">
+                    Нанять / уволить 1 человека: 100 галлеонов
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Выберите</p>
+                  <ol class="menu">
+                    <li>Купить</li>
+                    <li>Продать</li>
+                    <li>Засеять</li>
+                    <li>Собрать</li>
+                    <li>Вернуться назад</li>
+                  </ol>
+                  <p>Сколько земли Вы хотите купить? __</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="screen">
+          <li class="screen__item">Четвертый экран</li>
+          <div class="interface__block">
+            <table class="interface">
+              <tr>
+                <td>
+                  <span class="seed">Зерно: 100 000 кг </span>
+                  <span class="people">Люди: 500 </span>
+                  <span class="money">Деньги: 50 000 галлеон </span>
+                  <span class="land"> Земля: 1000 км<sup>2</sup></span>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="land">Cтоимотсь земли: 105 / 98</p>
+                  <p class="seed">Cтоимотсь зерна: 3 / 4</p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p class="people">Прокормить 1 человека: 1000 кг зерна</p>
+                  <p class="people">
+                    Нанять / уволить 1 человека: 100 галлеонов
+                  </p>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <p>Выберите</p>
+                  <ol class="menu">
+                    <li>Купить</li>
+                    <li>Продать</li>
+                    <li>Вернуться назад</li>
+                  </ol>
+                  <p>Сколько зерна Вы хотите продать? __</p>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </ul>
+    </section>
+
+    <footer>
+      <small>2024 All Rights Reserved</small>
+    </footer>
+  </body>
+</html>

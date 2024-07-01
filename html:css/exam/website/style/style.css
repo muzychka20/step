@@ -1,0 +1,258 @@
+:root {
+    --black: #242424;
+    --dark_green: #163020;
+    --white: #ffffff;
+    --light_green: #EEF0E5;   
+    --green_footer: #304D30; 
+    --soft_green: #B6C4B6;
+    --play_icon_color: #B6C4B6;
+    --bg_color_play: #304D30;
+  }
+
+* {
+    margin: 0;
+    padding: 0;    
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: var(--dark_green);
+    background-color: var(--light_green);
+}
+
+.container {
+    width: 1150px;
+    margin: auto;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 44px 0;
+}
+
+nav > ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+nav > ul > li > a {
+    color: var(--black);
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+nav > ul > li:hover {    
+    cursor: pointer;    
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
+    text-decoration-color:  var(--dark_green);
+}
+
+.block_donate_btn {        
+    border: 1px solid var(--dark_green);
+    color: var(--dark_green);
+    border-radius: 6px;
+    padding: 2px 7px;
+    background-color: transparent;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.block_donate_btn:hover {
+    cursor: pointer;
+}
+
+main {
+    height: 637px;
+    width: 100%;
+    background: url("../img/main_image.png") no-repeat;
+    background-size: cover;
+    color: var(--white);
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.first_screen_text {
+    margin-top: 206px;
+}
+
+.first_screen_text > p {
+    margin-top: 28px;
+    font-size: 26px;
+    font-weight: 200;
+    width: 473px;
+}
+
+.first_screen_text > h1 {   
+    font-size: 78px;
+    font-weight: 500;
+}
+
+.block_more {
+    align-self: flex-end;
+    margin-top: 20px;
+}
+
+.block_more_btn {    
+    background-color: var(--light_green);
+    color: var(--dark_green);
+    padding: 14px 62px;    
+    box-shadow: 0px 20px 30px -10px #163020;
+    font-weight: 500;
+    font-size: 26px;
+    border-radius: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+section {
+    margin-top: 148px;
+}
+
+section:last-child() {
+    margin-bottom: 148px;
+}
+
+.mountains_header {
+    font-weight: 600;
+    font-size: 36px;    
+}
+
+.heading_next { 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 36px 0px 18px 0px;
+    padding-right: 9px;
+}
+
+.heading_next > button {
+    background-color: transparent;
+    border: none;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.row_cards {
+    margin-top: 68px;
+}
+
+.card {
+    width: 324px;
+}
+
+.row_cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.video_tour {
+    border-radius: 24px;
+    width: 950px;
+    height: 482px;
+}
+
+.video_container {    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 68px;
+}
+
+.play_button {
+    position: absolute;    
+    width: 111px;
+    height: 111px;
+    border-radius: 50%;
+    color: var(--play_icon_color);
+    font-size: 60px;
+    border: none;
+    cursor: pointer;
+    background-color: var(--bg_color_play);
+    box-shadow: 1.9500000476837158px 1.9500000476837158px 2.5999999046325684px 0px #00000026;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+.footer_column:first-child{
+    width: 273px;
+}
+
+.footer_text {
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--white);
+    margin: 25px 0px 48px 0px;    
+}
+
+footer {
+    margin-top: 148px;
+    background-color: var(--green_footer);
+    border-bottom: 20px solid var(--dark_green);
+    padding: 56px 0px 83px 0px;
+}
+
+.footer_row {
+    display: flex;
+    justify-content: space-between;     
+}
+
+.btn_donate_footer {
+    color: var(--light_green);
+    font-weight: 500;
+    font-size: 16px;
+    background: transparent;
+    border: 1px solid var(--dark_green);
+    border-radius: 6px;
+    padding: 2px 7px;
+    cursor: pointer;
+}
+
+.footer_column {
+    width: 140px;
+}
+
+.footer_column > h4 {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--white);
+}
+
+.footer_column > ul { 
+    margin-top: 24px;
+}
+
+.footer_column > ul >li { 
+    margin-bottom: 16px;
+    list-style: none;    
+    position: relative;
+}
+
+.footer_column > ul >li:last-child { 
+    margin-bottom: 0;
+}
+
+.footer_column > ul >li > a { 
+    text-decoration: none;
+    color: var(--soft_green); 
+}
+
+.footer_column > ul >li > a:hover {     
+    color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
+    text-decoration-color:  var(--dark_green);
+}
+
