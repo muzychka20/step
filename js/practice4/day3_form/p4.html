@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Color Palette</title>
+<style>
+  body { font-family: Arial, sans-serif; }
+  .color-box { width: 100px; height: 50px; display: inline-block; margin: 5px; }
+  form { margin-bottom: 20px; }
+  input[type="number"] { width: 50px; }
+</style>
+</head>
+<body>
+<h2>Add a new color:</h2>
+<form id="colorForm">
+  <input type="number" id="r" name="r" min="0" max="255" required> R
+  <input type="number" id="g" name="g" min="0" max="255" required> G
+  <input type="number" id="b" name="b" min="0" max="255" required> B
+  <button type="submit">Add color</button>
+</form>
+
+<div id="colorPalette"></div>
+
+<script>
+document.getElementById('colorForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const r = document.getElementById('r').value;
+  const g = document.getElementById('g').value;
+  const b = document.getElementById('b').value;
+  addColor(r, g, b);
+  displayColor(r, g, b);
+});
+
+function addColor(r, g, b) {
+  const colorBox = document.createElement('div');
+  colorBox.className = 'color-box';
+  colorBox.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+  document.getElementById('colorPalette').appendChild(colorBox);
+}
+
+function displayColor(r, g, b) {
+  const info = document.createElement('div');
+  info.textContent = `RGB (${r}, ${g}, ${b})`;
+  document.getElementById('colorPalette').appendChild(info);
+}
+</script>
+</body>
+</html>

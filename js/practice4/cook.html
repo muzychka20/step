@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login and Remember with Cookies</title>
+</head>
+<body>
+<form id="loginForm" onsubmit="handleLogin(event)">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username" placeholder="Enter your username">
+  <button type="submit">Login</button>
+</form>
+
+<script>
+function handleLogin(event) {
+  event.preventDefault(); // Попередження стандартної обробки форми
+  const username = document.getElementById('username').value;
+  
+  // Зберігаємо ім'я користувача в cookies на 7 днів
+  setCookie('username', username, 7);
+  
+  alert('Welcome, ' + username + '! Your username has been saved.');
+  // Очищаємо форму
+  document.getElementById('loginForm').reset();
+}
+
+function setCookie(name, value, days) {
+  const d = new Date();
+  d.setTime(d.getTime() + (days*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+function getCookie(name) {
+  const nameEQ = name + "=";
+  const ca = document.cookie.split(';');
+  for(let i=0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') c = c.substring(1);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+
+window.onload = function() {
+  const user = getCookie('username');
+  if (user) {
+    alert('Welcome back, ' + user + '!');
+  } else {
+    alert('Please log in.');
+  }
+}
+</script>
+</body>
+</html>

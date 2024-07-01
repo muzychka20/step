@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Registration Form with JS</title>
+</head>
+<body>
+<form onsubmit="handleRegistration(event)">
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email">
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password">
+  <button type="submit">Register</button>
+</form>
+
+<script>
+function handleRegistration(event) {
+  event.preventDefault(); // Запобігає реальному відправленню форми
+  const email = document.getElementById('email').value;
+  alert('Registration successful for: ' + email);
+}
+</script>
+</body>
+</html>
+<!-- форма реєстрації з JavaScript -->

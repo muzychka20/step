@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Display Local Storage Data</title>
+</head>
+<body>
+<h2>Check Local Storage Data</h2>
+<button onclick="showUserData()">Show User Data</button>
+
+<script>
+function showUserData() {
+  // Извлечение данных из Local Storage
+  const username = localStorage.getItem('username');
+  const email = localStorage.getItem('email');
+  const password = localStorage.getItem('password'); // Обратите внимание на замечание о безопасности ниже
+
+  // Проверяем, существуют ли данные в Local Storage
+  if (username && email && password) {
+    alert(`Username: ${username}\nEmail: ${email}\nPassword: ${password}`); // Показываем данные в alert
+  } else {
+    alert('No user data found in Local Storage.'); // Уведомление, если данные отсутствуют
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Login Form</title>
+<style>
+  form { width: 300px; margin: auto; padding: 20px; border: 1px solid #ccc; }
+  label { display: block; margin-bottom: 10px; }
+  input[type="text"], input[type="password"] { width: 100%; padding: 8px; }
+  .checkbox { margin: 10px 0; }
+  button { padding: 10px 20px; }
+  .forgot { text-align: right; font-size: 0.8em; }
+</style>
+</head>
+<body>
+<form id="loginForm" onsubmit="handleLogin(event)">
+  <label for="login">Your login:</label>
+  <input type="text" id="login" name="login" required>
+
+  <label for="password">Your password:</label>
+  <input type="password" id="password" name="password" required>
+
+  <div class="checkbox">
+    <input type="checkbox" id="rememberMe" name="remember">
+    <label for="rememberMe">Remember me</label>
+  </div>
+
+  <button type="submit">Sign In</button>
+
+  <div class="forgot">
+    <a href="#">Forgot password?</a>
+  </div>
+</form>
+
+<div id="greeting" style="text-align:center; margin-top:20px;"></div>
+
+<script>
+function handleLogin(event) {
+  event.preventDefault(); // Перешкоджає стандартному відправленню форми
+  const login = document.getElementById('login').value;
+  const rememberMe = document.getElementById('rememberMe').checked;
+  const message = `Привіт, ${login}! Я тебе ${rememberMe ? 'запам\'ятав' : 'не запам\'ятав'}.`;
+  document.getElementById('greeting').textContent = message;
+}
+</script>
+</body>
+</html>

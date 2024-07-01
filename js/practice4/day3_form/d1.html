@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Login Form with JS</title>
+</head>
+<body>
+<form onsubmit="handleLogin(event)">
+  <label for="username">Username:</label>
+  <input type="text" id="username" name="username">
+  <label for="password">Password:</label>
+  <input type="password" id="password" name="password">
+  <button type="submit">Login</button>
+</form>
+
+<script>
+function handleLogin(event) {
+  event.preventDefault(); // Запобігає реальному відправленню форми
+  const username = document.getElementById('username').value;
+  alert('Login successful for: ' + username);
+}
+</script>
+</body>
+</html>
+
+<!-- форма логіну з JavaScript -->

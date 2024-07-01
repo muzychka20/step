@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Registration Form</title>
+<style>
+  form { width: 300px; margin: auto; padding: 20px; border: 1px solid #ccc; }
+  label { display: block; margin-bottom: 5px; }
+  input[type="text"], input[type="email"], input[type="password"] { width: 100%; padding: 8px; margin-bottom: 10px; }
+  button { padding: 10px 20px; margin-top: 10px; }
+</style>
+</head>
+<body>
+<form id="registrationForm" onsubmit="submitForm(event)">
+  <div>
+    <label for="email">Your email:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+  <div>
+    <label for="login">Your login:</label>
+    <input type="text" id="login" name="login" required>
+  </div>
+  <div>
+    <label for="password">Your password:</label>
+    <input type="password" id="password" name="password" required>
+  </div>
+  <div>
+    <label for="repeatPassword">Repeat password:</label>
+    <input type="password" id="repeatPassword" name="repeatPassword" required>
+  </div>
+  <button type="submit">Sign Up</button>
+</form>
+
+<div id="confirmation" style="text-align:center; margin-top:20px;"></div>
+
+<script>
+function submitForm(event) {
+  event.preventDefault();
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
+  var repeatPassword = document.getElementById('repeatPassword').value;
+  
+  if (password !== repeatPassword) {
+    alert('Passwords do not match!');
+    return;
+  }
+  
+  // Якщо ви додасте логіку для відправлення даних на сервер, вона б мала бути тут.
+  
+  document.getElementById('confirmation').textContent = 'На пошту ' + email + ' відправлено лист з підтвердженням.';
+}
+</script>
+</body>
+</html>

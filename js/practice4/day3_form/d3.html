@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Question Form with JS</title>
+</head>
+<body>
+<form onsubmit="addQuestion(event)">
+  <label for="question">Question:</label>
+  <input type="text" id="question" name="question">
+  <label for="answer">Answer:</label>
+  <input type="text" id="answer" name="answer">
+  <button type="submit">Add Question</button>
+</form>
+
+<script>
+function addQuestion(event) {
+  event.preventDefault(); // Запобігає реальному відправленню форми
+  const question = document.getElementById('question').value;
+  const answer = document.getElementById('answer').value;
+  alert('Added: ' + question + ' with answer: ' + answer);
+}
+</script>
+</body>
+</html>
+
+<!-- форма для додавання питань з JavaScript -->

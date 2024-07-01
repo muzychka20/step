@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <hr>
+        <h2>User info</h2>
+        <form onsubmit="loginHandle(event)">
+            <div class="row">
+                <label for="first_name">First Name</label>
+                <input type="text" name="first_name" id="first_name" required="required" pattern="[a-zA-Z]*">        
+                <label for="last_name">Last Name</label>
+                <input type="text" name="last_name" id="last_name"  required="required" pattern="[a-zA-Z]*">        
+            </div>
+            <div class="row">
+                <label for="birthday">Year of birth:</label>
+                <input type="date" name="birthday" id="birthday" min="1900-01-01" required="required">
+                <label for="gender">Gender</label>
+                <select name="gender" required="required" id="gender">                    
+                      <option value="female">Female</option>
+                      <option value="male">Male</option>                      
+                </select>          
+            </div>
+            <div class="row">
+                <label for="phone">Phone</label>
+                <input type="tel" name="phone" id="phone" pattern="[0-9]*">
+                <label for="skype">Skype</label>
+                <input type="text" name="skype" id="skype">            
+            </div>
+            <button type="submit">Save</button>
+        </form>
+        <div id="users"></div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>

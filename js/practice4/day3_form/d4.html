@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Simple Color Form with JS</title>
+</head>
+<body>
+<form onsubmit="addColor(event)">
+  <label for="color">Color (hex):</label>
+  <input type="text" id="color" name="color" placeholder="#ffffff">
+  <button type="submit">Add Color</button>
+</form>
+
+<script>
+function addColor(event) {
+  event.preventDefault(); // Запобігає реальному відправленню форми
+  const color = document.getElementById('color').value;
+  alert('Added color: ' + color);
+}
+</script>
+</body>
+</html>
