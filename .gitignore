@@ -658,7 +658,7 @@ Dependencies/
 **/xcshareddata/WorkspaceSettings.xcsettings
 
 # End of https://www.toptal.com/developers/gitignore/api/xcode,swift,objective-c,c,c++
-
+.vscode
 .vscode/*
 !.vscode/settings.json
 !.vscode/tasks.json
