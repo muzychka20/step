@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="createButton">Создать элемент</button>
+    <div id="container"></div> <!-- Контейнер для новых элементов -->
+
+    <script>
+        document.getElementById('createButton').addEventListener('click', function() {
+            // Создание нового абзаца
+            var newElement = document.createElement('p');
+            newElement.textContent = 'Новый абзац добавлен!';
+
+            // Добавление нового абзаца в контейнер
+            document.getElementById('container').appendChild(newElement);
+        });
+    </script>
+</body>
+</html>

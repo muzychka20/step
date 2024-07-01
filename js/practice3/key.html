@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Событие клавиатуры</title>
+</head>
+<body>
+<h1>Демонстрация обработки событий клавиатуры</h1>
+
+<p>Нажмите любую клавишу, чтобы увидеть информацию о ней:</p>
+<p id="keyInfo"></p>
+
+<script>
+// Обработчик событий нажатия клавиш
+function handleKeyPress(event) {
+    let key = event.key; // Получаем символ нажатой клавиши
+    let keyCode = event.keyCode; // Код клавиши
+    let keyInfo = `
+        Нажатая клавиша: ${key} (Код: ${keyCode})
+    `;
+    document.getElementById("keyInfo").innerHTML = keyInfo;
+}
+
+// Добавляем обработчик событий к элементу window
+window.addEventListener('keydown', handleKeyPress);
+</script>
+
+</body>
+</html>

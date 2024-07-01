@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #block, #bl {
+            width: 100px;
+            height: 100px;
+            background-color: aqua; 
+            margin: 30px;          
+        }
+        #area1 {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #012;
+            background-color: antiquewhite;
+            display: flex;
+            align-items: center;            
+        }
+        #area2 {
+            width: 70px;
+            height: 70px;
+            background-color: aqua;
+            margin: auto;
+        }
+        #sq {
+            width: 100px;
+            height: 100px;
+            background-color: blue;            
+        }
+        #field {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+    </style>    
+</head>
+<body>
+    <div id="block"></div>
+
+    <div id="area1">
+        <div id="area2"></div>
+    </div>
+    
+    <p>Mouse enter <span id="s1"></span></p>
+    <p>Mouse over <span id="s2"></span></p>
+
+    <div id="sq"></div>
+
+    <div id="bl"></div>
+
+    <div id="field"></div>
+
+    <script>        
+        document.getElementById("block").addEventListener("click", event => alert("Event " + event.type))
+
+        let s1 = document.getElementById("s1")
+        let s2 = document.getElementById("s2")
+        
+        document.getElementById("area1").onmouseenter = () => {s1.innerText = "area1.onmouseenter"}
+        document.getElementById("area1").onmouseover = () => {s1.innerText = "area1.onmouseover"}
+
+        document.getElementById("area2").onmouseenter = () => {s2.innerText = "area2.onmouseenter"}
+        document.getElementById("area2").onmouseover = () => {s2.innerText = "area2.onmouseover"}
+
+        let sq = document.getElementById("sq")        
+        sq.onclick = () => {
+            sq.style.height = (parseInt(sq.offsetHeight) * 2) + "px";
+            sq.style.width = (parseInt(sq.offsetWidth) * 2) + "px";
+        }
+        
+        let n = 1;
+        document.getElementById("bl").addEventListener("click", event => {
+            let newBlock = document.createElement("div")
+            newBlock.style.width = '80px'
+            newBlock.style.height = '80px'
+            newBlock.style.background = 'orange'           
+            newBlock.id = 'newBlock' + String(n++)            
+            newBlock.addEventListener("click", (event) => {
+                alert("Event " + event.type + " Id: " + newBlock.id);
+                newBlock.style.background = 'green'
+                newBlock.innerText = newBlock.id
+            })
+            document.getElementById("field").appendChild(newBlock)
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>BOM Демонстрация</title>
+</head>
+<body>
+<h1>Демонстрация Browser Object Model (BOM)</h1>
+
+<p><button onclick="checkBrowser()">Определить браузер</button></p>
+<p id="browserInfo"></p>
+
+<p><button onclick="redirectToHomepage()">Перейти на example.com</button></p>
+
+<p><button onclick="showLocation()">Показать текущий URL</button></p>
+<p id="locationInfo"></p>
+
+<p><button onclick="showScreenDetails()">Показать размеры экрана</button></p>
+<p id="screenInfo"></p>
+
+<p><button onclick="goBack()">Назад в истории</button></p>
+<p><button onclick="goForward()">Вперед в истории</button></p>
+
+<script>
+// Определение типа браузера
+function checkBrowser() {
+    let userAgent = navigator.userAgent;
+    let browser = "Неизвестный браузер";
+    if (userAgent.includes("Chrome")) {
+        browser = "Chrome";
+    } else if (userAgent.includes("Firefox")) {
+        browser = "Firefox";
+    }
+    document.getElementById("browserInfo").innerHTML = "Вы используете " + browser;
+}
+
+// Перенаправление на другой URL
+function redirectToHomepage() {
+    location.href = 'https://www.example.com';
+}
+
+// Показ текущего URL и его компонентов
+function showLocation() {
+    let locationDetails = `
+        Текущий URL: ${location.href}<br>
+        Протокол: ${location.protocol}<br>
+        Хост: ${location.host}<br>
+        Путь: ${location.pathname}
+    `;
+    document.getElementById("locationInfo").innerHTML = locationDetails;
+}
+
+// Показать размеры экрана
+function showScreenDetails() {
+    let screenDetails = `
+        Ширина экрана: ${screen.width} px<br>
+        Высота экрана: ${screen.height} px
+    `;
+    document.getElementById("screenInfo").innerHTML = screenDetails;
+}
+
+// Навигация по истории браузера
+function goBack() {
+    history.back();
+}
+
+function goForward() {
+    history.forward();
+}
+
+// Реакция на изменение размера окна
+window.addEventListener('resize', function() {
+    console.log("Новая ширина окна: ", window.innerWidth);
+    console.log("Новая высота окна: ", window.innerHeight);
+});
+</script>
+
+</body>
+</html>
