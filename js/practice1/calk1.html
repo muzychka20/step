@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Простой калькулятор</title>
+</head>
+<body>
+    <script>
+        function startCalculator() {
+            var firstNumber = parseFloat(prompt("Введите первое число:"));
+            var operation = prompt("Введите операцию (+, -, *, /):");
+            var secondNumber = parseFloat(prompt("Введите второе число:"));
+
+            if (isNaN(firstNumber) || isNaN(secondNumber)) {
+                alert("Один или оба введённых значения не являются числом.");
+                return; // Выход из функции, если введены не числа
+            }
+
+            var result;
+            switch (operation) {
+                case '+':
+                    result = firstNumber + secondNumber;
+                    break;
+                case '-':
+                    result = firstNumber - secondNumber;
+                    break;
+                case '*':
+                    result = firstNumber * secondNumber;
+                    break;
+                case '/':
+                    if (secondNumber === 0) {
+                        alert("На ноль делить нельзя!");
+                        return;
+                    }
+                    result = firstNumber / secondNumber;
+                    break;
+                default:
+                    alert("Введена неизвестная операция.");
+                    return; // Выход из функции, если введена некорректная операция
+            }
+
+            alert("Результат: " + result);
+        }
+
+        startCalculator(); // Запуск калькулятора при загрузке страницы
+    </script>
+</body>
+</html>
