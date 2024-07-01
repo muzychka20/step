@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My To Do List</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: #f5f5f5;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 40%;
+      }
+
+      .list {
+        margin-top: 20px;
+      }
+
+      .todo__item {
+        list-style-type: none;
+        padding: 1em;
+      }
+
+      .todo__item:nth-child(odd) {
+        background-color: #a5ccdb;
+      }
+
+      .todo__item:nth-child(even) {
+        background-color: #add9e6;
+      }
+
+      .todo__item::before {
+        content: "\2610";
+        font-weight: bold;
+      }
+
+      .checked::before {
+        content: "\2611";
+        font-weight: bold;
+      }
+
+      .todo__item.checked {
+        background-color: #e2e2e2;
+      }
+
+      .checked-text {
+        text-decoration: line-through;
+      }
+
+      .delete__item {
+        font-weight: bold;
+        font-size: 16px;
+        color: #7f1608;
+        margin-left: 15px;
+      }
+
+      .todo__item__text {
+        margin-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>My To Do List</h1>
+      <ul class="list">
+        <li class="todo__item">
+          <span class="todo__item__text">Hit the gym</span>
+          <span class="delete__item">&#xd7;</span>
+        </li>
+
+        <li class="todo__item checked">
+          <span class="todo__item__text checked-text">Pay bills</span>
+          <span class="delete__item">&#xd7;</span>
+        </li>
+
+        <li class="todo__item">
+          <span class="todo__item__text">Meet John</span>
+          <span class="delete__item">&#xd7;</span>
+        </li>
+
+        <li class="todo__item">
+          <span class="todo__item__text">Buy eggs</span>
+          <span class="delete__item">&#xd7;</span>
+        </li>
+
+        <li class="todo__item checked">
+          <span class="todo__item__text checked-text">Read a book</span>
+          <span class="delete__item">&#xd7;</span>
+        </li>
+
+        <li class="todo__item">
+          <span class="todo__item__text">Organize office</span>
+          <span class="delete__item">&#xd7;</span>
+        </li>
+
+        <li class="todo__item">
+          <span class="todo__item__text">Eat dinner</span>
+          <span class="delete__item">&#xd7;</span>
+        </li>
+
+        <li class="todo__item">
+          <span class="todo__item__text">Buy apples</span>
+          <span class="delete__item">&#xd7;</span>
+        </li>
+
+        <li class="todo__item">
+          <span class="todo__item__text">Meet George</span>
+          <span class="delete__item">&#xd7;</span>
+        </li>
+
+        <li class="todo__item">
+          <span class="todo__item__text">Feed the cat</span>
+          <span class="delete__item">&#xd7;</span>
+        </li>
+
+        <li class="todo__item checked">
+          <span class="todo__item__text checked-text">Write a letter</span>
+          <span class="delete__item">&#xd7;</span>
+        </li>
+
+        <li class="todo__item">
+          <span class="todo__item__text">Run 1 km</span>
+          <span class="delete__item">&#xd7;</span>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
