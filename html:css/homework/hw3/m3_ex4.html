@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      height: 100vh;     
+      display: flex;      
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    footer {
+      align-self: flex-end;
+      width: 100%;
+      background-color: #2a4f6f;
+      color: white;
+    }
+
+    .container { 
+      width: 80%;
+      margin: auto;     
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .menu__list {
+      list-style-type: none; 
+      column-count: 2;     
+    }
+
+    .menu__list__item {
+      margin-bottom: 10px;
+      width: 300px;      
+    }
+
+    .menu__list__item:hover {
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      list-style-type: none;
+      display: flex;
+      gap: 30px;
+    }
+
+    .network__facebook {
+      background-image: url('module_3/fb_gray.png');
+    }
+
+    .network__instagram {
+      background-image: url('module_3/insta_gray.png');
+    }
+    
+    .network__youtube {
+      background-image: url('module_3/youtube_gray.png');
+    }
+
+    .network__facebook,
+    .network__instagram,
+    .network__youtube {
+      width: 50px;
+      height: 50px;
+      display: block;       
+      background-size: cover;
+      transition: background-image 0.3s ease-in-out;
+    }
+
+    .network__facebook:hover {
+      background-image: url('module_3/fb.png');
+    }
+
+    .network__instagram:hover {
+      background-image: url('module_3/insta.png');
+    }
+
+    .network__youtube:hover {
+      background-image: url('module_3/youtube.png');
+    }
+
+    .copyright {
+      text-align: center;
+      margin: 20px 0 50px 0;      
+    }
+
+  </style>
+</head>
+<body>  
+  <footer>
+    <div class="container">
+      <div class="row">
+        <nav class="menu">
+          <ul class="menu__list">
+            <li class="menu__list__item">Home</li>
+            <li class="menu__list__item">About</li>
+            <li class="menu__list__item">Gallery</li>
+            <li class="menu__list__item">News</li>
+            <li class="menu__list__item">Blog</li>
+            <li class="menu__list__item">FAQ</li>
+            <li class="menu__list__item">Contacts</li>
+            <li class="menu__list__item">Privacy <span>&#38;</span> cookies</li>
+          </ul>
+        </nav>
+        <div class="networks">
+          <ul class="social-icons">
+            <li><a href="http://www.facebook.com" target="_blank" class="network__facebook"></a></li>
+            <li><a href="http://www.instagram.com" target="_blank" class="network__instagram"></a></li>
+            <li><a href="http://www.youtube.com" target="_blank" class="network__youtube"></a></li>
+          </ul>
+        </div>
+      </div>
+      <hr>
+      <div class="copyright">
+        <p>Copyright <span>&copy;</span> Company 2018-2019</p>      
+      </div>      
+    </div>    
+  </footer>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        background-color: #f6f6f6;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size: 12px;
+      }
+
+      h2 {
+        margin: 0;
+      }
+
+      header {
+        background-color: #923157;
+        padding: 20px 0px 20px 50px;
+      }
+
+      nav {
+        background-color: #6e1237;
+        padding: 20px 0px 20px 50px;
+        margin-top: 20px;
+      }
+
+      .container {
+        overflow: hidden;
+        margin-top: 20px;
+        display: flex;
+      }
+
+      .left_asides {
+        float: left;
+        width: 20%;
+        margin-right: 20px;
+      }
+
+      .main_content {
+        background-color: #b65c81;
+        flex-grow: 1;
+        float: left;        
+        margin-right: 20px;
+        padding-bottom: 40px;
+      }
+
+      .main_content_header {
+        margin-top: 40px;
+        padding-left: 50px;
+      }
+
+      .aside1,
+      .aside2 {
+        padding: 40px 50px;
+        background-color: #b65c81;
+      }
+
+      .aside2 {
+        margin-top: 20px;
+        height: 100px;
+      }
+
+      .section1,
+      .section2 {
+        background-color: #dc92ae;
+        padding: 20px 50px 100px 50px;
+        height: fit-content;
+        margin: 20px 50px;
+      }
+
+      .section2 {
+        margin-bottom: 0;
+      }
+
+      .aside3 {
+        width: 5%;
+        padding: 50px;
+        float: right;
+        word-wrap: break-word;
+        height: 220px;
+        background-color: #b65c81;
+        display: flex;
+        justify-content: center;
+      }
+
+      .aside3 h2 {
+        width: 1px;
+        text-align: center;
+      }
+
+      footer {
+        background-color: #6e1238;
+        padding: 20px 0px 20px 50px;
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h2>Header</h2>
+    </header>
+
+    <nav class="menu">
+      <h2>Menu</h2>
+    </nav>
+
+    <div class="container">
+      <div class="left_asides">
+        <aside class="aside1">
+          <h2>Aside 1</h2>
+        </aside>
+        <aside class="aside2">
+          <h2>Aside 2</h2>
+        </aside>
+      </div>
+
+      <main class="main_content">
+        <h2 class="main_content_header">Main content</h2>
+        <section class="section1"><h2>Section 1</h2></section>
+        <section class="section2"><h2>Section 2</h2></section>
+      </main>
+
+      <aside class="aside3">
+        <h2>Aside<span>&nbsp</span>3</h2>
+      </aside>
+    </div>
+
+    <footer>
+      <h2>Footer</h2>
+    </footer>
+  </body>
+</html>
