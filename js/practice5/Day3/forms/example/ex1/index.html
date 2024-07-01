@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My First Project</title>
+  <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+  <form class="user-form">
+    <label class="form-label" for="user_name">Your name:</label>
+    <input class="form-input" type="text" name="user_name" placeholder="Your name" id="user_name">
+
+    <label class="form-label" for="user_age">Your age:</label>
+    <input class="form-input" type="number" name="user_age" id="user_age" placeholder="Your age">
+
+    <label class="form-label" for="password">Password:</label>
+    <input class="form-input" type="password" name="password" id="password" placeholder="Password">
+
+    <div class="gender-options">
+      <input type="radio" name="gender" value="male" id="male">
+      <label for="male">M</label>
+      <input type="radio" name="gender" value="female" id="female">
+      <label for="female">F</label>
+    </div>
+
+    <label class="form-checkbox-label" for="remember">
+      <input class="form-checkbox" type="checkbox" name="remember" id="remember"> Remember me
+    </label>
+
+    <select class="form-select" name="city">
+      <option value="lviv">Lviv</option>
+      <option value="kyiv">Kyiv</option>
+    </select>
+
+    <label class="form-label" for="message">Message:</label>
+    <textarea class="form-textarea" id="message" name="message"></textarea>
+
+    <input class="form-submit" type="submit" value="Submit">
+  </form>
+</body>
+</html>

@@ -1,0 +1,12 @@
+.rating {
+    color: black;
+    font-size: 40px;
+}
+
+.rating .star {
+    cursor: pointer;
+}
+
+.rating .star.rated {
+    color: orange;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Круг следует за курсором</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+        }
+        #circle {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            border-radius: 50%;
+            pointer-events: none; /* Исключаем круг из событий мыши */
+        }
+    </style>
+</head>
+<body>
+
+<div id="circle"></div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

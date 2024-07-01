@@ -1,0 +1,10 @@
+.fruits-list li {
+    padding: 5px;
+    margin: 5px 0;
+    list-style-type: none;
+    cursor: pointer;
+}
+
+.highlight {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}

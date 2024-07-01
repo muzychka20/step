@@ -1,0 +1,22 @@
+#menuContainer {
+    width: 200px;
+    font-family: Arial, sans-serif;
+}
+
+#menuHeader {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#menuContent li {
+    background-color: #f0f0f0;
+    padding: 8px;
+    margin: 5px 0;
+}
+
+#menuContent li a {
+    text-decoration: none;
+    color: #333;
+}

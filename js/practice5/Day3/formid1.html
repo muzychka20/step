@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first project</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .response { margin-top: 20px; }
+    .user-photo { width: 100px; height: 100px; object-fit: cover; }
+  </style>
+</head>
+<body>
+  <form id="fetchUserForm">
+    <label for="userId">User ID:</label>
+    <input type="number" name="userId" placeholder="Enter user ID" id="userId" required>
+    <br><br>
+    <input type="submit" value="Fetch User">
+  </form>
+
+  <div class="response" id="response"></div>
+
+  <script>
+    document.getElementById('fetchUserForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent the default form submit action
+      const userId = document.getElementById('userId').value;
+      fetch(`https://reqres.in/api/users/${userId}`)
+        .then(response => response.json())
+        .then(data => {
+          // Парсинг и отображение данных пользователя
+          const user = data.data;
+          const userInfo = `
+            <img src="${user.avatar}" alt="User photo" class="user-photo">
+            <br><label>Name: ${user.first_name} ${user.last_name}</label>
+            <br><label>Email: ${user.email}</label>
+          `;
+          document.getElementById('response').innerHTML = userInfo;
+        })
+        .catch(error => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>

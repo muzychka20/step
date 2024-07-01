@@ -1,0 +1,58 @@
+.container {
+    width: 800px;
+    margin: auto;
+}
+
+button {
+    width: 100px;
+    height: 50px;
+    color: white;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin: 20px;
+}
+
+.header {
+    text-align: center;
+}
+
+.block {
+    width: 200px;
+    height: 50px;    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: 1px solid black;
+}
+
+.red {
+    background-color: rgb(252, 123, 123);
+}
+
+.green {
+    background-color: rgb(1, 138, 19);
+}
+
+
+.orange {
+    background-color: rgb(255, 147, 5);
+}
+
+.yellow {
+    background-color: rgb(235, 255, 59);
+}
+
+.red {
+    background-color: rgb(252, 123, 123);
+}
+
+.shadow {
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0,0,0,0.75);
+}

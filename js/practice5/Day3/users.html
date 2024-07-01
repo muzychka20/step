@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first project</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    .response { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <form id="fetchUserForm">
+   
+    <input type="submit" value="Fetch User">
+  </form>
+
+  <div class="response" id="response"></div>
+
+  <script>
+    document.getElementById('fetchUserForm').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent the default form submit action
+      const userId = document.getElementById('userId').value;
+      fetch(`https://reqres.in/api/users/${userId}`)
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById('response').innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+        })
+        .catch(error => console.error('Error:', error));
+    });
+  </script>
+</body>
+</html>
