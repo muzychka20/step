@@ -1,0 +1,19 @@
+
+.card {  
+  max-width: 460px;
+  -webkit-box-shadow: 3px 3px 69px -41px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 3px 69px -41px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 69px -41px rgba(0,0,0,0.75);
+  margin: 0 auto;
+}
+
+.card-buttons {
+  margin-top: 16px;
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+}
+
+.card-text {
+  text-align: justify;
+}
