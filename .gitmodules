@@ -1,3 +1,6 @@
 [submodule "js/exam/js/exam/weather-forecast"]
 	path = js/exam/js/exam/weather-forecast
 	url = https://github.com/KyryloMuzychka/weather-forecast
+[submodule "react/react-queries-tests"]
+	path = react/react-queries-tests
+	url = https://github.com/KyryloMuzychka/react-queries-tests
