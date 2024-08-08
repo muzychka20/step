@@ -1,0 +1,3 @@
+[submodule "js/exam/js/exam/weather-forecast"]
+	path = js/exam/js/exam/weather-forecast
+	url = https://github.com/KyryloMuzychka/weather-forecast
