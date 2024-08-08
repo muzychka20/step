@@ -4,3 +4,6 @@
 [submodule "react/react-queries-tests"]
 	path = react/react-queries-tests
 	url = https://github.com/KyryloMuzychka/react-queries-tests
+[submodule "react/react-queries-tests-updated"]
+	path = react/react-queries-tests-updated
+	url = https://github.com/KyryloMuzychka/react-queries-tests
