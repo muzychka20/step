@@ -7,3 +7,6 @@
 [submodule "react/react-queries-tests-updated"]
 	path = react/react-queries-tests-updated
 	url = https://github.com/KyryloMuzychka/react-queries-tests
+[submodule "python/homework/hw5/barley-break"]
+	path = python/homework/hw5/barley-break
+	url = https://github.com/KyryloMuzychka/barley-break
