@@ -10,3 +10,6 @@
 [submodule "python/homework/hw5/barley-break"]
 	path = python/homework/hw5/barley-break
 	url = https://github.com/KyryloMuzychka/barley-break
+[submodule "react/Todo-List"]
+	path = react/Todo-List
+	url = https://github.com/KyryloMuzychka/Todo-List.git
