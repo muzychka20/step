@@ -13,3 +13,6 @@
 [submodule "react/Todo-List"]
 	path = react/Todo-List
 	url = https://github.com/KyryloMuzychka/Todo-List.git
+[submodule "react/cars-catalog"]
+	path = react/cars-catalog
+	url = https://github.com/KyryloMuzychka/cars-catalog
