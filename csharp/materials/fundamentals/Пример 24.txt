@@ -1,0 +1,16 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string[] words = { "apple", "orange", "banana", "pear" };
+        Array.Sort(words);
+
+        Console.WriteLine("Отсортированный массив строк:");
+        foreach (string word in words)
+        {
+            Console.WriteLine(word);
+        }
+    }
+}

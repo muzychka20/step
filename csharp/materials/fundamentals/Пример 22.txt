@@ -1,0 +1,21 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Random random = new Random();
+        double[] numbers = new double[5]; // Массив на 5 элементов
+
+        for (int i = 0; i < numbers.Length; i++)
+        {
+            numbers[i] = random.NextDouble() * 10; // Случайное число от 0 до 10
+        }
+
+        Console.WriteLine("Массив, заполненный случайными числами с плавающей точкой:");
+        foreach (double number in numbers)
+        {
+            Console.WriteLine(number);
+        }
+    }
+}

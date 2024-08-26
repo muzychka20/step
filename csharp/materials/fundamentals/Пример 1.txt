@@ -1,0 +1,22 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        // Ввод данных
+        Console.Write("Введите ваше имя: ");
+        string name = Console.ReadLine();
+        
+        Console.Write("Введите ваш возраст: ");
+        int age = int.Parse(Console.ReadLine());
+        
+        Console.Write("Введите число с плавающей точкой: ");
+        double number = double.Parse(Console.ReadLine());
+        
+        // Вывод данных
+        Console.WriteLine($"Здравствуйте, {name}!");
+        Console.WriteLine($"Ваш возраст: {age}");
+        Console.WriteLine($"Число с плавающей точкой: {number}");
+    }
+}

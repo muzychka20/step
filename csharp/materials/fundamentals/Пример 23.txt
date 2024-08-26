@@ -1,0 +1,16 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        int[] numbers = { 5, 1, 4, 2, 3 };
+        Array.Sort(numbers);
+
+        Console.WriteLine("Отсортированный массив:");
+        foreach (int number in numbers)
+        {
+            Console.WriteLine(number);
+        }
+    }
+}

@@ -1,0 +1,26 @@
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        bool isRaining = true;
+        bool hasUmbrella = false;
+
+        // Логическое И
+        bool shouldGoOutside = isRaining && hasUmbrella;
+        Console.WriteLine($"Идти на улицу: {shouldGoOutside}"); // Результат: false
+
+        // Логическое ИЛИ
+        bool canGoOutside = isRaining || hasUmbrella;
+        Console.WriteLine($"Можно выйти на улицу: {canGoOutside}"); // Результат: true
+
+        // Логическое НЕ
+        bool stayAtHome = !hasUmbrella;
+        Console.WriteLine($"Остаться дома: {stayAtHome}"); // Результат: true
+
+        // Исключающее ИЛИ
+        bool xorExample = isRaining ^ hasUmbrella;
+        Console.WriteLine($"Исключающее ИЛИ: {xorExample}"); // Результат: true
+    }
+}
