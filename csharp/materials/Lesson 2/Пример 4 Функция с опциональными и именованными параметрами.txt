@@ -1,0 +1,18 @@
+using System;
+
+class Program
+{
+    // Функция с опциональными и именованными параметрами
+    public void DisplayInfo(string name, int age = 18, string country = "Неизвестно")
+    {
+        Console.WriteLine($"Имя: {name}, Возраст: {age}, Страна: {country}");
+    }
+
+    static void Main(string[] args)
+    {
+        Program program = new Program();
+        program.DisplayInfo("Алиса");                             // Выведет: Имя: Алиса, Возраст: 18, Страна: Неизвестно
+        program.DisplayInfo("Боб", country: "США");               // Выведет: Имя: Боб, Возраст: 18, Страна: США
+        program.DisplayInfo(name: "Клара", age: 22, country: "Украина"); // Выведет: Имя: Клара, Возраст: 22, Страна: Украина
+    }
+}

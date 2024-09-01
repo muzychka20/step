@@ -1,0 +1,22 @@
+using System;
+
+class Program
+{
+    // Основная функция
+    public void OuterFunction()
+    {
+        // Локальная функция
+        void InnerFunction()
+        {
+            Console.WriteLine("Привет из внутренней функции!");
+        }
+
+        InnerFunction(); // Вызов локальной функции
+    }
+
+    static void Main(string[] args)
+    {
+        Program program = new Program();
+        program.OuterFunction(); // Выведет: Привет из внутренней функции!
+    }
+}

@@ -1,0 +1,40 @@
+class Person
+{
+    // Поля класса
+    public string Name;
+    public int Age;
+
+    // Конструктор по умолчанию (без параметров)
+    public Person()
+    {
+        Name = "Неизвестно";
+        Age = 0;
+    }
+
+    // Конструктор с параметрами
+    public Person(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+
+    // Метод класса
+    public void Greet()
+    {
+        Console.WriteLine($"Привет, меня зовут {Name}, и мне {Age} лет.");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Используем конструктор по умолчанию
+        Person person1 = new Person();
+        person1.Greet(); // Выведет: Привет, меня зовут Неизвестно, и мне 0 лет.
+
+        // Используем конструктор с параметрами
+        Person person2 = new Person("Александр", 25);
+        person2.Greet(); // Выведет: Привет, меня зовут Александр, и мне 25 лет.
+    }
+}

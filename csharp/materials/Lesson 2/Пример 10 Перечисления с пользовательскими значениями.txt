@@ -1,0 +1,28 @@
+using System;
+
+class Program
+{
+    // Определяем перечисление с пользовательскими значениями
+    enum ErrorCode
+    {
+        Success = 0,
+        NotFound = 404,
+        ServerError = 500,
+        Unauthorized = 401
+    }
+
+    static void Main(string[] args)
+    {
+        // Использование перечисления с пользовательскими значениями
+        ErrorCode code = ErrorCode.NotFound;
+
+        Console.WriteLine("Код ошибки: " + code);               // Выведет: Код ошибки: NotFound
+        Console.WriteLine("Числовое значение: " + (int)code);   // Выведет: Числовое значение: 404
+
+        // Проверка кода ошибки
+        if (code == ErrorCode.NotFound)
+        {
+            Console.WriteLine("Ошибка 404: Страница не найдена"); // Выведет: Ошибка 404: Страница не найдена
+        }
+    }
+}

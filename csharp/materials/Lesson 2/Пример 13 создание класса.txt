@@ -1,0 +1,12 @@
+class Person
+{
+    // Поля класса (свойства)
+    public string Name;
+    public int Age;
+
+    // Методы класса (функции)
+    public void Greet()
+    {
+        Console.WriteLine($"Привет, меня зовут {Name}, и мне {Age} лет.");
+    }
+}

@@ -1,0 +1,26 @@
+using System;
+
+class Program
+{
+    // Определяем перечисление
+    enum Level
+    {
+        Low = 1,
+        Medium = 2,
+        High = 3
+    }
+
+    static void Main(string[] args)
+    {
+        // Приведение перечисления к int
+        Level level = Level.Medium;
+        int levelValue = (int)level;
+
+        Console.WriteLine("Уровень: " + level);            // Выведет: Уровень: Medium
+        Console.WriteLine("Числовое значение: " + levelValue); // Выведет: Числовое значение: 2
+
+        // Приведение int обратно к перечислению
+        Level newLevel = (Level)3;
+        Console.WriteLine("Новый уровень: " + newLevel);   // Выведет: Новый уровень: High
+    }
+}

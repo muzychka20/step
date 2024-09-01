@@ -1,0 +1,17 @@
+using System;
+
+class Program
+{
+    // Пример функции, которая возвращает сумму двух чисел
+    public int Add(int a, int b)
+    {
+        return a + b;
+    }
+
+    static void Main(string[] args)
+    {
+        Program program = new Program();
+        int result = program.Add(5, 3);
+        Console.WriteLine("Сумма: " + result); // Выведет: Сумма: 8
+    }
+}

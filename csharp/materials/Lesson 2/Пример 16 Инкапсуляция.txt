@@ -1,0 +1,46 @@
+class Person
+{
+    // Поля с модификатором private, доступны только внутри класса
+    private string name;
+    private int age;
+
+    // Публичные методы для доступа к приватным полям
+    public void SetName(string name)
+    {
+        this.name = name;
+    }
+
+    public string GetName()
+    {
+        return name;
+    }
+
+    public void SetAge(int age)
+    {
+        if (age >= 0)
+        {
+            this.age = age;
+        }
+    }
+
+    public int GetAge()
+    {
+        return age;
+    }
+
+    public void Greet()
+    {
+        Console.WriteLine($"Привет, меня зовут {name}, и мне {age} лет.");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Person person = new Person();
+        person.SetName("Александр");
+        person.SetAge(25);
+        person.Greet(); // Выведет: Привет, меня зовут Александр, и мне 25 лет.
+    }
+}

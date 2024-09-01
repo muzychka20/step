@@ -1,0 +1,17 @@
+using System;
+
+class Program
+{
+    // Функция с параметром по умолчанию
+    public void Greet(string name = "Гость")
+    {
+        Console.WriteLine($"Привет, {name}!");
+    }
+
+    static void Main(string[] args)
+    {
+        Program program = new Program();
+        program.Greet();              // Выведет: Привет, Гость!
+        program.Greet("Александр");   // Выведет: Привет, Александр!
+    }
+}

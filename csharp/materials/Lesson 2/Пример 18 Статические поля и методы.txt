@@ -1,0 +1,22 @@
+class MathOperations
+{
+    // Статическое поле
+    public static int counter = 0;
+
+    // Статический метод
+    public static int Add(int a, int b)
+    {
+        counter++;
+        return a + b;
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        int result = MathOperations.Add(5, 3);
+        Console.WriteLine("Результат сложения: " + result); // Выведет: Результат сложения: 8
+        Console.WriteLine("Метод вызван " + MathOperations.counter + " раз."); // Выведет: Метод вызван 1 раз.
+    }
+}

@@ -1,0 +1,17 @@
+using System;
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Создание объекта класса Person
+        Person person1 = new Person();
+
+        // Инициализация полей объекта
+        person1.Name = "Александр";
+        person1.Age = 25;
+
+        // Вызов метода объекта
+        person1.Greet(); // Выведет: Привет, меня зовут Александр, и мне 25 лет.
+    }
+}

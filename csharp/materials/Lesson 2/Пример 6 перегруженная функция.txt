@@ -1,0 +1,23 @@
+using System;
+
+class Program
+{
+    // Перегруженная функция, которая принимает целое число
+    public void Display(int number)
+    {
+        Console.WriteLine("Число: " + number);
+    }
+
+    // Перегруженная функция, которая принимает строку
+    public void Display(string text)
+    {
+        Console.WriteLine("Текст: " + text);
+    }
+
+    static void Main(string[] args)
+    {
+        Program program = new Program();
+        program.Display(42);        // Выведет: Число: 42
+        program.Display("Привет!"); // Выведет: Текст: Привет!
+    }
+}

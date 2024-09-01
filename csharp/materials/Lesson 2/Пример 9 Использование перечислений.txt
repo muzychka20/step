@@ -1,0 +1,36 @@
+using System;
+
+class Program
+{
+    // Определяем перечисление DayOfWeek
+    enum DayOfWeek
+    {
+        Sunday,    // 0
+        Monday,    // 1
+        Tuesday,   // 2
+        Wednesday, // 3
+        Thursday,  // 4
+        Friday,    // 5
+        Saturday   // 6
+    }
+
+    static void Main(string[] args)
+    {
+        // Пример использования перечисления
+        DayOfWeek today = DayOfWeek.Wednesday;
+
+        Console.WriteLine("Сегодня: " + today);                // Выведет: Сегодня: Wednesday
+        Console.WriteLine("Номер дня: " + (int)today);         // Выведет: Номер дня: 3
+
+        // Проверка текущего дня недели
+        if (today == DayOfWeek.Wednesday)
+        {
+            Console.WriteLine("Сегодня среда!");             // Выведет: Сегодня среда!
+        }
+
+        // Пример приведения значения типа int к типу enum
+        int dayNumber = 5;
+        DayOfWeek someDay = (DayOfWeek)dayNumber;
+        Console.WriteLine("Выбранный день: " + someDay);      // Выведет: Выбранный день: Friday
+    }
+}
