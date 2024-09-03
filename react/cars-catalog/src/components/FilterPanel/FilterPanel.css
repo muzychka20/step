@@ -1,0 +1,18 @@
+.filterPanel {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.filterSelect {
+  margin-bottom: 10px;
+  padding: 5px;
+  font-size: 16px;
+}
+
+.filterOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
