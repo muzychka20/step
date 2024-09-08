@@ -1,18 +1,9 @@
 [submodule "js/exam/js/exam/weather-forecast"]
 	path = js/exam/js/exam/weather-forecast
 	url = https://github.com/KyryloMuzychka/weather-forecast
-[submodule "react/react-queries-tests"]
-	path = react/react-queries-tests
-	url = https://github.com/KyryloMuzychka/react-queries-tests
-[submodule "react/react-queries-tests-updated"]
-	path = react/react-queries-tests-updated
-	url = https://github.com/KyryloMuzychka/react-queries-tests
 [submodule "python/homework/hw5/barley-break"]
 	path = python/homework/hw5/barley-break
 	url = https://github.com/KyryloMuzychka/barley-break
 [submodule "react/Todo-List"]
 	path = react/Todo-List
 	url = https://github.com/KyryloMuzychka/Todo-List.git
-[submodule "react/cars-catalog"]
-	path = react/cars-catalog
-	url = https://github.com/KyryloMuzychka/cars-catalog
