@@ -1,0 +1,55 @@
+using System;
+
+// Базовый класс "Человек"
+class Person
+{
+    public string Name { get; set; }
+    protected int Age { get; set; }
+
+    // Конструктор
+    public Person(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+
+    // Метод вывода информации
+    public void DisplayInfo()
+    {
+        Console.WriteLine($"Имя: {Name}, Возраст: {Age}");
+    }
+}
+
+// Производный класс "Работник"
+class Worker : Person
+{
+    public string Company { get; set; }
+
+    // Конструктор производного класса
+    public Worker(string name, int age, string company) 
+        : base(name, age) // Вызов конструктора базового класса
+    {
+        Company = company;
+    }
+
+    // Переопределение метода вывода информации
+    public new void DisplayInfo()
+    {
+        base.DisplayInfo(); // Вызов метода базового класса
+        Console.WriteLine($"Компания: {Company}");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Создаем объект класса Worker
+        Worker myWorker = new Worker("Иван", 30, "TechCorp");
+
+        // Вызов метода DisplayInfo производного класса
+        myWorker.DisplayInfo();
+
+        Console.ReadLine();
+    }
+}

@@ -1,0 +1,58 @@
+using System;
+
+// Базовый класс "Человек"
+class Person
+{
+    // Виртуальное свойство для имени
+    public virtual string Name { get; set; }
+
+    // Виртуальное свойство для возраста
+    public virtual int Age { get; set; }
+
+    public virtual void DisplayInfo()
+    {
+        Console.WriteLine($"Имя: {Name}, Возраст: {Age}");
+    }
+}
+
+// Производный класс "Работник"
+class Employee : Person
+{
+    // Переопределение свойства Name
+    private string employeeName;
+    public override string Name
+    {
+        get { return $"Сотрудник: {employeeName}"; }
+        set { employeeName = value; }
+    }
+
+    // Переопределение свойства Age
+    private int employeeAge;
+    public override int Age
+    {
+        get { return employeeAge; }
+        set { employeeAge = value > 18 ? value : 18; } // Возраст не может быть меньше 18
+    }
+
+    // Переопределение метода для вывода информации
+    public override void DisplayInfo()
+    {
+        Console.WriteLine($"Имя сотрудника: {Name}, Возраст: {Age}");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Employee emp = new Employee
+        {
+            Name = "Иван Иванов",
+            Age = 25
+        };
+
+        emp.DisplayInfo(); // Вывод переопределенной информации
+
+        Console.ReadLine();
+    }
+}

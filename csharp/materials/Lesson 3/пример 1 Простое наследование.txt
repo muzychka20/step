@@ -1,0 +1,44 @@
+using System;
+
+// Базовый класс "Животное"
+class Animal
+{
+    // Поля базового класса
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    // Метод базового класса
+    public void Eat()
+    {
+        Console.WriteLine($"{Name} ест.");
+    }
+}
+
+// Производный класс "Собака"
+class Dog : Animal
+{
+    // Метод производного класса
+    public void Bark()
+    {
+        Console.WriteLine($"{Name} лает.");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Создаем объект класса Dog
+        Dog myDog = new Dog();
+
+        // Устанавливаем свойства, унаследованные от Animal
+        myDog.Name = "Бобик";
+        myDog.Age = 3;
+
+        // Вызываем методы
+        myDog.Eat();   // Вызов метода базового класса
+        myDog.Bark();  // Вызов метода производного класса
+
+        Console.ReadLine();
+    }
+}

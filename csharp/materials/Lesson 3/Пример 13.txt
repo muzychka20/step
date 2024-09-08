@@ -1,0 +1,75 @@
+using System;
+
+// Абстрактный класс "Фигура"
+abstract class Shape
+{
+    // Абстрактное свойство для получения площади фигуры
+    public abstract double Area { get; }
+
+    // Абстрактный метод для вычисления периметра
+    public abstract double CalculatePerimeter();
+
+    // Общий метод для отображения информации о фигуре
+    public void DisplayInfo()
+    {
+        Console.WriteLine($"Площадь: {Area}");
+        Console.WriteLine($"Периметр: {CalculatePerimeter()}");
+    }
+}
+
+// Класс "Круг", наследующий от абстрактного класса "Shape"
+class Circle : Shape
+{
+    public double Radius { get; set; }
+
+    // Реализация абстрактного свойства Area
+    public override double Area
+    {
+        get { return Math.PI * Radius * Radius; }
+    }
+
+    // Реализация абстрактного метода CalculatePerimeter
+    public override double CalculatePerimeter()
+    {
+        return 2 * Math.PI * Radius;
+    }
+}
+
+// Класс "Прямоугольник", наследующий от абстрактного класса "Shape"
+class Rectangle : Shape
+{
+    public double Width { get; set; }
+    public double Height { get; set; }
+
+    // Реализация абстрактного свойства Area
+    public override double Area
+    {
+        get { return Width * Height; }
+    }
+
+    // Реализация абстрактного метода CalculatePerimeter
+    public override double CalculatePerimeter()
+    {
+        return 2 * (Width + Height);
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Создание экземпляра класса Circle
+        Circle circle = new Circle { Radius = 5 };
+        Console.WriteLine("Круг:");
+        circle.DisplayInfo();
+
+        Console.WriteLine();
+
+        // Создание экземпляра класса Rectangle
+        Rectangle rectangle = new Rectangle { Width = 4, Height = 7 };
+        Console.WriteLine("Прямоугольник:");
+        rectangle.DisplayInfo();
+
+        Console.ReadLine();
+    }
+}

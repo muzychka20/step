@@ -1,0 +1,49 @@
+using System;
+
+// Базовый класс "Автомобиль"
+class Car
+{
+    protected string Model;
+    protected int Year;
+
+    public Car(string model, int year)
+    {
+        Model = model;
+        Year = year;
+    }
+
+    // Метод, доступный для производных классов
+    protected void DisplayCarInfo()
+    {
+        Console.WriteLine($"Модель: {Model}, Год выпуска: {Year}");
+    }
+}
+
+// Производный класс "Электромобиль"
+class ElectricCar : Car
+{
+    public int BatteryCapacity { get; set; }
+
+    public ElectricCar(string model, int year, int batteryCapacity)
+        : base(model, year)
+    {
+        BatteryCapacity = batteryCapacity;
+    }
+
+    public void ShowFullInfo()
+    {
+        DisplayCarInfo(); // Вызов protected метода базового класса
+        Console.WriteLine($"Ёмкость батареи: {BatteryCapacity} кВт·ч");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        ElectricCar myElectricCar = new ElectricCar("Tesla Model S", 2020, 100);
+        myElectricCar.ShowFullInfo(); // Доступ к protected методу через производный класс
+
+        Console.ReadLine();
+    }
+}

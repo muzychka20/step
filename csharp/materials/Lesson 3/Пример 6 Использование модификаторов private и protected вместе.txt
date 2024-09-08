@@ -1,0 +1,55 @@
+using System;
+
+// Базовый класс "Персонал"
+class Staff
+{
+    private int staffID; // Только для доступа внутри класса Staff
+    protected string Position; // Доступен для производных классов
+
+    public Staff(int id, string position)
+    {
+        staffID = id;
+        Position = position;
+    }
+
+    // Метод для отображения информации о сотруднике
+    public void DisplayStaffInfo()
+    {
+        Console.WriteLine($"ID: {staffID}, Должность: {Position}");
+    }
+}
+
+// Производный класс "Учитель"
+class Teacher : Staff
+{
+    private string subject; // Только для доступа внутри класса Teacher
+
+    public Teacher(int id, string position, string subject) 
+        : base(id, position)
+    {
+        this.subject = subject;
+    }
+
+    public void ShowTeacherInfo()
+    {
+        DisplayStaffInfo(); // Доступ к public методу базового класса
+        Console.WriteLine($"Предмет: {subject}");
+    }
+
+    // Попытка доступа к private члену базового класса вызовет ошибку
+    // public void AccessPrivateMember()
+    // {
+    //     Console.WriteLine(staffID); // Ошибка: staffID недоступен
+    // }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Teacher myTeacher = new Teacher(101, "Учитель", "Математика");
+        myTeacher.ShowTeacherInfo(); // Вывод информации о учителе
+
+        Console.ReadLine();
+    }
+}

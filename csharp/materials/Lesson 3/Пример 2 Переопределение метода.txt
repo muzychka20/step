@@ -1,0 +1,39 @@
+using System;
+
+// Базовый класс "Животное"
+class Animal
+{
+    public string Name { get; set; }
+
+    // Виртуальный метод, который можно переопределить
+    public virtual void MakeSound()
+    {
+        Console.WriteLine($"{Name} издает звук.");
+    }
+}
+
+// Производный класс "Кошка"
+class Cat : Animal
+{
+    // Переопределяем метод MakeSound для класса Cat
+    public override void MakeSound()
+    {
+        Console.WriteLine($"{Name} мяукает.");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        // Создаем объект класса Cat
+        Cat myCat = new Cat();
+
+        myCat.Name = "Мурка";
+
+        // Вызов переопределенного метода
+        myCat.MakeSound();
+
+        Console.ReadLine();
+    }
+}

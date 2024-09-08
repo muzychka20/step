@@ -1,0 +1,34 @@
+using System;
+
+class Animal
+{
+    public void Speak()
+    {
+        Console.WriteLine("Animal speaks");
+    }
+}
+
+class Dog : Animal
+{
+    public void Bark()
+    {
+        Console.WriteLine("Dog barks");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Dog myDog = new Dog();
+
+        // Восходящее преобразование (upcasting) от Dog к Animal
+        Animal myAnimal = myDog;
+
+        myAnimal.Speak(); // Работает, т.к. метод доступен в базовом классе
+
+        // myAnimal.Bark(); // Ошибка компиляции: метод Bark недоступен в типе Animal
+
+        Console.ReadLine();
+    }
+}

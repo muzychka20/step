@@ -1,0 +1,43 @@
+using System;
+
+// Базовый класс "Транспортное средство"
+class Vehicle
+{
+    public int Speed { get; set; }
+
+    public void ShowSpeed()
+    {
+        Console.WriteLine($"Скорость: {Speed} км/ч");
+    }
+}
+
+// Производный класс "Автомобиль"
+class Car : Vehicle
+{
+    // Скрытие свойства Speed из базового класса
+    public new int Speed { get; set; }
+
+    public void ShowSpeed()
+    {
+        Console.WriteLine($"Скорость автомобиля: {Speed} км/ч");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Car myCar = new Car();
+
+        // Установка значения скрытого свойства Speed в классе Car
+        myCar.Speed = 120;
+        myCar.ShowSpeed(); // Вывод: "Скорость автомобиля: 120 км/ч"
+
+        // Приведение к базовому типу Vehicle
+        Vehicle myVehicle = myCar;
+        myVehicle.Speed = 80; // Изменение значения свойства базового класса
+        myVehicle.ShowSpeed(); // Вывод: "Скорость: 80 км/ч"
+
+        Console.ReadLine();
+    }
+}

@@ -1,0 +1,37 @@
+using System;
+
+// Базовый класс "Животное"
+class Animal
+{
+    public void MakeSound()
+    {
+        Console.WriteLine("Животное издает звук");
+    }
+}
+
+// Производный класс "Собака"
+class Dog : Animal
+{
+    // Скрытие метода MakeSound из базового класса
+    public new void MakeSound()
+    {
+        Console.WriteLine("Собака лает");
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Dog myDog = new Dog();
+
+        // Вызов скрытого метода MakeSound из класса Dog
+        myDog.MakeSound(); // Вывод: "Собака лает"
+
+        // Вызов метода MakeSound базового класса через приведение типа
+        Animal myAnimal = myDog;
+        myAnimal.MakeSound(); // Вывод: "Животное издает звук"
+
+        Console.ReadLine();
+    }
+}

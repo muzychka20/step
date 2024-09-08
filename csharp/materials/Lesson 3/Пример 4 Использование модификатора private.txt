@@ -1,0 +1,58 @@
+using System;
+
+// Базовый класс "Устройство"
+class Device
+{
+    private string serialNumber;
+
+    public Device(string serialNumber)
+    {
+        this.serialNumber = serialNumber;
+    }
+
+    // Метод, который может использовать только сам класс
+    private void ShowSerialNumber()
+    {
+        Console.WriteLine($"Серийный номер: {serialNumber}");
+    }
+
+    public void DisplayInfo()
+    {
+        ShowSerialNumber(); // Вызов private метода внутри класса
+    }
+}
+
+// Производный класс "Телефон"
+class Phone : Device
+{
+    public Phone(string serialNumber) : base(serialNumber)
+    {
+    }
+
+    public void MakeCall()
+    {
+        Console.WriteLine("Совершение звонка...");
+    }
+
+    // Попытка доступа к private членам будет вызовом ошибки
+    // public void TryAccessPrivate()
+    // {
+    //     Console.WriteLine(serialNumber); // Ошибка: serialNumber недоступен
+    //     ShowSerialNumber(); // Ошибка: ShowSerialNumber() недоступен
+    // }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        Phone myPhone = new Phone("123-456");
+        myPhone.DisplayInfo(); // Работает, т.к. вызывает private метод через public метод базового класса
+        myPhone.MakeCall();    // Производный метод
+
+        // myPhone.ShowSerialNumber(); // Ошибка: private метод недоступен
+        // Console.WriteLine(myPhone.serialNumber); // Ошибка: private поле недоступно
+
+        Console.ReadLine();
+    }
+}
