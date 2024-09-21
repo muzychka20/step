@@ -1,0 +1,63 @@
+//1. Базовый интерфейс IShape - Он содержит метод для вычисления площади.
+public interface IShape
+{
+    double Area(); // Метод для вычисления площади
+}
+//2. Расширенный интерфейс IColoredShape. Этот интерфейс наследует
+//IShape и добавляет свойство Color, которое будет хранить цвет фигуры.
+public interface IColoredShape : IShape
+{
+    string Color { get; set; } // Свойство для хранения цвета фигуры
+}
+//3. Реализация интерфейсов в классе ColoredRectangle. Мы создадим класс ColoredRectangle,
+//который реализует интерфейс IColoredShape. Этот класс должен реализовать оба члена:
+//метод Area из IShape и свойство Color из IColoredShape.
+
+public class ColoredRectangle : IColoredShape
+{
+    public string Color { get; set; } // Реализация свойства Color
+    public double Width { get; set; }
+    public double Height { get; set; }
+
+    // Реализация метода Area из интерфейса IShape
+    public double Area()
+    {
+        return Width * Height;
+    }
+}
+//4.Реализация интерфейсов в классе ColoredCircle.
+//Также создадим другой класс ColoredCircle, который реализует интерфейс IColoredShape.
+public class ColoredCircle : IColoredShape
+{
+    public string Color { get; set; }
+    public double Radius { get; set; }
+
+    // Реализация метода Area из интерфейса IShape
+    public double Area()
+    {
+        return Math.PI * Radius * Radius;
+    }
+}
+//5. Пример использования интерфейсов В коде ниже мы создаем
+//объекты разных фигур и выводим информацию о них, используя общий интерфейс.
+public class Program
+{
+    public static void Main()
+    {
+        IColoredShape rectangle = new ColoredRectangle
+        {
+            Width = 5,
+            Height = 10,
+            Color = "Red"
+        };
+
+        IColoredShape circle = new ColoredCircle
+        {
+            Radius = 3,
+            Color = "Blue"
+        };
+
+        Console.WriteLine($"Rectangle: Color = {rectangle.Color}, Area = {rectangle.Area()}");
+        Console.WriteLine($"Circle: Color = {circle.Color}, Area = {circle.Area()}");
+    }
+}

@@ -1,0 +1,33 @@
+public interface IMovable
+{
+    void Move();
+}
+
+public class Car : IMovable
+{
+    public void Move()
+    {
+        Console.WriteLine("The car is moving.");
+    }
+}
+
+public class Bicycle : IMovable
+{
+    public void Move()
+    {
+        Console.WriteLine("The bicycle is moving.");
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        IMovable[] movables = { new Car(), new Bicycle() };
+
+        foreach (IMovable movable in movables)
+        {
+            movable.Move();
+        }
+    }
+}

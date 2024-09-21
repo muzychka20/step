@@ -1,0 +1,51 @@
+using System;
+using System.Collections.Generic;
+
+public class Student : IComparable<Student>
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public Student(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+
+    // Реализация метода CompareTo для сравнения по возрасту
+    public int CompareTo(Student other)
+    {
+        if (other == null) return 1;
+        return this.Age.CompareTo(other.Age);
+    }
+
+    // Переопределение метода ToString для удобного вывода
+    public override string ToString()
+    {
+        return $"{Name}, {Age} years old";
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Создаем список студентов
+        List<Student> students = new List<Student>
+        {
+            new Student("Alice", 22),
+            new Student("Bob", 18),
+            new Student("Charlie", 20)
+        };
+
+        // Сортируем студентов по возрасту
+        students.Sort();
+
+        // Выводим отсортированных студентов
+        Console.WriteLine("Sorted students by age:");
+        foreach (var student in students)
+        {
+            Console.WriteLine(student);
+        }
+    }
+}

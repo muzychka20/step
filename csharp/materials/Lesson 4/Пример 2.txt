@@ -1,0 +1,31 @@
+public interface IPrintable
+{
+    void Print();
+}
+
+public class Document : IPrintable
+{
+    // Обычная реализация метода
+    public void Print()
+    {
+        Console.WriteLine("Printing document...");
+    }
+
+    // Явная реализация интерфейса
+    void IPrintable.Print()
+    {
+        Console.WriteLine("Printing from IPrintable interface...");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Document doc = new Document();
+        doc.Print(); // Вызов обычной реализации
+
+        IPrintable printable = doc;
+        printable.Print(); // Вызов явной реализации интерфейса
+    }
+}

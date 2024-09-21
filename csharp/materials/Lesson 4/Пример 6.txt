@@ -1,0 +1,70 @@
+using System;
+using System.Collections.Generic;
+
+// Класс Student
+public class Student
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public Student(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+
+    public override string ToString()
+    {
+        return $"{Name}, {Age} years old";
+    }
+}
+
+// Реализация IComparer для сортировки по возрасту
+public class AgeComparer : IComparer<Student>
+{
+    public int Compare(Student x, Student y)
+    {
+        if (x == null || y == null) throw new ArgumentException("Objects cannot be null");
+        return x.Age.CompareTo(y.Age);
+    }
+}
+
+// Реализация IComparer для сортировки по имени
+public class NameComparer : IComparer<Student>
+{
+    public int Compare(Student x, Student y)
+    {
+        if (x == null || y == null) throw new ArgumentException("Objects cannot be null");
+        return string.Compare(x.Name, y.Name);
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Создаем список студентов
+        List<Student> students = new List<Student>
+        {
+            new Student("Alice", 22),
+            new Student("Bob", 18),
+            new Student("Charlie", 20)
+        };
+
+        // Сортировка по возрасту
+        students.Sort(new AgeComparer());
+        Console.WriteLine("Sorted by age:");
+        foreach (var student in students)
+        {
+            Console.WriteLine(student);
+        }
+
+        // Сортировка по имени
+        students.Sort(new NameComparer());
+        Console.WriteLine("\nSorted by name:");
+        foreach (var student in students)
+        {
+            Console.WriteLine(student);
+        }
+    }
+}
