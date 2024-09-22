@@ -1,0 +1,41 @@
+using System;
+using System.Collections.Generic;
+
+class Person
+{
+    public string Name { get; set; }
+    public int Age { get; set; }
+
+    public Person(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Создаем список объектов Person
+        List<Person> people = new List<Person>();
+
+        // Добавляем элементы в список
+        people.Add(new Person("Анна", 25));
+        people.Add(new Person("Иван", 30));
+        people.Add(new Person("Мария", 28));
+
+        // Выводим информацию о людях
+        foreach (Person person in people)
+        {
+            Console.WriteLine($"Имя: {person.Name}, Возраст: {person.Age}");
+        }
+
+        // Находим человека по условию
+        Person foundPerson = people.Find(p => p.Name == "Иван");
+        if (foundPerson != null)
+        {
+            Console.WriteLine($"Найден: {foundPerson.Name}, Возраст: {foundPerson.Age}");
+        }
+    }
+}

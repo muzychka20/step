@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        List<int> numbers = new List<int> { 5, 3, 8, 1, 9 };
+
+        // Фильтруем список, выбирая только четные числа
+        List<int> evenNumbers = numbers.Where(n => n % 2 == 0).ToList();
+
+        // Выводим четные числа
+        Console.WriteLine("Четные числа:");
+        foreach (int number in evenNumbers)
+        {
+            Console.WriteLine(number);
+        }
+    }
+}

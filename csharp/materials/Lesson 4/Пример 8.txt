@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        // Создаем список целых чисел
+        List<int> numbers = new List<int>();
+
+        // Добавляем элементы в список
+        numbers.Add(10);
+        numbers.Add(20);
+        numbers.Add(30);
+
+        // Вставляем элемент на определённую позицию
+        numbers.Insert(1, 15);
+
+        // Удаляем элемент
+        numbers.Remove(20);
+
+        // Выводим элементы на консоль
+        Console.WriteLine("Элементы списка:");
+        foreach (int number in numbers)
+        {
+            Console.WriteLine(number);
+        }
+
+        // Выводим количество элементов
+        Console.WriteLine("Количество элементов: " + numbers.Count);
+    }
+}
