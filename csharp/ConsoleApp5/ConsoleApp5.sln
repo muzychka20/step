@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34916.146
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp5", "ConsoleApp5\ConsoleApp5.csproj", "{775C7175-5167-461F-881B-4C3015C21CD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp5", "ConsoleApp5\ConsoleApp5.csproj", "{775C7175-5167-461F-881B-4C3015C21CD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp5_1", "ConsoleApp5_1\ConsoleApp5_1.csproj", "{892AE993-7785-4038-A04C-BA9BF21D3E07}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp5_1", "ConsoleApp5_1\ConsoleApp5_1.csproj", "{892AE993-7785-4038-A04C-BA9BF21D3E07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp5_3", "ConsoleApp5_3\ConsoleApp5_3.csproj", "{7E971897-DA71-4639-9A06-6E104D99661C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp5_3", "ConsoleApp5_3\ConsoleApp5_3.csproj", "{7E971897-DA71-4639-9A06-6E104D99661C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp5_2", "ConsoleApp5_2\ConsoleApp5_2.csproj", "{9C05D078-C401-45F6-A5F9-DA0EF92A47FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp5_2", "ConsoleApp5_2\ConsoleApp5_2.csproj", "{9C05D078-C401-45F6-A5F9-DA0EF92A47FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HW5", "HW5\HW5.csproj", "{A40AB94E-E376-4135-928E-DC15F16488DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{9C05D078-C401-45F6-A5F9-DA0EF92A47FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C05D078-C401-45F6-A5F9-DA0EF92A47FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C05D078-C401-45F6-A5F9-DA0EF92A47FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A40AB94E-E376-4135-928E-DC15F16488DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A40AB94E-E376-4135-928E-DC15F16488DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A40AB94E-E376-4135-928E-DC15F16488DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A40AB94E-E376-4135-928E-DC15F16488DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
