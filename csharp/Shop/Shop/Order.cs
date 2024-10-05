@@ -6,45 +6,77 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Shop
-{    
+{
     public class Order
     {
-        public static int id = 0;
+        public static int id = 1;
         public int Id { get; }
-        List<Tuple<Product, int>> products;
+        public List<Tuple<Product, int>> products;
         public double Total { get; set; }
+        public int CustomerId { get; set; }
         public DateTime Date { get; set; }
         public StatusName Status { get; set; }
         public IDiscount Discount { get; set; }
 
-        public Order(List<Tuple<Product, int>> _products)
+        public Order(int customerId, List<Tuple<Product, int>> _products)
         {
             Id = id++;
-            products = _products;
+            products = new List<Tuple<Product, int>>();
+            foreach (var product in _products)
+            {
+                AddProduct(product.Item1, product.Item2);
+            }
+            CustomerId = customerId;
             Date = DateTime.Now;
             Status = StatusName.New;
-            Total = CalculateTotal();
+            CalculateTotal();
         }
-        
-        public double CalculateTotal()
+
+        public void CalculateTotal()
         {
             double total = 0;
             foreach (var product in products)
             {
                 total += product.Item1.Price * product.Item2;
-            }            
-            return total;
+            }
+
+            Total = total;
+
+            List<Tuple<Product, double>> discountsApplied = new List<Tuple<Product, double>>();
+            
+            if (Total > 5000)
+            {               
+                ApplyDiscount(new OrderDiscount(), Total);
+                Console.WriteLine($"Applied discount on order!");
+                return;
+            }
+
+            foreach (var product in products)
+            {
+                if (product.Item2 > 5)
+                {
+                    double productDiscountAmount = product.Item1.Price * product.Item2;
+                    ApplyDiscount(new ProductDiscount(), productDiscountAmount);
+                }
+            }
         }
 
         public void AddProduct(Product product, int amount)
         {
-            products.Add(new Tuple<Product, int>(product, amount));
+            if (product.Amount >= amount)
+            {
+                products.Add(new Tuple<Product, int>(product, amount));
+                product.ChangeStock(product.Amount - amount);
+            }
+            else
+            {
+                throw new Exception($"Not enough produts with id {product.Id}!");
+            }
         }
 
         public void RemoveProduct(int productId)
         {
-            var productToRemove = products.Find(product => product.Item1.Id == productId);
-            products.Remove(productToRemove);
+            products.RemoveAll(p => p.Item1.Id == productId);
         }
 
         public void ChangeProductQuantity(int productId, int newAmount)
@@ -55,34 +87,10 @@ namespace Shop
             products[index] = newProduct;
         }
 
-        public void ApplyDiscount()
+        public void ApplyDiscount(IDiscount discount, double priceBeforeDiscount)
         {
-            Tuple<Product, int> CompareAmountTo(int amount)
-            {
-                foreach (var product in products)
-                {
-                    if (product.Item2 > amount)
-                    {
-                        return product;
-                    }
-                }
-                return null;
-            }
-
-            double total = CalculateTotal();
-
-            if (total > 5000)
-            {
-                Discount = new OrderDiscount();
-                Total -= Discount.CalculateDiscount(total);
-            }
-            
-            var prod = CompareAmountTo(5);
-            if (prod != null && Discount != null)
-            {
-                Discount = new ProductDiscount();
-                Total -= prod.Item2 * Discount.CalculateDiscount(prod.Item1.Price);
-            }
+            Discount = discount;
+            Total -= Discount.CalculateDiscount(priceBeforeDiscount);
         }
 
         public void ChangeOrderStatus(StatusName stName)
@@ -101,6 +109,7 @@ namespace Shop
             }
             res += "Date: " + Date.ToString() + "\n";
             res += $"Status: {Status}\n";
+            res += $"Total: {Total}\n";
             res += "---------------------\n";
             return res;
         }

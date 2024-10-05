@@ -28,5 +28,10 @@ namespace Shop
         {
             throw new NotImplementedException();
         }
+
+        public override string ToString()
+        {
+            return $"Customer ID: {Id}, Name: {Name}";
+        }
     }
 }
