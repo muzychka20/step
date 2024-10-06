@@ -1,0 +1,54 @@
+using System;
+
+namespace EventExample
+{
+    // Определяем делегат
+    public delegate void NotifyEventHandler(string message);
+
+    // Класс, который публикатор события
+    class Publisher
+    {
+        // Объявление события
+        public event NotifyEventHandler Notify;
+
+        public void DoSomething()
+        {
+            Console.WriteLine("Публикатор выполняет действие.");
+            OnNotify("Действие выполнено!");
+        }
+
+        // Метод, который инициирует событие
+        protected virtual void OnNotify(string message)
+        {
+            // Проверяем, если на событие подписаны обработчики
+            if (Notify != null)
+            {
+                Notify(message);
+            }
+        }
+    }
+
+    // Класс, который подписывается на событие
+    class Subscriber
+    {
+        public void OnNotifyReceived(string message)
+        {
+            Console.WriteLine("Подписчик получил сообщение: " + message);
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Publisher publisher = new Publisher();
+            Subscriber subscriber = new Subscriber();
+
+            // Подписываемся на событие
+            publisher.Notify += subscriber.OnNotifyReceived;
+
+            // Выполняем действие, которое инициирует событие
+            publisher.DoSomething();
+        }
+    }
+}

@@ -1,0 +1,26 @@
+using System;
+
+class Box
+{
+    private int value; // жестко привязанный тип int
+    
+    public void SetValue(int val)
+    {
+        value = val;
+    }
+    
+    public int GetValue()
+    {
+        return value;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Box box = new Box();
+        box.SetValue(100); // Устанавливаем значение int
+        Console.WriteLine(box.GetValue()); // Получаем значение int
+    }
+}

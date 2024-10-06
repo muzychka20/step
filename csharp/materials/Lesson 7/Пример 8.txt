@@ -1,0 +1,28 @@
+using System;
+
+namespace DelegateExample
+{
+    // Объявление делегата
+    public delegate void ShowMessage(string message);
+
+    class Program
+    {
+        // Метод, который соответствует делегату
+        static void DisplayMessage(string message)
+        {
+            Console.WriteLine(message);
+        }
+
+        static void Main(string[] args)
+        {
+            // Создание экземпляра делегата и передача метода
+            ShowMessage showMessage = DisplayMessage;
+            
+            // Вызов делегата
+            showMessage("Привет, мир!");
+
+            // Альтернативный вызов через метод Invoke
+            showMessage.Invoke("Это вызов через Invoke.");
+        }
+    }
+}

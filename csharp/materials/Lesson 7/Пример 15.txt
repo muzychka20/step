@@ -1,0 +1,42 @@
+using System;
+
+namespace EventExample
+{
+    class Publisher
+    {
+        // Использование стандартного делегата EventHandler
+        public event EventHandler Notify;
+
+        public void DoSomething()
+        {
+            Console.WriteLine("Публикатор выполняет действие.");
+            OnNotify();
+        }
+
+        protected virtual void OnNotify()
+        {
+            Notify?.Invoke(this, EventArgs.Empty);  // Передаем пустой аргумент события
+        }
+    }
+
+    class Subscriber
+    {
+        public void OnNotifyReceived(object sender, EventArgs e)
+        {
+            Console.WriteLine("Подписчик получил уведомление.");
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Publisher publisher = new Publisher();
+            Subscriber subscriber = new Subscriber();
+
+            publisher.Notify += subscriber.OnNotifyReceived;
+
+            publisher.DoSomething();
+        }
+    }
+}

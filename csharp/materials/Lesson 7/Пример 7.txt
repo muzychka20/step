@@ -1,0 +1,28 @@
+using System;
+
+class Box<T> where T : struct // Ограничение: T должен быть типом-значением (например, int, double)
+{
+    private T value;
+    
+    public void SetValue(T val)
+    {
+        value = val;
+    }
+    
+    public T GetValue()
+    {
+        return value;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        Box<int> intBox = new Box<int>(); // int — тип-значение
+        intBox.SetValue(100);
+        Console.WriteLine(intBox.GetValue());
+        
+        // Box<string> stringBox = new Box<string>(); // Ошибка компиляции, string — не тип-значение
+    }
+}

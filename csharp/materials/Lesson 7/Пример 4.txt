@@ -1,0 +1,19 @@
+using System;
+using System.Collections;
+
+class Program
+{
+    static void Main()
+    {
+        Hashtable table = new Hashtable();
+        table.Add("Alice", 30);
+        table.Add("Bob", 25);
+        
+        IDictionaryEnumerator enumerator = table.GetEnumerator();
+        
+        while (enumerator.MoveNext())
+        {
+            Console.WriteLine($"{enumerator.Key} - {enumerator.Value}");
+        }
+    }
+}

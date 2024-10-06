@@ -1,0 +1,32 @@
+using System;
+
+class Box<T>
+{
+    private T value; // Тип T будет определён при создании экземпляра класса
+    
+    public void SetValue(T val)
+    {
+        value = val;
+    }
+    
+    public T GetValue()
+    {
+        return value;
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Работаем с целыми числами
+        Box<int> intBox = new Box<int>();
+        intBox.SetValue(100);
+        Console.WriteLine(intBox.GetValue()); // Вывод: 100
+        
+        // Работаем со строками
+        Box<string> stringBox = new Box<string>();
+        stringBox.SetValue("Hello");
+        Console.WriteLine(stringBox.GetValue()); // Вывод: Hello
+    }
+}

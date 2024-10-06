@@ -1,0 +1,19 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        IList<string> names = new List<string> { "Alice", "Bob", "Charlie" };
+        
+        names[1] = "Eve"; // Изменение элемента по индексу
+        names.Insert(0, "Dave"); // Вставка элемента по индексу
+        names.RemoveAt(2); // Удаление элемента по индексу
+        
+        foreach (string name in names)
+        {
+            Console.WriteLine(name);
+        }
+    }
+}

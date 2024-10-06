@@ -1,0 +1,29 @@
+using System;
+
+namespace DelegateExample
+{
+    public delegate int Operation(int x, int y);
+
+    class Program
+    {
+        static int Add(int x, int y) => x + y;
+        static int Subtract(int x, int y) => x - y;
+
+        // Метод, который принимает делегат
+        static void PerformOperation(Operation op, int x, int y)
+        {
+            int result = op(x, y);
+            Console.WriteLine($"Результат операции: {result}");
+        }
+
+        static void Main(string[] args)
+        {
+            // Передаем разные методы в делегат
+            Operation addOperation = Add;
+            Operation subOperation = Subtract;
+
+            PerformOperation(addOperation, 10, 5);  // Вывод: Результат операции: 15
+            PerformOperation(subOperation, 10, 5);  // Вывод: Результат операции: 5
+        }
+    }
+}

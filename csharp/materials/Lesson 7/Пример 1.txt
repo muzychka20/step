@@ -1,0 +1,20 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        ICollection<int> numbers = new List<int> { 1, 2, 3 };
+        
+        numbers.Add(4); // Добавление элемента
+        numbers.Remove(2); // Удаление элемента
+        
+        Console.WriteLine("Коллекция содержит " + numbers.Count + " элементов."); // Количество элементов
+        
+        foreach (int number in numbers)
+        {
+            Console.WriteLine(number); // Перечисление элементов
+        }
+    }
+}

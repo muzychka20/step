@@ -1,0 +1,24 @@
+using System;
+
+namespace DelegateExample
+{
+    public delegate void ShowMessage(string message);
+
+    class Program
+    {
+        static void ShowEnglish(string message) => Console.WriteLine("English: " + message);
+        static void ShowRussian(string message) => Console.WriteLine("Русский: " + message);
+
+        static void Main(string[] args)
+        {
+            ShowMessage showMessage = ShowEnglish;
+            showMessage += ShowRussian;  // Добавление метода в делегат
+
+            showMessage("Hello, world!");  // Вывод: English: Hello, world! и Русский: Hello, world!
+
+            // Удаление метода из делегата
+            showMessage -= ShowRussian;
+            showMessage("Hello again!");  // Вывод: English: Hello again!
+        }
+    }
+}

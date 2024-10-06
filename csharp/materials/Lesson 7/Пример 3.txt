@@ -1,0 +1,23 @@
+using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        IDictionary<string, int> ages = new Dictionary<string, int>();
+        
+        ages.Add("Alice", 30);
+        ages.Add("Bob", 25);
+        
+        if (ages.ContainsKey("Bob"))
+        {
+            Console.WriteLine("Возраст Боба: " + ages["Bob"]);
+        }
+        
+        foreach (KeyValuePair<string, int> entry in ages)
+        {
+            Console.WriteLine(entry.Key + " - " + entry.Value);
+        }
+    }
+}

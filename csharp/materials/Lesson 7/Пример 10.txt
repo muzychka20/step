@@ -1,0 +1,24 @@
+using System;
+
+namespace DelegateExample
+{
+    public delegate int Operation(int x, int y);
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Анонимный метод
+            Operation add = delegate (int x, int y)
+            {
+                return x + y;
+            };
+
+            // Лямбда-выражение
+            Operation multiply = (x, y) => x * y;
+
+            Console.WriteLine($"Сложение: {add(3, 4)}");      // Вывод: 7
+            Console.WriteLine($"Умножение: {multiply(3, 4)}"); // Вывод: 12
+        }
+    }
+}
