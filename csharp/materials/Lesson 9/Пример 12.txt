@@ -1,0 +1,26 @@
+using System;
+using System.IO;
+using System.Threading.Tasks;
+
+class StreamReaderAsyncExample
+{
+    static async Task Main()
+    {
+        string filePath = "example_async.txt";
+
+        // Проверяем, существует ли файл
+        if (File.Exists(filePath))
+        {
+            // Асинхронное чтение данных из файла
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string content = await reader.ReadToEndAsync();
+                Console.WriteLine("Asynchronous file content:\n" + content);
+            }
+        }
+        else
+        {
+            Console.WriteLine("File not found.");
+        }
+    }
+}

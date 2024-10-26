@@ -1,0 +1,27 @@
+using System;
+using System.IO;
+using System.Text;
+
+class StreamReaderWithEncodingExample
+{
+    static void Main()
+    {
+        string filePath = "example_utf16.txt";
+
+        // Проверяем, существует ли файл
+        if (File.Exists(filePath))
+        {
+            // Создание StreamReader с указанием кодировки UTF-16
+            using (StreamReader reader = new StreamReader(filePath, Encoding.Unicode))
+            {
+                // Чтение и вывод содержимого файла
+                string content = reader.ReadToEnd();
+                Console.WriteLine("File content with UTF-16 encoding:\n" + content);
+            }
+        }
+        else
+        {
+            Console.WriteLine("File not found.");
+        }
+    }
+}

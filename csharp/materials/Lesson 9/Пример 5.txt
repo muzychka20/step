@@ -1,0 +1,20 @@
+//Запись строк в файл
+using System;
+using System.IO;
+
+class StreamWriterExample
+{
+    static void Main()
+    {
+        string filePath = "example.txt";
+
+        // Создание StreamWriter для записи данных в файл
+        using (StreamWriter writer = new StreamWriter(filePath))
+        {
+            writer.WriteLine("This is the first line.");
+            writer.WriteLine("This is the second line.");
+            writer.WriteLine("This is the third line.");
+            Console.WriteLine("Data successfully written to the file.");
+        }
+    }
+}

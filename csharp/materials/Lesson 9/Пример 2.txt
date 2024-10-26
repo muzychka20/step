@@ -1,0 +1,23 @@
+//Запись данных в файл с использованием FileStream
+using System;
+using System.IO;
+
+class FileStreamWriteExample
+{
+    static void Main()
+    {
+        string filePath = "example.txt";
+        string textToWrite = "This is an example of using FileStream for writing.";
+
+        // Преобразование строки в массив байтов
+        byte[] data = System.Text.Encoding.UTF8.GetBytes(textToWrite);
+
+        // Создание FileStream для записи данных в файл
+        using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
+        {
+            // Запись данных в файл
+            fileStream.Write(data, 0, data.Length);
+            Console.WriteLine("Data successfully written to the file.");
+        }
+    }
+}

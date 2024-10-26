@@ -1,0 +1,20 @@
+//Запись в файл с указанием кодировки
+using System;
+using System.IO;
+using System.Text;
+
+class StreamWriterWithEncodingExample
+{
+    static void Main()
+    {
+        string filePath = "example_utf16.txt";
+        string textToWrite = "This file is written with UTF-16 encoding.";
+
+        // Создание StreamWriter с указанием кодировки UTF-16
+        using (StreamWriter writer = new StreamWriter(filePath, false, Encoding.Unicode))
+        {
+            writer.WriteLine(textToWrite);
+            Console.WriteLine("Data successfully written to the file with UTF-16 encoding.");
+        }
+    }
+}

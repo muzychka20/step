@@ -1,0 +1,33 @@
+//Чтение данных из файла с использованием FileStream
+using System;
+using System.IO;
+
+class FileStreamReadExample
+{
+    static void Main()
+    {
+        string filePath = "example.txt";
+
+        // Проверяем, существует ли файл
+        if (File.Exists(filePath))
+        {
+            // Создание FileStream для чтения данных из файла
+            using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read))
+            {
+                // Создание буфера для хранения данных из файла
+                byte[] buffer = new byte[fileStream.Length];
+
+                // Чтение данных из файла
+                fileStream.Read(buffer, 0, buffer.Length);
+
+                // Преобразование байтов в строку
+                string fileContent = System.Text.Encoding.UTF8.GetString(buffer);
+                Console.WriteLine("File Content: " + fileContent);
+            }
+        }
+        else
+        {
+            Console.WriteLine("File not found.");
+        }
+    }
+}

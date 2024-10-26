@@ -1,0 +1,19 @@
+using System;
+using System.IO;
+using System.Threading.Tasks;
+
+class StreamWriterAsyncExample
+{
+    static async Task Main()
+    {
+        string filePath = "example_async.txt";
+        string textToWrite = "This is an example of asynchronous StreamWriter.";
+
+        // Асинхронная запись данных в файл
+        using (StreamWriter writer = new StreamWriter(filePath))
+        {
+            await writer.WriteLineAsync(textToWrite);
+            Console.WriteLine("Data successfully written to the file asynchronously.");
+        }
+    }
+}

@@ -1,0 +1,29 @@
+using System;
+using System.IO;
+
+class StreamReaderPeekExample
+{
+    static void Main()
+    {
+        string filePath = "example.txt";
+
+        // Проверяем, существует ли файл
+        if (File.Exists(filePath))
+        {
+            // Создание StreamReader для чтения данных из файла
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                // Чтение файла по символам
+                while (reader.Peek() >= 0)
+                {
+                    char currentChar = (char)reader.Read();
+                    Console.Write(currentChar);
+                }
+            }
+        }
+        else
+        {
+            Console.WriteLine("File not found.");
+        }
+    }
+}

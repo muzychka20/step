@@ -1,0 +1,31 @@
+using System;
+using System.IO;
+using System.Threading.Tasks;
+
+class FileStreamAsyncExample
+{
+    static async Task Main()
+    {
+        string filePath = "example_async.txt";
+        string textToWrite = "Asynchronous FileStream example.";
+
+        // Преобразование строки в массив байтов
+        byte[] data = System.Text.Encoding.UTF8.GetBytes(textToWrite);
+
+        // Асинхронная запись данных в файл
+        using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write, FileShare.None, 4096, true))
+        {
+            await fileStream.WriteAsync(data, 0, data.Length);
+            Console.WriteLine("Data successfully written to the file asynchronously.");
+        }
+
+        // Асинхронное чтение данных из файла
+        using (FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.None, 4096, true))
+        {
+            byte[] buffer = new byte[fileStream.Length];
+            await fileStream.ReadAsync(buffer, 0, buffer.Length);
+            string fileContent = System.Text.Encoding.UTF8.GetString(buffer);
+            Console.WriteLine("File Content: " + fileContent);
+        }
+    }
+}

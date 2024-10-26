@@ -1,0 +1,20 @@
+using System;
+using System.IO;
+
+class StreamWriterFlushExample
+{
+    static void Main()
+    {
+        string filePath = "example_flush.txt";
+
+        // Создание StreamWriter с автоочисткой буфера при каждой записи
+        using (StreamWriter writer = new StreamWriter(filePath) { AutoFlush = true })
+        {
+            writer.Write("This is a line without newline.");
+            writer.Write(" This continues the same line.");
+            // Принудительно очищаем буфер и записываем данные
+            writer.Flush();
+            Console.WriteLine("Data successfully written to the file with flush.");
+        }
+    }
+}
