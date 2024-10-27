@@ -1,0 +1,19 @@
+Пример 4: завершение дочернего процесса:
+using System;
+using System.Diagnostics;
+using System.Threading;
+
+namespace TerminateProcessExample
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var process = Process.Start("notepad.exe");
+            Console.WriteLine("Блокнот запущен, завершение через 5 секунд...");
+            Thread.Sleep(5000); // Задержка 5 секунд
+            process.Kill();
+            Console.WriteLine("Блокнот был завершен.");
+        }
+    }
+}

@@ -1,0 +1,17 @@
+using System;
+using System.Diagnostics;
+
+namespace ProcessExample
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var processes = Process.GetProcesses();
+            foreach (var process in processes)
+            {
+                Console.WriteLine($"ID процесса: {process.Id}, Имя процесса: {process.ProcessName}");
+            }
+        }
+    }
+}

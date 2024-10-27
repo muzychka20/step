@@ -1,0 +1,44 @@
+using System;
+using System.Diagnostics;
+using System.Threading;
+
+namespace ReactionGame
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Добро пожаловать в игру 'Успел, не успел'!");
+            Console.WriteLine("Подготовьтесь, через несколько секунд появится сигнал.");
+            Thread.Sleep(new Random().Next(2000, 5000)); // Пауза перед подачей сигнала
+
+            Console.WriteLine("Нажмите Enter как можно быстрее!");
+            Stopwatch stopwatch = new Stopwatch(); // Таймер для измерения времени реакции
+            stopwatch.Start();
+
+            // Ожидаем нажатия клавиши Enter
+            while (Console.ReadKey(true).Key != ConsoleKey.Enter)
+            {
+            }
+
+            stopwatch.Stop();
+            Console.WriteLine($"Ваше время реакции: {stopwatch.ElapsedMilliseconds} миллисекунд.");
+
+            // Проверка скорости реакции
+            if (stopwatch.ElapsedMilliseconds <= 300)
+            {
+                Console.WriteLine("Отличная реакция! Вы успели!");
+            }
+            else if (stopwatch.ElapsedMilliseconds <= 700)
+            {
+                Console.WriteLine("Хорошая реакция! Можно еще лучше!");
+            }
+            else
+            {
+                Console.WriteLine("Слишком медленно, попробуйте еще раз.");
+            }
+
+            Console.WriteLine("Спасибо за игру!");
+        }
+    }
+}

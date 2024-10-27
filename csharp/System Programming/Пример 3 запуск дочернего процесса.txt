@@ -1,0 +1,17 @@
+Пример 3: запуск дочернего процесса и ожидание его завершения:
+using System;
+using System.Diagnostics;
+
+namespace ChildProcessExample
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var childProcess = Process.Start("notepad.exe");
+            Console.WriteLine("Ожидание завершения процесса Блокнота...");
+            childProcess.WaitForExit();
+            Console.WriteLine("Блокнот был закрыт.");
+        }
+    }
+}

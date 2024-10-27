@@ -1,0 +1,16 @@
+Пример 5: создание нового домена приложения и выполнение кода в нем
+using System;
+
+namespace AppDomainExample
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            AppDomain newDomain = AppDomain.CreateDomain("NewDomain");
+            newDomain.DoCallBack(() => Console.WriteLine("Привет из нового домена!"));
+            AppDomain.Unload(newDomain);
+            Console.WriteLine("Домен был выгружен.");
+        }
+    }
+}

@@ -1,0 +1,23 @@
+Пример 7: выполнение двух задач параллельно
+using System;
+using System.Threading;
+
+namespace ParallelTasksExample
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Thread thread1 = new Thread(() => Console.WriteLine("Задача 1 выполняется."));
+            Thread thread2 = new Thread(() => Console.WriteLine("Задача 2 выполняется."));
+
+            thread1.Start();
+            thread2.Start();
+
+            thread1.Join();
+            thread2.Join();
+
+            Console.WriteLine("Обе задачи выполнены.");
+        }
+    }
+}

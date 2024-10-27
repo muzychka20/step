@@ -1,0 +1,93 @@
+using System;
+using System.IO;
+using System.Threading;
+
+namespace BankExample
+{
+    class Bank
+    {
+        private int _money;
+        private string _name;
+        private int _percent;
+        private readonly string _filePath = "BankData.txt";
+
+        // Свойства с логикой вызова метода записи при изменении значений
+        public int Money
+        {
+            get => _money;
+            set
+            {
+                _money = value;
+                LogChange();
+            }
+        }
+
+        public string Name
+        {
+            get => _name;
+            set
+            {
+                _name = value;
+                LogChange();
+            }
+        }
+
+        public int Percent
+        {
+            get => _percent;
+            set
+            {
+                _percent = value;
+                LogChange();
+            }
+        }
+
+        // Метод, который создаёт поток для записи изменений в файл
+        private void LogChange()
+        {
+            // Создаем и запускаем поток для записи в файл
+            Thread logThread = new Thread(() =>
+            {
+                WriteToFile();
+            });
+            logThread.Start();
+        }
+
+        // Метод для записи свойств в файл
+        private void WriteToFile()
+        {
+            // Используем блокировку для предотвращения конфликтов записи
+            lock (this)
+            {
+                using (StreamWriter writer = new StreamWriter(_filePath, true))
+                {
+                    writer.WriteLine($"Дата: {DateTime.Now}");
+                    writer.WriteLine($"Name: {_name}");
+                    writer.WriteLine($"Money: {_money}");
+                    writer.WriteLine($"Percent: {_percent}");
+                    writer.WriteLine(new string('-', 20));
+                }
+            }
+        }
+    }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Bank bank = new Bank
+            {
+                Name = "Bank of Trust",
+                Money = 100000,
+                Percent = 5
+            };
+
+            // Пример изменения свойств, которые вызовут запись в файл
+            bank.Money = 120000;
+            bank.Percent = 6;
+            bank.Name = "Trustworthy Bank";
+
+            Console.WriteLine("Изменения записаны в файл.");
+        }
+    }
+}

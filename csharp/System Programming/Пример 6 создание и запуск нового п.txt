@@ -1,0 +1,20 @@
+Пример 6: создание и запуск нового потока
+using System;
+using System.Threading;
+
+namespace ThreadExample
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Thread newThread = new Thread(() =>
+            {
+                Console.WriteLine("Поток запущен.");
+            });
+            newThread.Start();
+            newThread.Join();
+            Console.WriteLine("Поток завершен.");
+        }
+    }
+}

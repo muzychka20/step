@@ -1,0 +1,32 @@
+using System;
+using System.Collections.Generic;
+using System.Threading;
+
+namespace CollectionToStringExample
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // Создаем коллекцию элементов
+            List<object> items = new List<object> { 123, "Hello", DateTime.Now, 45.67 };
+
+            // Создаем и запускаем поток, передавая в него коллекцию
+            Thread thread = new Thread(() => PrintCollection(items));
+            thread.Start();
+
+            // Ожидаем завершения потока
+            thread.Join();
+            Console.WriteLine("Поток завершен.");
+        }
+
+        // Метод, который вызывается в потоке
+        static void PrintCollection(List<object> collection)
+        {
+            foreach (var item in collection)
+            {
+                Console.WriteLine(item.ToString());
+            }
+        }
+    }
+}

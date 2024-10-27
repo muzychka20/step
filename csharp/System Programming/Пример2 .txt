@@ -1,0 +1,18 @@
+Пример2: запуск процесса Блокнота:
+using System;
+using System.Diagnostics;
+
+namespace ProcessStartExample
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            var process = new Process();
+            process.StartInfo.FileName = "notepad.exe";
+            process.Start();
+
+            Console.WriteLine("Блокнот запущен.");
+        }
+    }
+}
