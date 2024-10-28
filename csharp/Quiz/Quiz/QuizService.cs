@@ -1,54 +1,23 @@
-﻿namespace Quiz
+﻿using System.Text.Json;
+
+namespace Quiz
 {
 	public class QuizService
-	{	
-		private List<Quiz> quizzes = new List<Quiz>
+	{
+		private List<Quiz> quizzes = new List<Quiz>();
+
+		public QuizService()
 		{
-			new Quiz
+			if (File.Exists("quizzes.json"))
 			{
-				Name = "История",
-				Questions = new List<Question>
-				{
-					new Question
-					{
-						Text = "Когда началась Первая мировая война?",
-						Options = new List<string> { "1912", "1914", "1916", "1918" },
-						CorrectAnswers = new List<int> { 2 }
-					},
-					new Question
-					{
-						Text = "Кто был первым президентом США?",
-						Options = new List<string> { "Авраам Линкольн", "Джордж Вашингтон", "Томас Джефферсон", "Теодор Рузвельт" },
-						CorrectAnswers = new List<int> { 2 }
-					},
-					new Question{
-						Text = "Какие из следующих государств являются постоянными членами Совета Безопасности ООН?",
-						Options = new List<string> { "Франция", "Германия", "Китай", "Индия", "Россия", "США" },
-						CorrectAnswers = new List<int> { 1, 3, 5, 6 } // Франция, Китай, Россия, США
-					}
-				}
-			},
-			new Quiz
-			{
-				Name = "География",
-				Questions = new List<Question>
-				{
-					new Question
-					{
-						Text = "Какая самая большая страна по площади?",
-						Options = new List<string> { "Канада", "Россия", "Китай", "США" },
-						CorrectAnswers = new List<int> { 2 }
-					},
-					new Question
-					{
-						Text = "Какой океан самый большой?",
-						Options = new List<string> { "Атлантический", "Тихий", "Индийский", "Северный Ледовитый" },
-						CorrectAnswers = new List<int> { 2 }
-					}
-				}
+				string json = File.ReadAllText("quizzes.json");
+				quizzes = JsonSerializer.Deserialize<List<Quiz>>(json);
 			}
-		};		
-		
+			else
+			{
+				quizzes = new List<Quiz>();
+			}
+		}
 		public void TakeQuiz()
 		{
 			Console.WriteLine("Выберите викторину:");
@@ -91,6 +60,108 @@
 				result.ToString();
 				UserStore.GetCurrentUser().QuizResults.Add(result);
 			}
-		}		
+		}
+
+		public void CreateQuiz()
+		{
+			Console.WriteLine("Введите название новой викторины:");
+			string name = Console.ReadLine();
+
+			var questions = new List<Question>();
+
+			while (true)
+			{
+				Console.WriteLine("Введите текст вопроса (или оставьте пустым, чтобы закончить):");
+				string questionText = Console.ReadLine();
+				if (string.IsNullOrEmpty(questionText)) break;
+
+				Console.WriteLine("Введите варианты ответов через запятую:");
+				var options = Console.ReadLine().Split(',').Select(o => o.Trim()).ToList();
+
+				Console.WriteLine("Введите номера правильных ответов через запятую:");
+				var correctAnswers = Console.ReadLine().Split(',').Select(a => int.Parse(a.Trim())).ToList();
+
+				questions.Add(new Question
+				{
+					Text = questionText,
+					Options = options,
+					CorrectAnswers = correctAnswers
+				});
+			}
+
+			var newQuiz = new Quiz
+			{
+				Name = name,
+				Questions = questions
+			};
+
+			quizzes.Add(newQuiz);
+			SaveQuizzesToFile();
+			Console.WriteLine("Викторина успешно добавлена!");
+		}
+
+		public void ModifyQuiz()
+		{
+			Console.WriteLine("Выберите викторину для изменения:");
+			for (int i = 0; i < quizzes.Count; i++)
+			{
+				Console.WriteLine($"{i + 1}. {quizzes[i].Name}");
+			}
+
+			int choose = Int32.Parse(Console.ReadLine()) - 1;
+
+			if (choose < quizzes.Count && choose >= 0)
+			{
+				var selectedQuiz = quizzes[choose];
+				Console.WriteLine($"Редактирование викторины: {selectedQuiz.Name}");
+
+				Console.WriteLine("Введите новое название викторины (или оставьте пустым, чтобы не изменять):");
+				string newName = Console.ReadLine();
+				if (!string.IsNullOrEmpty(newName))
+				{
+					selectedQuiz.Name = newName;
+				}
+
+				Console.WriteLine("Редактировать вопросы? (y/n):");
+				if (Console.ReadLine().ToLower() == "y")
+				{
+					for (int i = 0; i < selectedQuiz.Questions.Count; i++)
+					{
+						var question = selectedQuiz.Questions[i];
+						Console.WriteLine($"Вопрос {i + 1}: {question.Text}");
+
+						Console.WriteLine("Введите новый текст вопроса (или оставьте пустым, чтобы не изменять):");
+						string newQuestionText = Console.ReadLine();
+						if (!string.IsNullOrEmpty(newQuestionText))
+						{
+							question.Text = newQuestionText;
+						}
+
+						Console.WriteLine("Введите новые варианты ответов через запятую (или оставьте пустым, чтобы не изменять):");
+						string newOptions = Console.ReadLine();
+						if (!string.IsNullOrEmpty(newOptions))
+						{
+							question.Options = newOptions.Split(',').Select(o => o.Trim()).ToList();
+						}
+
+						Console.WriteLine("Введите номера новых правильных ответов через запятую (или оставьте пустым, чтобы не изменять):");
+						string newCorrectAnswers = Console.ReadLine();
+						if (!string.IsNullOrEmpty(newCorrectAnswers))
+						{
+							question.CorrectAnswers = newCorrectAnswers.Split(',').Select(a => int.Parse(a.Trim())).ToList();
+						}
+					}
+				}
+
+				SaveQuizzesToFile();
+				Console.WriteLine("Викторина успешно обновлена!");
+			}
+		}
+
+		private void SaveQuizzesToFile()
+		{
+			string json = JsonSerializer.Serialize(quizzes, new JsonSerializerOptions { WriteIndented = true });
+			File.WriteAllText("quizzes.json", json);
+		}
 	}
 }

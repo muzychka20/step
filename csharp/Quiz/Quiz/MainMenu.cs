@@ -13,29 +13,44 @@
 		{
 			while (true)
 			{
-				Console.WriteLine("1. Login");
-				Console.WriteLine("2. Register");
-				Console.WriteLine("3. Exit");
-				int choose = int.Parse(Console.ReadLine());
-				if (choose == 3)
+				try
 				{
-					break;
+					Console.WriteLine("1. Login");
+					Console.WriteLine("2. Register");
+					Console.WriteLine("3. Exit");
+					int choose = int.Parse(Console.ReadLine());
+					if (choose == 3)
+					{
+						break;
+					}
+					switch (choose)
+					{
+						case 1:
+							userRepository.AuthUser();
+							if (UserStore.authUserId != null)
+							{
+								if (UserStore.authUserId == "admin")
+								{
+									AdminMenu menu = new AdminMenu();
+									menu.Show();
+								}
+								else
+								{
+									UserMenu menu = new UserMenu(userRepository);
+									menu.Show();
+								}
+							}
+							break;
+						case 2:
+							userRepository.RegisterUser();
+							break;
+					}
+					Console.ReadLine();
 				}
-				switch (choose)
+				catch (Exception ex)
 				{
-					case 1:
-						userRepository.AuthUser();
-						if (UserStore.authUserId != null)
-						{
-							UserMenu menu = new UserMenu(userRepository);
-							menu.Show();
-						}
-						break;
-					case 2:
-						userRepository.RegisterUser();
-						break;
+					Console.WriteLine(ex.Message);
 				}
-				Console.ReadLine();
 			}
 		}
 	}

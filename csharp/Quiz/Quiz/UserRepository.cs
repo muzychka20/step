@@ -31,7 +31,7 @@ namespace Quiz
 			}
 		}
 
-		public void AuthUser()
+		public int AuthUser()
 		{
 			Console.WriteLine("Login: "); string login = Console.ReadLine();
 			Console.WriteLine("Password: "); string password = Console.ReadLine();
@@ -45,10 +45,12 @@ namespace Quiz
 			{
 				UserStore.authUserId = um.Id;
 				Console.WriteLine("Loged in successfully!");
+				return 1;
 			}
 			else
 			{
 				Console.WriteLine("Incorrect data!");
+				return 0;
 			}
 		}
 
@@ -68,7 +70,11 @@ namespace Quiz
 
 		public List<UserModel> GetTop20()
 		{
-			return UserStore.users.OrderBy(u => u.Points).Take(20).ToList();
+			return UserStore.users
+					.Where(u => u.Login != "admin")
+					.OrderByDescending(u => u.Points)
+					.Take(20)
+					.ToList();
 		}
 
 		public void ShowResults()
