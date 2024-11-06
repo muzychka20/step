@@ -1,0 +1,41 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    static void Main()
+    {
+        // Пример списка данных для обработки
+        string[] dataItems = { "Элемент 1", "Элемент 2", "Элемент 3", "Элемент 4", "Элемент 5" };
+
+        // Для каждого элемента в списке создаем задание в пуле потоков
+        foreach (var item in dataItems)
+        {
+            ThreadPool.QueueUserWorkItem(ProcessData, item);
+        }
+
+        Console.WriteLine("Все задания отправлены на обработку.");
+        
+        // Даем время потокам завершить выполнение (зависит от объема задач)
+        Thread.Sleep(5000);
+        Console.WriteLine("Основной поток завершает выполнение.");
+    }
+
+    // Метод обработки данных
+    static void ProcessData(object state)
+    {
+        string dataItem = state as string;
+        Console.WriteLine($"Обработка {dataItem} начата в потоке {Thread.CurrentThread.ManagedThreadId}");
+        
+        // Имитация сложной работы
+        Thread.Sleep(new Random().Next(1000, 3000));
+        
+        Console.WriteLine($"Обработка {dataItem} завершена в потоке {Thread.CurrentThread.ManagedThreadId}");
+    }
+}
+
+
+Пояснение:
+ThreadPool.QueueUserWorkItem используется для добавления каждой задачи в пул потоков.
+Thread.Sleep(new Random().Next(1000, 3000)) – имитация обработки с разным временем выполнения, что показывает асинхронность и параллелизм.
+Thread.CurrentThread.ManagedThreadId выводит идентификатор текущего потока, чтобы показать, что задачи выполняются параллельно в разных потоках.

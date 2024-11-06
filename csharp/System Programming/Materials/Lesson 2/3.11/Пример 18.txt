@@ -1,0 +1,50 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    // Создаем семафор, который позволяет максимум 3 потокам работать одновременно.
+    private static Semaphore semaphore = new Semaphore(3, 3);
+    private static int resource = 0;
+
+    static void Main()
+    {
+        // Запускаем 10 потоков.
+        for (int i = 0; i < 10; i++)
+        {
+            Thread thread = new Thread(AccessResource);
+            thread.Name = $"Поток {i + 1}";
+            thread.Start();
+        }
+
+        Console.ReadLine(); // Ожидание ввода, чтобы программа не завершилась сразу.
+    }
+
+    static void AccessResource()
+    {
+        Console.WriteLine($"{Thread.CurrentThread.Name} пытается получить доступ к ресурсу...");
+        semaphore.WaitOne(); // Захватываем семафор
+
+        try
+        {
+            // Доступ к общему ресурсу
+            resource++;
+            Console.WriteLine($"{Thread.CurrentThread.Name} получил доступ к ресурсу. Текущий ресурс: {resource}");
+            Thread.Sleep(2000); // Имитируем работу с ресурсом
+        }
+        finally
+        {
+            // Освобождаем семафор
+            Console.WriteLine($"{Thread.CurrentThread.Name} освобождает доступ к ресурсу.");
+            semaphore.Release();
+        }
+    }
+}
+
+Пояснение к коду:
+Инициализация семафора: private static Semaphore semaphore = new Semaphore(3, 3); создает семафор, разрешающий максимум 3 потока работать одновременно.
+Запуск потоков: В цикле создаются и запускаются 10 потоков, каждый из которых пытается получить доступ к общему ресурсу.
+Метод AccessResource:
+Сначала поток пытается захватить семафор с помощью semaphore.WaitOne().
+Если семафор захвачен, поток увеличивает значение общего ресурса и имитирует работу с ним (задержка 2 секунды).
+В блоке finally семафор освобождается с помощью semaphore.Release(), что позволяет другим потокам получить доступ к ресурсу.

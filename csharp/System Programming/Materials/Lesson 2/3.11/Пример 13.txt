@@ -1,0 +1,34 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    static int sharedValue = 0;
+
+    static void UpdateValue(int expectedValue, int newValue)
+    {
+        int result = Interlocked.CompareExchange(ref sharedValue, newValue, expectedValue);
+        if (result == expectedValue)
+        {
+            Console.WriteLine($"Value updated to {newValue}");
+        }
+        else
+        {
+            Console.WriteLine($"Value not updated. Current value: {sharedValue}");
+        }
+    }
+
+    static void Main()
+    {
+        Thread t1 = new Thread(() => UpdateValue(0, 1));
+        Thread t2 = new Thread(() => UpdateValue(0, 2));
+
+        t1.Start();
+        t2.Start();
+
+        t1.Join();
+        t2.Join();
+
+        Console.WriteLine($"Final Shared Value: {sharedValue}");
+    }
+}

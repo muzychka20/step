@@ -1,0 +1,27 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    static int sharedValue = 0;
+
+    static void UpdateValue()
+    {
+        int oldValue = Interlocked.Exchange(ref sharedValue, 10);
+        Console.WriteLine($"Old Value: {oldValue}, New Value: {sharedValue}");
+    }
+
+    static void Main()
+    {
+        Thread t1 = new Thread(UpdateValue);
+        Thread t2 = new Thread(UpdateValue);
+        
+        t1.Start();
+        t2.Start();
+        
+        t1.Join();
+        t2.Join();
+        
+        Console.WriteLine($"Final Shared Value: {sharedValue}");
+    }
+}

@@ -1,0 +1,31 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    static void Main()
+    {
+        // Пул потоков вызывает метод в новом потоке.
+        ThreadPool.QueueUserWorkItem(DoWork, "Задача 1");
+        ThreadPool.QueueUserWorkItem(DoWork, "Задача 2");
+
+        Console.WriteLine("Основной поток завершает работу.");
+        // Даем время потокам в пуле завершить выполнение
+        Thread.Sleep(2000);
+    }
+
+    // Метод, который будет выполняться в потоках пула
+    static void DoWork(object state)
+    {
+        string taskName = state as string;
+        Console.WriteLine($"{taskName} выполняется в потоке {Thread.CurrentThread.ManagedThreadId}");
+        Thread.Sleep(1000); // Имитация работы
+        Console.WriteLine($"{taskName} завершена.");
+    }
+}
+
+
+Пояснение:
+ThreadPool.QueueUserWorkItem – метод, который добавляет задачу в очередь пула потоков.
+DoWork – метод, который выполняется в потоке из пула.
+Thread.Sleep(1000) – эмуляция времени выполнения задачи для демонстрации многопоточности.

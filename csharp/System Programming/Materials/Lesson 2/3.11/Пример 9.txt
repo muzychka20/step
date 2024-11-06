@@ -1,0 +1,40 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    static object lock1 = new object();
+    static object lock2 = new object();
+
+    static void Task1()
+    {
+        lock (lock1)
+        {
+            Thread.Sleep(100); // Имитация работы
+            lock (lock2) { }
+        }
+    }
+
+    static void Task2()
+    {
+        lock (lock2)
+        {
+            Thread.Sleep(100); // Имитация работы
+            lock (lock1) { }
+        }
+    }
+
+    static void Main()
+    {
+        Thread t1 = new Thread(Task1);
+        Thread t2 = new Thread(Task2);
+        
+        t1.Start();
+        t2.Start();
+        
+        t1.Join();
+        t2.Join();
+        
+        Console.WriteLine("Completed without deadlock");
+    }
+}

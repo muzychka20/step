@@ -1,0 +1,63 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    private static readonly object monitorObject = new object(); // Объект для блокировки
+    private static int counter = 0; // Общий счетчик
+
+    static void Main()
+    {
+        Thread[] threads = new Thread[5]; // Массив потоков
+
+        // Создание и запуск потоков
+        for (int i = 0; i < threads.Length; i++)
+        {
+            threads[i] = new Thread(IncrementCounter);
+            threads[i].Start();
+        }
+
+        // Ожидание завершения всех потоков
+        foreach (var thread in threads)
+        {
+            thread.Join();
+        }
+
+        Console.WriteLine($"Final counter value: {counter}");
+    }
+
+    // Метод для увеличения счетчика
+    static void IncrementCounter()
+    {
+        for (int i = 0; i < 1000; i++)
+        {
+            Monitor.Enter(monitorObject); // Блокировка объекта
+            try
+            {
+                counter++; // Увеличение счетчика
+            }
+            finally
+            {
+                Monitor.Exit(monitorObject); // Обязательно разблокируем объект
+            }
+        }
+    }
+}
+
+
+Описание кода
+Объект блокировки: private static readonly object monitorObject = new object(); — используется для блокировки. Это объект, который потоки будут использовать для синхронизации.
+
+Счетчик: private static int counter = 0; — общий счетчик, который будет увеличиваться.
+
+Создание потоков: В Main методе создается массив потоков, и каждый поток запускается с методом IncrementCounter.
+
+Метод IncrementCounter:
+
+Monitor.Enter(monitorObject); — блокирует объект, чтобы предотвратить одновременный доступ других потоков.
+В блоке try мы увеличиваем счетчик.
+finally гарантирует, что объект будет разблокирован с помощью Monitor.Exit(monitorObject);, даже если произойдет исключение.
+Ожидание завершения потоков: thread.Join(); — основной поток ожидает завершения всех потоков перед выводом итогового значения счетчика.
+
+Результат
+После выполнения программы вы увидите, что итоговое значение счетчика будет равным 5000, так как 5 потоков по 1000 увеличений:

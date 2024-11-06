@@ -1,0 +1,57 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    // Общий счетчик
+    private static int counter = 0;
+    // Мьютекс для синхронизации доступа
+    private static Mutex mutex = new Mutex();
+
+    static void Main(string[] args)
+    {
+        Thread thread1 = new Thread(IncrementCounter);
+        Thread thread2 = new Thread(IncrementCounter);
+
+        thread1.Start();
+        thread2.Start();
+
+        thread1.Join();
+        thread2.Join();
+
+        Console.WriteLine($"Итоговое значение счетчика: {counter}");
+    }
+
+    static void IncrementCounter()
+    {
+        for (int i = 0; i < 1000; i++)
+        {
+            // Захват мьютекса
+            mutex.WaitOne();
+
+            // Изменение общего счетчика
+            counter++;
+
+            // Освобождение мьютекса
+            mutex.ReleaseMutex();
+        }
+    }
+}
+
+
+Объяснение примера:
+Объявление переменных:
+
+counter: общий счетчик, к которому обращаются оба потока.
+mutex: экземпляр класса Mutex, используемый для синхронизации.
+Создание и запуск потоков:
+
+Создаются два потока, каждый из которых выполняет метод IncrementCounter.
+Метод IncrementCounter:
+
+Каждый поток выполняет цикл, в котором 1000 раз увеличивает значение counter.
+Перед увеличением счетчика поток захватывает мьютекс с помощью WaitOne(), чтобы другие потоки не могли получить доступ к критической секции.
+После изменения значения счетчика поток освобождает мьютекс с помощью ReleaseMutex().
+Вывод итогового значения:
+
+После завершения обоих потоков выводится итоговое значение счетчика, которое должно равняться 2000, если мьютекс работает правильно и исключает состояние гонки.

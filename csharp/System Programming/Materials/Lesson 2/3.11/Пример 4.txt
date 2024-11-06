@@ -1,0 +1,28 @@
+Пример параллельного выполнения нескольких задач:
+using System;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        Task<string> task1 = GetDataAsync("Задача 1", 2000);
+        Task<string> task2 = GetDataAsync("Задача 2", 3000);
+
+        // Ожидание выполнения всех задач параллельно
+        string[] results = await Task.WhenAll(task1, task2);
+
+        foreach (var result in results)
+        {
+            Console.WriteLine(result);
+        }
+
+        Console.WriteLine("Все задачи завершены.");
+    }
+
+    static async Task<string> GetDataAsync(string taskName, int delay)
+    {
+        await Task.Delay(delay);
+        return $"{taskName} завершена!";
+    }
+}

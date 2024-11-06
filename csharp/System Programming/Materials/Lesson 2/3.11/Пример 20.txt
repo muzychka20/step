@@ -1,0 +1,41 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    static AutoResetEvent autoResetEvent = new AutoResetEvent(false);
+
+    static void WorkerThread(int id)
+    {
+        Console.WriteLine($"Рабочий поток {id} ожидает сигнала...");
+        autoResetEvent.WaitOne(); // Ожидание сигнала
+        Console.WriteLine($"Рабочий поток {id} продолжает выполнение!");
+    }
+
+    static void Main()
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            int threadId = i + 1;
+            Thread thread = new Thread(() => WorkerThread(threadId));
+            thread.Start();
+        }
+
+        Console.WriteLine("Нажмите Enter для установки сигнала для следующего потока...");
+        for (int i = 0; i < 3; i++)
+        {
+            Console.ReadLine();
+            autoResetEvent.Set(); // Установка сигнала
+            Console.WriteLine("Сигнал установлен для рабочего потока!");
+        }
+    }
+}
+
+
+Объяснение кода
+ManualResetEvent:
+Создается сигнал, который не установлен (т.е. поток, ожидающий сигнала, заблокирован).
+После нажатия клавиши Enter в главном потоке сигнал устанавливается, и ожидающий поток продолжает выполнение.
+AutoResetEvent:
+Создается несколько потоков, каждый из которых ожидает сигнала.
+Каждый раз, когда сигнал устанавливается (при нажатии Enter), только один из ожидающих потоков продолжает выполнение, а остальные остаются заблокированными.

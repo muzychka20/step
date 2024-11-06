@@ -1,0 +1,24 @@
+Пример асинхронного метода в консольном приложении:
+using System;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main(string[] args)
+    {
+        Console.WriteLine("Начало выполнения программы...");
+        
+        // Асинхронный вызов метода
+        string result = await GetDataAsync();
+        
+        Console.WriteLine($"Результат: {result}");
+        Console.WriteLine("Конец выполнения программы.");
+    }
+
+    static async Task<string> GetDataAsync()
+    {
+        // Эмуляция длительной операции (например, запроса данных)
+        await Task.Delay(3000); // Задержка 3 секунды
+        return "Данные получены!";
+    }
+}

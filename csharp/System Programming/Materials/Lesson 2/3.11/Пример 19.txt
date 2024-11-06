@@ -1,0 +1,28 @@
+using System;
+using System.Threading;
+
+class Program
+{
+    static ManualResetEvent manualResetEvent = new ManualResetEvent(false);
+
+    static void WorkerThread()
+    {
+        Console.WriteLine("Рабочий поток ожидает сигнала...");
+        manualResetEvent.WaitOne(); // Ожидание сигнала
+        Console.WriteLine("Рабочий поток продолжает выполнение!");
+    }
+
+    static void Main()
+    {
+        Thread thread = new Thread(WorkerThread);
+        thread.Start();
+
+        Console.WriteLine("Нажмите Enter для установки сигнала...");
+        Console.ReadLine();
+
+        manualResetEvent.Set(); // Установка сигнала
+        Console.WriteLine("Сигнал установлен!");
+
+        thread.Join(); // Ожидание завершения рабочего потока
+    }
+}
