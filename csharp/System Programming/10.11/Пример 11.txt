@@ -1,0 +1,14 @@
+using System;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        var data = Enumerable.Range(1, 1_000_000).ToList();
+
+        // Параллельное получение квадратов чисел
+        var squares = data.AsParallel().Select(x => x * x).ToList();
+        Console.WriteLine("Параллельное вычисление завершено.");
+    }
+}

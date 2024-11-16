@@ -1,0 +1,25 @@
+using System;
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        Task task1 = Task.Run(() => {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine($"Задача 1 - шаг {i}");
+            }
+        });
+
+        Task task2 = Task.Run(() => {
+            for (int i = 0; i < 10; i++)
+            {
+                Console.WriteLine($"Задача 2 - шаг {i}");
+            }
+        });
+
+        Task.WaitAll(task1, task2); // Ожидание завершения всех задач
+        Console.WriteLine("Все задачи завершены");
+    }
+}

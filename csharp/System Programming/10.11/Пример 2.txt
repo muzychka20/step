@@ -1,0 +1,13 @@
+using System;
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        Parallel.For(0, 10, i =>
+        {
+            Console.WriteLine($"Параллельный цикл - итерация {i}");
+        });
+    }
+}

@@ -1,0 +1,28 @@
+using System;
+using System.Linq;
+using System.Threading;
+
+class Program
+{
+    static void Main()
+    {
+        var numbers = Enumerable.Range(1, 10);
+
+        // Параллельная обработка с немедленной выдачей результатов
+        var results = numbers.AsParallel()
+                             .WithMergeOptions(ParallelMergeOptions.NotBuffered)
+                             .Select(x =>
+                             {
+                                 // Имитация долгой работы
+                                 Thread.Sleep(100 * x);
+                                 return x * 2;
+                             });
+
+        Console.WriteLine("Результат с немедленной выдачей:");
+        foreach (var result in results)
+        {
+            Console.WriteLine(result);
+        }
+    }
+}
+Числа будут выводиться в консоль по мере их готовности, а не в порядке исходной последовательности. Вы увидите результаты быстрее, так как ParallelMergeOptions.NotBuffered позволяет начать обработку элементов, как только они готовы, не ожидая завершения всего параллельного запроса.

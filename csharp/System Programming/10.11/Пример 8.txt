@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        ConcurrentDictionary<int, string> dict = new ConcurrentDictionary<int, string>();
+
+        Parallel.For(0, 10, i =>
+        {
+            dict.TryAdd(i, $"Value {i}");
+        });
+
+        foreach (var kvp in dict)
+        {
+            Console.WriteLine($"{kvp.Key}: {kvp.Value}");
+        }
+    }
+}

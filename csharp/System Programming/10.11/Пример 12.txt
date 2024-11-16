@@ -1,0 +1,24 @@
+using System;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        var numbers = Enumerable.Range(1, 10);
+
+        // Параллельная обработка с сохранением порядка
+        var doubledNumbers = numbers.AsParallel()
+                                    .AsOrdered() // Сохраняем порядок элементов
+                                    .Select(x => x * 2)
+                                    .ToList();
+
+        Console.WriteLine("Результат с сохранением порядка:");
+        foreach (var num in doubledNumbers)
+        {
+            Console.WriteLine(num);
+        }
+    }
+}
+
+ В этом случае числа будут выведены в порядке от 2 до 20, сохраняя изначальный порядок последовательности. Использование AsOrdered() гарантирует, что порядок элементов останется таким же, как в исходной последовательности, несмотря на параллельную обработку.

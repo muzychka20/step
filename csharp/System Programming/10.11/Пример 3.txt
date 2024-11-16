@@ -1,0 +1,19 @@
+using System;
+using System.Threading.Tasks;
+
+class Program
+{
+    static async Task Main()
+    {
+        Task<int> task = Task.Run(() => 
+        {
+            int sum = 0;
+            for (int i = 0; i < 10; i++) sum += i;
+            return sum;
+        });
+
+        Console.WriteLine("Выполняем задачу...");
+        int result = await task;
+        Console.WriteLine($"Результат задачи: {result}");
+    }
+}

@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        ConcurrentStack<int> stack = new ConcurrentStack<int>();
+
+        Parallel.For(0, 10, i =>
+        {
+            stack.Push(i);
+        });
+
+        while (stack.TryPop(out int result))
+        {
+            Console.WriteLine(result);
+        }
+    }
+}

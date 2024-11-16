@@ -1,0 +1,21 @@
+using System;
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        ConcurrentBag<int> bag = new ConcurrentBag<int>();
+
+        Parallel.For(0, 10, i =>
+        {
+            bag.Add(i);
+        });
+
+        foreach (var item in bag)
+        {
+            Console.WriteLine(item);
+        }
+    }
+}

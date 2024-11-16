@@ -1,0 +1,18 @@
+using System;
+using System.Linq;
+
+class Program
+{
+    static void Main()
+    {
+        var numbers = Enumerable.Range(1, 10_000);
+
+        var evenNumbers = numbers.AsParallel()
+                                 .Where(n => n % 2 == 0)
+                                 .ToList();
+
+        evenNumbers.ForEach(Console.WriteLine);
+    }
+}
+
+В этом примере метод AsParallel() превращает коллекцию в параллельную, а фильтрация чисел происходит параллельно.

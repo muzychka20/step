@@ -1,0 +1,19 @@
+using System;
+using System.Threading.Tasks;
+
+class Program
+{
+    static void Main()
+    {
+        Parallel.For(0, 10, i => 
+        {
+            Console.WriteLine($"Параллельная итерация {i}");
+        });
+
+        string[] items = { "A", "B", "C", "D" };
+        Parallel.ForEach(items, item => 
+        {
+            Console.WriteLine($"Обрабатываем элемент: {item}");
+        });
+    }
+}
