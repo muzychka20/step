@@ -1,0 +1,49 @@
+using System;
+
+// Целевой интерфейс (Target)
+public interface IUsbDevice
+{
+    void ConnectWithUsb();
+}
+
+// Адаптируемый класс (Adaptee)
+public class Ps2Device
+{
+    public void ConnectWithPs2()
+    {
+        Console.WriteLine("Подключено через PS/2.");
+    }
+}
+
+// Адаптер (Adapter)
+public class UsbToPs2Adapter : IUsbDevice
+{
+    private readonly Ps2Device _ps2Device;
+
+    public UsbToPs2Adapter(Ps2Device ps2Device)
+    {
+        _ps2Device = ps2Device;
+    }
+
+    public void ConnectWithUsb()
+    {
+        Console.WriteLine("Адаптация интерфейса USB к PS/2...");
+        _ps2Device.ConnectWithPs2();
+    }
+}
+
+// Клиентский код (Client)
+class Program
+{
+    static void Main()
+    {
+        // Адаптируем PS/2 устройство для работы как USB
+        Ps2Device ps2Device = new();
+        IUsbDevice usbAdapter = new UsbToPs2Adapter(ps2Device);
+
+        usbAdapter.ConnectWithUsb();
+        // Вывод:
+        // Адаптация интерфейса USB к PS/2...
+        // Подключено через PS/2.
+    }
+}

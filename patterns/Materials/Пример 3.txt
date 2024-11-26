@@ -1,0 +1,83 @@
+using System;
+
+// Продукт
+public class House
+{
+    public string Foundation { get; set; } = string.Empty;
+    public string Walls { get; set; } = string.Empty;
+    public string Roof { get; set; } = string.Empty;
+
+    public override string ToString()
+    {
+        return $"Foundation: {Foundation}, Walls: {Walls}, Roof: {Roof}";
+    }
+}
+
+// Интерфейс строителя
+public interface IHouseBuilder
+{
+    void BuildFoundation();
+    void BuildWalls();
+    void BuildRoof();
+    House GetResult();
+}
+
+// Конкретный строитель
+public class ConcreteHouseBuilder : IHouseBuilder
+{
+    private readonly House _house = new();
+
+    public void BuildFoundation()
+    {
+        _house.Foundation = "Concrete foundation";
+    }
+
+    public void BuildWalls()
+    {
+        _house.Walls = "Brick walls";
+    }
+
+    public void BuildRoof()
+    {
+        _house.Roof = "Tile roof";
+    }
+
+    public House GetResult()
+    {
+        return _house;
+    }
+}
+
+// Директор
+public class Director
+{
+    private IHouseBuilder? _builder;
+
+    public void SetBuilder(IHouseBuilder builder)
+    {
+        _builder = builder;
+    }
+
+    public void Construct()
+    {
+        _builder?.BuildFoundation();
+        _builder?.BuildWalls();
+        _builder?.BuildRoof();
+    }
+}
+
+// Клиентский код
+class Program
+{
+    static void Main()
+    {
+        var director = new Director();
+        var builder = new ConcreteHouseBuilder();
+
+        director.SetBuilder(builder);
+        director.Construct();
+
+        House house = builder.GetResult();
+        Console.WriteLine(house); // Вывод: Foundation: Concrete foundation, Walls: Brick walls, Roof: Tile roof
+    }
+}

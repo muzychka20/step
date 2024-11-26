@@ -1,0 +1,89 @@
+using System;
+using System.Collections.Generic;
+
+// Интерфейс наблюдателя (Observer)
+public interface IInvestor
+{
+    void Update(Stock stock);
+}
+
+// Конкретный наблюдатель (ConcreteObserver)
+public class Investor : IInvestor
+{
+    public string Name { get; }
+
+    public Investor(string name)
+    {
+        Name = name;
+    }
+
+    public void Update(Stock stock)
+    {
+        Console.WriteLine($"Инвестор {Name} уведомлён: Акция {stock.Symbol} изменилась до {stock.Price:C} грн");
+    }
+}
+
+// Интерфейс издателя (Subject)
+public abstract class Stock
+{
+    private readonly List<IInvestor> _investors = new();
+    public string Symbol { get; }
+    private decimal _price;
+
+    protected Stock(string symbol, decimal price)
+    {
+        Symbol = symbol;
+        _price = price;
+    }
+
+    public decimal Price
+    {
+        get => _price;
+        set
+        {
+            if (_price != value)
+            {
+                _price = value;
+                Notify();
+            }
+        }
+    }
+
+    public void Attach(IInvestor investor) => _investors.Add(investor);
+    public void Detach(IInvestor investor) => _investors.Remove(investor);
+    protected void Notify()
+    {
+        foreach (var investor in _investors)
+            investor.Update(this);
+    }
+}
+
+// Конкретный издатель (ConcreteSubject)
+public class ConcreteStock : Stock
+{
+    public ConcreteStock(string symbol, decimal price) : base(symbol, price) { }
+}
+
+// Клиентский код
+class Program
+{
+    static void Main()
+    {
+        // Создание акций и инвесторов
+        var google = new ConcreteStock("GOOG", 1500m);
+        var investor1 = new Investor("Иван");
+        var investor2 = new Investor("Мария");
+
+        // Подписка на изменения
+        google.Attach(investor1);
+        google.Attach(investor2);
+
+        // Изменение цены акций
+        google.Price = 1510m;
+        google.Price = 1525m;
+
+        // Отписка одного из инвесторов
+        google.Detach(investor1);
+        google.Price = 1530m;
+    }
+}

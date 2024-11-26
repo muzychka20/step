@@ -1,0 +1,73 @@
+using System;
+
+// Интерфейс стратегии
+public interface IShippingStrategy
+{
+    decimal Calculate(decimal weight);
+}
+
+// Конкретная стратегия для наземной доставки
+public class GroundShipping : IShippingStrategy
+{
+    public decimal Calculate(decimal weight)
+    {
+        return weight * 1.5m; // Цена за килограмм для наземной доставки
+    }
+}
+
+// Конкретная стратегия для авиационной доставки
+public class AirShipping : IShippingStrategy
+{
+    public decimal Calculate(decimal weight)
+    {
+        return weight * 3.0m; // Цена за килограмм для авиационной доставки
+    }
+}
+
+// Конкретная стратегия для морской доставки
+public class SeaShipping : IShippingStrategy
+{
+    public decimal Calculate(decimal weight)
+    {
+        return weight * 0.8m; // Цена за килограмм для морской доставки
+    }
+}
+
+// Контекст
+public class ShippingCostCalculator
+{
+    private IShippingStrategy _strategy;
+
+    public void SetStrategy(IShippingStrategy strategy)
+    {
+        _strategy = strategy;
+    }
+
+    public decimal CalculateCost(decimal weight)
+    {
+        if (_strategy == null)
+            throw new InvalidOperationException("Стратегия доставки не установлена.");
+        return _strategy.Calculate(weight);
+    }
+}
+
+// Клиентский код
+class Program
+{
+    static void Main()
+    {
+        var calculator = new ShippingCostCalculator();
+
+        // Расчёт стоимости наземной доставки
+        calculator.SetStrategy(new GroundShipping());
+        Console.WriteLine($"Наземная доставка: {calculator.CalculateCost(10)} грн");
+
+        // Расчёт стоимости авиационной доставки
+        calculator.SetStrategy(new AirShipping());
+        Console.WriteLine($"Авиационная доставка: {calculator.CalculateCost(10)} грн");
+
+        // Расчёт стоимости морской доставки
+        calculator.SetStrategy(new SeaShipping());
+        Console.WriteLine($"Морская доставка: {calculator.CalculateCost(10)} грн");
+    }
+}

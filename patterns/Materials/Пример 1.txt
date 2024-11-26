@@ -1,0 +1,47 @@
+using System;
+
+public sealed class Logger
+{
+    private static Logger? _instance;
+    private static readonly object _lock = new();
+
+    // Приватный конструктор
+    private Logger() { }
+
+    // Метод для получения экземпляра
+    public static Logger GetInstance()
+    {
+        if (_instance == null)
+        {
+            lock (_lock)
+            {
+                if (_instance == null)
+                {
+                    _instance = new Logger();
+                }
+            }
+        }
+        return _instance;
+    }
+
+    // Пример метода класса
+    public void Log(string message)
+    {
+        Console.WriteLine($"Log: {message}");
+    }
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Все вызовы ведут к одному экземпляру
+        Logger logger1 = Logger.GetInstance();
+        Logger logger2 = Logger.GetInstance();
+
+        logger1.Log("Сообщение от logger1");
+        logger2.Log("Сообщение от logger2");
+
+        Console.WriteLine(ReferenceEquals(logger1, logger2) ? "Это один объект" : "Объекты разные");
+    }
+}

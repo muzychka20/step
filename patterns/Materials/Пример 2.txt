@@ -1,0 +1,71 @@
+using System;
+
+namespace FactoryMethodExample
+{
+    // Абстрактный продукт
+    public abstract class Document
+    {
+        public abstract void Open();
+    }
+
+    // Конкретные продукты
+    public class TextDocument : Document
+    {
+        public override void Open()
+        {
+            Console.WriteLine("TextDocument открыт.");
+        }
+    }
+
+    public class SpreadsheetDocument : Document
+    {
+        public override void Open()
+        {
+            Console.WriteLine("SpreadsheetDocument открыт.");
+        }
+    }
+
+    // Абстрактный создатель
+    public abstract class Application
+    {
+        // Фабричный метод
+        public abstract Document CreateDocument();
+
+        // Общий метод
+        public void OpenDocument()
+        {
+            Document doc = CreateDocument();
+            doc.Open();
+        }
+    }
+
+    // Конкретные создатели
+    public class TextApplication : Application
+    {
+        public override Document CreateDocument()
+        {
+            return new TextDocument();
+        }
+    }
+
+    public class SpreadsheetApplication : Application
+    {
+        public override Document CreateDocument()
+        {
+            return new SpreadsheetDocument();
+        }
+    }
+
+    // Клиентский код
+    class Program
+    {
+        static void Main()
+        {
+            Application textApp = new TextApplication();
+            textApp.OpenDocument(); // Вывод: TextDocument открыт.
+
+            Application spreadsheetApp = new SpreadsheetApplication();
+            spreadsheetApp.OpenDocument(); // Вывод: SpreadsheetDocument открыт.
+        }
+    }
+}
