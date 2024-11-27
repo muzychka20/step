@@ -1,0 +1,11 @@
+var builder = WebApplication.CreateBuilder();
+var app = builder.Build();
+ 
+app.Run(async(context) =>
+{
+    string name = context.Request.Query["name"];
+    string age = context.Request.Query["age"];
+    await context.Response.WriteAsync($"{name} - {age}");
+});
+ 
+app.Run();
