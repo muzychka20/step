@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <form method="POST" class="form">
+        <div class="input-data custom-select">
+            <label for="type">Type</label>
+            <select name="type" id="type">
+                <option value="Неаполитанская">Неаполитанская</option>
+                <option value="Кальцоне">Кальцоне</option>
+            </select>
+        </div>
+
+        <div class="input-data custom-select">
+            <label for="size">Size</label>
+            <select name="size" id="size">
+                <option value="маленькая">маленькая</option>
+                <option value="средняя">средняя</option>
+                <option value="большая">большая</option>
+            </select>
+        </div>
+
+        <div class="input-data">
+            <label for="phone">Phone</label>
+            <input type="tel" placeholder="068-606-8152" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" id="phone"
+                required>
+        </div>
+
+        <div class="input-data">
+            <label for="name">Name</label>
+            <input placeholder="Name" type="text" name="name" id="name" required>
+        </div>
+
+        <div class="input-data">
+            <label for="address">Address</label>
+            <input placeholder="Address" type="text" name="address" id="address" required>
+        </div>
+
+        <input type="submit" value="Submit" class="submit" id="submit_btn">
+    </form>
+    <p id="message"></p>
+</body>
+
+<script>
+    document.getElementById('submit_btn').addEventListener('click', async function(event) {
+        event.preventDefault()
+        const response = await fetch("postpizza2", {
+            method: "POST",
+            headers: { "Accept": "application/json", "Content-Type": "application/json" },
+            body: JSON.stringify({
+                type: document.getElementById('type').value,
+                size: document.getElementById('size').value,
+                phone: document.getElementById('phone').value,
+                name: document.getElementById('name').value,
+                address: document.getElementById('address').value,
+            })
+        })
+        const message = await response.json();
+        document.getElementById("message").innerText = message.text;
+    });
+</script>
+
+</html>
