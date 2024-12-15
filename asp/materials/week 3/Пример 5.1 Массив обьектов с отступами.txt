@@ -1,0 +1,30 @@
+using System.Text.Json;
+
+var builder = WebApplication.CreateBuilder();
+var app = builder.Build();
+
+app.Run(async (context) =>
+{
+    var response = context.Response;
+    response.Headers.ContentType = "application/json; charset=utf-8";
+
+    // Создание объекта с данными
+    var people = new[]
+    {
+        new { name = "Tom", age = 37 },
+        new { name = "BOB", age = 40 }
+    };
+
+    // Сериализация объекта в строку JSON с отступами
+    var jsonOptions = new JsonSerializerOptions
+    {
+        WriteIndented = true // Включает отступы
+    };
+
+    var jsonResponse = JsonSerializer.Serialize(people, jsonOptions);
+
+    // Отправка ответа
+    await response.WriteAsync(jsonResponse);
+});
+
+app.Run();

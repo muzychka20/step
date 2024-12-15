@@ -1,0 +1,4 @@
+if (context.Request.Path == "/old")
+{
+    context.Response.Redirect("https://www.google.com");
+}
