@@ -1,0 +1,12 @@
+async Task GetDate(HttpContext context, RequestDelegate next)
+{
+    string? path = context.Request.Path.Value?.ToLower();
+    if (path == "/date")
+    {
+        await context.Response.WriteAsync($"Date: {DateTime.Now.ToShortDateString()}");
+    }
+    else
+    {
+        await next.Invoke(context);
+    }
+}

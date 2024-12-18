@@ -1,0 +1,24 @@
+var builder = WebApplication.CreateBuilder();
+var app = builder.Build();
+ 
+app.UseWhen(
+    context => context.Request.Path == "/time", // условие: если путь запроса "/time"
+    HandleTimeRequest
+);
+ 
+app.Run(async context =>
+{
+    await context.Response.WriteAsync("Hello ASP");
+});
+ 
+app.Run();
+ 
+void HandleTimeRequest(IApplicationBuilder appBuilder)
+{
+    appBuilder.Use(async (context, next) =>
+    {
+        var time = DateTime.Now.ToShortTimeString();
+        Console.WriteLine($"current time: {time}");
+        await next();   // вызываем следующий middleware
+    });
+}

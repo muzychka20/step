@@ -1,0 +1,18 @@
+var builder = WebApplication.CreateBuilder();
+var app = builder.Build();
+ 
+app.Map("/index", Index);
+app.Map("/about", About);
+ 
+app.Run(async(context) => await context.Response.WriteAsync("Page Not Found"));
+ 
+app.Run();
+ 
+void Index(IApplicationBuilder appBuilder)
+{
+    appBuilder.Run(async context => await context.Response.WriteAsync("Index"));
+}
+void About(IApplicationBuilder appBuilder)
+{
+    appBuilder.Run(async context => await context.Response.WriteAsync("About"));
+}
