@@ -1,0 +1,55 @@
+html {
+  font-size: 14px;
+  position: relative;
+  min-height: 100%;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+body {
+  margin-bottom: 60px;
+  padding: 0;
+  margin: 0;
+  font-size: 18px;    
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+nav {
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+ul > li > a {
+  text-decoration: none;    
+  color: rgb(6, 0, 83);
+  transition: 1s;
+}
+
+ul > li > a:hover {
+  text-decoration: underline;
+  transition: 1s;
+
+}
+
+.btn_back {
+  padding: 10px 20px;
+  background-color: grey;
+  font-size: 12px;
+  border-radius: 20px;
+  color: white;
+  text-decoration: none;
+}
