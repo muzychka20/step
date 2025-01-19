@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Market Info</title>
+</head>
+<body>
+    <h1>Информация о покупателях</h1>
+    <ul>
+        {% for buyer in buyers %}
+        <li>{{ buyer.name }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_buyer') }}">Добавить покупателя</a> <!-- Ссылка на страницу добавления покупателя -->
+
+    <h1>Информация о продавцах</h1>
+    <ul>
+        {% for seller in sellers %}
+        <li>{{ seller.name }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_seller') }}">Добавить продавца</a> <!-- Ссылка на страницу добавления продавца -->
+
+    <h1>Информация о товарах</h1>
+    <ul>
+        {% for item in items %}
+        <li>{{ item.name }} ({{ item.price }} $) - Продавец: {{ item.seller_id }}</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('add_item') }}">Добавить товар</a>
+
+    <h1>Информация о продажах</h1>
+    <ul>
+        {% for sale in sales %}
+        <li>{{ sale.item.name }} продан {{ sale.quantity }} шт. покупателю {{ sale.buyer.name }}</li>
+        {% endfor %}        
+    </ul>
+    <a href="{{ url_for('add_sale') }}">Добавить продажу</a>
+    <br>
+    <a href="{{ url_for('index') }}">Главная страница</a>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавить покупателя</title>
+</head>
+<body>
+    <h1>Добавить нового покупателя</h1>
+    <form method="POST">
+        <label for="name">Имя:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="price">Цена:</label>
+        <input type="numeric" id="price" name="price" required>
+        <label for="seller_id">Продавец:</label>
+        <select name="seller_id" id="seller_id">
+            {% for id, name in sellers %}
+                <option value="{{ id }}">{{ name }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Добавить</button>
+    </form>
+    <br>
+    <a href="{{ url_for('index') }}">Вернуться на главную</a>
+</body>
+</html>
