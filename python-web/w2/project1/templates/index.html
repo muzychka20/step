@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приветствие</title>
+</head>
+<body>
+    <h1>Введите свои данные</h1>
+    <form method="post">
+        <label for="first_name">Имя:</label>
+        <input type="text" id="first_name" name="first_name" required>
+        <br>
+        <label for="last_name">Фамилия:</label>
+        <input type="text" id="last_name" name="last_name" required>
+        <br>
+        <button type="submit">Отправить</button>
+    </form>
+    {% if greeting %}
+        <h2>{{ greeting }}</h2>
+    {% endif %}
+</body>
+</html>
