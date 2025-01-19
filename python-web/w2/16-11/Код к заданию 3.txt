@@ -1,0 +1,60 @@
+from flask import Flask
+
+# Создаем приложение Flask
+app = Flask(__name__)
+
+# Главная страница
+@app.route("/")
+def home():
+    return "<h1>Главная</h1><p>Добро пожаловать на главную страницу компании!</p>"
+
+# Новости
+@app.route("/news")
+def news():
+    return "<h1>Новости</h1><p>Здесь вы найдете последние новости компании.</p>"
+
+# Руководство компании
+@app.route("/management")
+def management():
+    return "<h1>Руководство компании</h1><p>Информация о руководителях компании.</p>"
+
+# О компании
+@app.route("/about")
+def about():
+    return "<h1>О компании</h1><p>Здесь размещена информация о нашей компании.</p>"
+
+# Контакты
+@app.route("/contacts")
+def contacts():
+    return "<h1>Контакты</h1><p>Свяжитесь с нами: email@example.com</p>"
+
+# Филиалы
+@app.route("/branches")
+def branches():
+    return (
+        "<h1>Филиалы</h1>"
+        "<p>Общая информация обо всех филиалах компании:</p>"
+        "<ul>"
+        "<li>Лондон</li>"
+        "<li>Париж</li>"
+        "<li>Берлин</li>"
+        "</ul>"
+    )
+
+@app.route("/branches/<string:branch_name>")
+def branch_details(branch_name):
+    # Данные о филиалах
+    branch_info = {
+        "London": "Филиал в Лондоне: улица Бейкер, 221B.",
+        "Paris": "Филиал в Париже: авеню Елисейские поля, 10.",
+        "Berlin": "Филиал в Берлине: улица Унтер-ден-Линден, 50."
+    }
+    # Если филиал найден, возвращаем информацию о нем
+    if branch_name in branch_info:
+        return f"<h1>Филиал: {branch_name}</h1><p>{branch_info[branch_name]}</p>"
+    # Если филиал не найден, возвращаем сообщение об ошибке
+    return "<h1>Филиал не найден</h1><p>К сожалению, информация о данном филиале отсутствует.</p>"
+
+# Запуск приложения
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=8000)

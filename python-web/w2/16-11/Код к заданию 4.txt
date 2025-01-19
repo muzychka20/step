@@ -1,0 +1,92 @@
+from flask import Flask
+
+# Создаем приложение Flask
+app = Flask(__name__)
+
+# Функция для генерации общего меню навигации
+def get_navigation():
+    return (
+        "<nav>"
+        "<a href='/'>Главная</a> | "
+        "<a href='/news'>Новости</a> | "
+        "<a href='/management'>Руководство компании</a> | "
+        "<a href='/about'>О компании</a> | "
+        "<a href='/contacts'>Контакты</a> | "
+        "<a href='/branches'>Филиалы</a>"
+        "</nav><hr>"
+    )
+
+# Главная страница
+@app.route("/")
+def home():
+    return (
+        get_navigation() +
+        "<h1>Главная</h1><p>Добро пожаловать на главную страницу компании!</p>"
+    )
+
+# Новости
+@app.route("/news")
+def news():
+    return (
+        get_navigation() +
+        "<h1>Новости</h1><p>Здесь вы найдете последние новости компании.</p>"
+    )
+
+# Руководство компании
+@app.route("/management")
+def management():
+    return (
+        get_navigation() +
+        "<h1>Руководство компании</h1><p>Информация о руководителях компании.</p>"
+    )
+
+# О компании
+@app.route("/about")
+def about():
+    return (
+        get_navigation() +
+        "<h1>О компании</h1><p>Здесь размещена информация о нашей компании.</p>"
+    )
+
+# Контакты
+@app.route("/contacts")
+def contacts():
+    return (
+        get_navigation() +
+        "<h1>Контакты</h1><p>Свяжитесь с нами: email@example.com</p>"
+    )
+
+# Филиалы
+@app.route("/branches")
+def branches():
+    return (
+        get_navigation() +
+        "<h1>Филиалы</h1>"
+        "<p>Общая информация обо всех филиалах компании:</p>"
+        "<ul>"
+        "<li><a href='/branches/London'>Лондон</a></li>"
+        "<li><a href='/branches/Paris'>Париж</a></li>"
+        "<li><a href='/branches/Berlin'>Берлин</a></li>"
+        "</ul>"
+    )
+
+@app.route("/branches/<string:branch_name>")
+def branch_details(branch_name):
+    branch_info = {
+        "London": "Филиал в Лондоне: улица Бейкер, 221B.",
+        "Paris": "Филиал в Париже: авеню Елисейские поля, 10.",
+        "Berlin": "Филиал в Берлине: улица Унтер-ден-Линден, 50."
+    }
+    if branch_name in branch_info:
+        return (
+            get_navigation() +
+            f"<h1>Филиал: {branch_name}</h1><p>{branch_info[branch_name]}</p>"
+        )
+    return (
+        get_navigation() +
+        "<h1>Филиал не найден</h1><p>К сожалению, информация о данном филиале отсутствует.</p>"
+    )
+
+# Запуск приложения
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=8000)
