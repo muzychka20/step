@@ -71,7 +71,9 @@ def register():
 # Выход из системы
 @app.route('/logout')
 def logout():
+    global cart
     session.pop('user_id', None)
+    cart = []
     flash('Вы вышли из системы', 'info')
     return redirect(url_for('login'))
 
@@ -100,7 +102,7 @@ def cart_page():
 @app.route('/remove_from_cart/<int:product_id>', methods=['POST'])
 def remove_from_cart(product_id):
     global cart
-    cart = [item for item in cart if item['id'] != product_id]
+    cart = [item for item in cart if item.id != product_id]
     return redirect(url_for('cart_page'))
 
 def populate_db():
