@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>  
+    <link rel="stylesheet" href="../static/styles/main.css">
+</head>
+<body>
+    <h1>Добро пожаловать в наш магазин!</h1>
+    <div class="products-wrapper">
+        {% for product in products %}
+        <div class="product">
+            <h3>{{ product.name }}</h3>
+            <img src={{ product.image }} alt="image" class="product-image">
+            <p>Цена: {{ product.price }} грн</p>
+            <form method="POST" action="/add_to_cart/{{ product.id }}">
+                <button class="add-product">Добавить в корзину</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="/cart">Перейти в корзину</a>
+</body>
+</html>

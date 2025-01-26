@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="../static/styles/main.css">
+</head>
+<body>
+    <h1>Ваша корзина</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Товар</th>
+                <th>Цена</th>
+                <th>Изображение</th>
+                <th>Действие</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in cart %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.price }} грн</td>
+                <td>
+                    <img src={{ item.image }} alt="image" class="product-image">
+                </td>
+                <td>
+                    <form method="POST" action="/remove_from_cart/{{ item.id }}">
+                        <button class="delete-product">Удалить</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h3>Итого: {{ total }} грн</h3>
+    <a href="/">Вернуться в магазин</a>
+</body>
+</html>
