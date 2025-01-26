@@ -10,25 +10,34 @@
 <body>    
     <div class="container mt-5">
         <h1 class="text-center">{{ brand }}</h1>
-        <div class="row">
-            {% for product in products %}
-                <div class="col-md-4 mb-4">
-                    <div class="card">
+        
+        <!-- Фильтрация и поиск -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <button class="btn btn-primary" onclick="filterProducts('asc')">Сортировать по возрастанию</button>
+                <button class="btn btn-primary" onclick="filterProducts('desc')">Сортировать по убыванию</button>
+            </div>
+            <div class="col-md-6">
+                <input type="text" id="searchInput" class="form-control" placeholder="Введите название товара" onkeyup="searchProducts()">
+            </div>
+        </div>
+        
+        <div class="row" id="productsContainer">
+            {% for product in products %}                
+                    <div class="card product-item">
+                        <h5 class="card-title">{{ product.name }}</h5>
                         <img src="{{ product.image }}" class="card-img-top" alt="{{ product.name }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ product.name }}</h5>
-                            <p class="card-text">{{ product.price }}</p>
-                            <form method="POST" action="/add_to_cart/{{ product.id }}">
-                                <button class="add-product">Добавить в корзину</button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                        <p class="card-text">{{ product.price }} $</p>
+                        <form method="POST" action="/add_to_cart/{{ product.id }}">
+                            <button class="add-product">Добавить в корзину</button>
+                        </form>                     
+                    </div>                
             {% endfor %}            
         </div>
         <div class="text-center mt-3">
             <a href="/home" class="btn btn-primary">На главную</a>
         </div>
-    </div>
+    </div>  
+    <script src="../static/script/script.js"></script>  
 </body>
 </html>
