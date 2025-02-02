@@ -13,10 +13,14 @@ if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
 
 # Проверка допустимых расширений файлов
+
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config['ALLOWED_EXTENSIONS']
 
 # Конвертация изображения в PDF
+
+
 def convert_image_to_pdf(image_path, output_path):
     image = Image.open(image_path)
     pdf = FPDF()
@@ -25,20 +29,24 @@ def convert_image_to_pdf(image_path, output_path):
     pdf.output(output_path, "F")
 
 # Конвертация .docx в PDF
+
+
 def convert_docx_to_pdf(docx_path, output_path):
     doc = Document(docx_path)  # Чтение .docx файла
     pdf = FPDF()
     pdf.add_page()
+    
+    # Добавление внешнего шрифта с поддержкой кириллицы (например, DejaVuSans.ttf)
+    pdf.add_font('DejaVuSans', '', "/Users/muzychka/Documents/djsans/DejaVuSans.ttf", uni=True)  # Указание шрифта с поддержкой Unicode
+    pdf.set_font('DejaVuSans', size=12)
 
-    # Использование стандартного шрифта (не поддерживает Unicode)
-    pdf.set_font("Arial", size=12)
-
-    # Добавление текста из .docx в PDF
-    for paragraph in doc.paragraphs:
-        pdf.multi_cell(0, 10, paragraph.text.encode('latin-1', 'replace').decode('latin-1'))  # Попытка обработки Unicode
-        pdf.ln()  # Переход на новую строку
+    # Adding text from the .docx to the PDF
+    for paragraph in doc.paragraphs:        
+        pdf.multi_cell(0, 10, paragraph.text)
+        pdf.ln()  # New line
 
     pdf.output(output_path, "F")
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -57,14 +65,17 @@ def index():
 
             # Определение типа файла и конвертация
             if filename.endswith('.docx'):
-                pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename.rsplit('.', 1)[0] + '.pdf')
+                pdf_path = os.path.join(
+                    app.config['UPLOAD_FOLDER'], filename.rsplit('.', 1)[0] + '.pdf')
                 convert_docx_to_pdf(filepath, pdf_path)
             else:  # Для изображений
-                pdf_path = os.path.join(app.config['UPLOAD_FOLDER'], filename.rsplit('.', 1)[0] + '.pdf')
+                pdf_path = os.path.join(
+                    app.config['UPLOAD_FOLDER'], filename.rsplit('.', 1)[0] + '.pdf')
                 convert_image_to_pdf(filepath, pdf_path)
 
             return send_file(pdf_path, as_attachment=True)
     return render_template('index.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
