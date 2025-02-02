@@ -3,6 +3,9 @@ from PIL import Image
 from fpdf import FPDF
 from docx import Document
 import os
+from io import BytesIO
+import tempfile
+
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads/'
@@ -29,23 +32,43 @@ def convert_image_to_pdf(image_path, output_path):
     pdf.output(output_path, "F")
 
 # Конвертация .docx в PDF
-
-
 def convert_docx_to_pdf(docx_path, output_path):
     doc = Document(docx_path)  # Чтение .docx файла
     pdf = FPDF()
     pdf.add_page()
-    
+
     # Добавление внешнего шрифта с поддержкой кириллицы (например, DejaVuSans.ttf)
     pdf.add_font('DejaVuSans', '', "/Users/muzychka/Documents/djsans/DejaVuSans.ttf", uni=True)  # Указание шрифта с поддержкой Unicode
     pdf.set_font('DejaVuSans', size=12)
 
-    # Adding text from the .docx to the PDF
-    for paragraph in doc.paragraphs:        
+    # Процесс конвертации текста из .docx в PDF
+    for paragraph in doc.paragraphs:
+        # Добавление текста
         pdf.multi_cell(0, 10, paragraph.text)
-        pdf.ln()  # New line
+        pdf.ln()  # Новая строка
 
-    pdf.output(output_path, "F")
+        # Обработка изображений в параграфе
+        for run in paragraph.runs:
+            if run.element.xpath('.//w:drawing'):  # Проверка на наличие изображений
+                for img in run.element.xpath('.//a:blip'):
+                    image_id = img.attrib.get('{http://schemas.openxmlformats.org/officeDocument/2006/relationships}embed')
+                    if image_id:
+                        # Извлечение изображения
+                        image_part = doc.part.related_parts[image_id]
+                        image_bytes = image_part.blob
+                        
+                        # Используем BytesIO для создания изображения из байтов
+                        image = Image.open(BytesIO(image_bytes))
+
+                        # Сохранение изображения во временный файл
+                        with tempfile.NamedTemporaryFile(delete=False, suffix='.jpg') as tmp_file:
+                            image.save(tmp_file, format='JPEG')
+                            temp_img_path = tmp_file.name
+
+                        # Добавление изображения в PDF
+                        pdf.image(temp_img_path, x=10, y=pdf.get_y(), w=180)                        
+
+    pdf.output(output_path, "F")  # Сохранение PDF
 
 
 @app.route('/', methods=['GET', 'POST'])
