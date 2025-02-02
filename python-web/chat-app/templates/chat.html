@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <title>Чат</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.5.4/socket.io.js"></script>
+</head>
+<body>
+    <h2>Чат</h2>
+    <div id="messages"></div>
+    <input id="message_input" type="text" placeholder="Введите сообщение">
+    <button onclick="sendMessage()">Отправить</button>
+    <a href="{{ url_for('logout') }}">Выйти</a>
+
+    <script>
+        var socket = io.connect("http://" + document.domain + ":" + location.port);
+        
+        socket.on("message", function(msg) {
+            var messages = document.getElementById("messages");
+            var messageElement = document.createElement("p");
+            messageElement.textContent = msg;
+            messages.appendChild(messageElement);
+        });
+
+        function sendMessage() {
+            var messageInput = document.getElementById("message_input");
+            socket.send(messageInput.value);
+            messageInput.value = "";
+        }
+    </script>
+</body>
+</html>

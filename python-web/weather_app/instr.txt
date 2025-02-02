@@ -1,0 +1,4 @@
+Получение API ключа от OpenWeatherMap
+регистрация на OpenWeatherMap и получить API ключ.
+https://openweathermap.org/api
+Замените your_api_key в файле app.py на ваш ключ.
