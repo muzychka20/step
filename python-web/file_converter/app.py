@@ -32,13 +32,17 @@ def convert_image_to_pdf(image_path, output_path):
     pdf.output(output_path, "F")
 
 # Конвертация .docx в PDF
+
+
 def convert_docx_to_pdf(docx_path, output_path):
     doc = Document(docx_path)  # Чтение .docx файла
     pdf = FPDF()
     pdf.add_page()
 
     # Добавление внешнего шрифта с поддержкой кириллицы (например, DejaVuSans.ttf)
-    pdf.add_font('DejaVuSans', '', "/Users/muzychka/Documents/djsans/DejaVuSans.ttf", uni=True)  # Указание шрифта с поддержкой Unicode
+    # Указание шрифта с поддержкой Unicode
+    pdf.add_font('DejaVuSans', '',
+                 "/Users/muzychka/Documents/djsans/DejaVuSans.ttf", uni=True)
     pdf.set_font('DejaVuSans', size=12)
 
     # Процесс конвертации текста из .docx в PDF
@@ -51,12 +55,13 @@ def convert_docx_to_pdf(docx_path, output_path):
         for run in paragraph.runs:
             if run.element.xpath('.//w:drawing'):  # Проверка на наличие изображений
                 for img in run.element.xpath('.//a:blip'):
-                    image_id = img.attrib.get('{http://schemas.openxmlformats.org/officeDocument/2006/relationships}embed')
+                    image_id = img.attrib.get(
+                        '{http://schemas.openxmlformats.org/officeDocument/2006/relationships}embed')
                     if image_id:
                         # Извлечение изображения
                         image_part = doc.part.related_parts[image_id]
                         image_bytes = image_part.blob
-                        
+
                         # Используем BytesIO для создания изображения из байтов
                         image = Image.open(BytesIO(image_bytes))
 
@@ -66,7 +71,7 @@ def convert_docx_to_pdf(docx_path, output_path):
                             temp_img_path = tmp_file.name
 
                         # Добавление изображения в PDF
-                        pdf.image(temp_img_path, x=10, y=pdf.get_y(), w=180)                        
+                        pdf.image(temp_img_path, x=10, y=pdf.get_y(), w=180)
 
     pdf.output(output_path, "F")  # Сохранение PDF
 
