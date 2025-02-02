@@ -63,6 +63,8 @@ body {
 .task {
     padding: 10px;
     border-bottom: 1px solid #ddd;
+    display: flex;
+    align-items: center;
 }
 
 .task:last-child {
@@ -78,4 +80,40 @@ body {
     font-size: 16px;
     color: #333;
     margin-top: 5px;
+}
+
+.task {
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-task-btn {
+    color: #fff;
+    background-color: rgb(167, 24, 24);
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.edit-task-btn, .save-task-btn {
+    color: #fff;
+    background-color: rgb(210, 161, 0);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+}
+
+.save-task-btn {
+    display: none;
+}
+
+.delete-task-btn:hover,
+.edit-task-btn:hover {
+    cursor: pointer;
+}
+
+.new-text-input {    
+    padding: 10px 5px;
+    width: 300px;
+    margin-top: 10px;
 }

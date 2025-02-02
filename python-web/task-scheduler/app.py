@@ -27,8 +27,30 @@ def index():
         db.session.commit()
 
     tasks = Task.query.all()
-    t = [{"date": task.date, "text": task.text} for task in tasks]
+    t = [{"id": task.id, "date": task.date, "text": task.text}
+         for task in tasks]
     return render_template("index.html", tasks=t)
+
+
+@app.route('/delete/<int:id>', methods=["POST"])
+def delete(id):
+    if request.method == 'POST':
+        t = Task.query.filter_by(id=id).first()
+        if t:
+            db.session.delete(t)
+            db.session.commit()
+    return redirect(url_for("index"))
+
+
+@app.route('/update/<int:id>', methods=["POST"])
+def update(id):
+    if request.method == 'POST':
+        data = request.get_json()
+        t = Task.query.filter_by(id=id).first()
+        if t:
+            t.text = data["new_text"]
+            db.session.commit()
+    return redirect(url_for("index"))
 
 
 # Запуск приложения

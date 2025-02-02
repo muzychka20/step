@@ -4,9 +4,10 @@ import requests
 app = Flask(__name__)
 
 # Замените 'your_api_key' на ваш ключ API от OpenWeatherMap
-API_KEY = '05c91bd1a70f4ba40f1ca38d5e1d5008'
+API_KEY = ''
 BASE_URL = 'http://api.openweathermap.org/data/2.5/weather'
 FORECAST_URL = 'http://api.openweathermap.org/data/2.5/forecast'
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -18,6 +19,7 @@ def index():
         forecast_data = get_forecast(city)
     return render_template('index.html', weather=weather_data, forecast=forecast_data)
 
+
 def get_weather(city):
     params = {
         'q': city,
@@ -27,6 +29,7 @@ def get_weather(city):
     response = requests.get(BASE_URL, params=params)
     return response.json()
 
+
 def get_forecast(city):
     params = {
         'q': city,
@@ -35,6 +38,7 @@ def get_forecast(city):
     }
     response = requests.get(FORECAST_URL, params=params)
     return response.json()
+
 
 if __name__ == '__main__':
     app.run(debug=True)

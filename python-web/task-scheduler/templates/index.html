@@ -8,17 +8,27 @@
 </head>
 <body>    
     <form method="POST" class="form">        
-        <textarea name="task-message" id="task-message" class="task-input"></textarea>        
+        <textarea name="task-message" id="task-message" class="task-input" required></textarea>        
         <button type="submit" class="add-button">Add</button>
     </form>
     
     <div class="tasks">
         {% for task in tasks %}
             <div class="task">
-                <div class="task-date">{{ task.date }}</div>
-                <div class="task-text">{{ task.text }}</div>
+                <div class="task-content" id="{{ task.id }}">
+                    <div class="task-date">{{ task.date }}</div>
+                    <div class="task-text">{{ task.text }}</div>
+                </div>
+                <div class="manage-task">
+                    <button onClick="deleteItem({{ task.id }})" class="delete-task-btn" id="delete-task-btn-{{task.id}}">Delete</button>
+                    <button onClick="editItem({{ task.id }})" id="edit-task-btn-{{task.id}}" class="edit-task-btn">Edit</button>
+                    <button onClick="saveItem({{ task.id }})" id="save-task-btn-{{task.id}}" class="save-task-btn">Save</button>
+                </div>
             </div>
-        {% endfor %}    
+        {% endfor %}
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src={{ url_for('static', filename='script/script.js') }}></script>
 </body>
 </html>
