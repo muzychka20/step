@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Добавить</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            {{ form.title.label }} {{ form.title() }}
+            {{ form.description.label }} {{ form.description() }}
+            {{ form.contact_info.label }} {{ form.contact_info() }}
+            {{ form.image.label }} {{ form.image() }}
+            {{ form.category_id.label }} {{ form.category_id() }}
+            {{ form.submit(class="button") }}
+        </form>
+        <a class="button" href="{{ url_for('index') }}">Back to Ads</a>        
+    </div>
+</body>
+</html>

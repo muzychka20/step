@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Respond to Ad</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">    
+        <h1>Respond to Ad: {{ ad.title }}</h1>
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <div>
+                <label for="name">Your Name</label>
+                {{ form.name() }}
+            </div>
+            <div>
+                <label for="message">Your Message</label>
+                {{ form.message() }}
+            </div>
+            <button type="submit">Send Response</button>
+        </form>
+        <a class="button" href="{{ url_for('index') }}">Back to Ads</a>        
+    </div>
+</body>
+</html>

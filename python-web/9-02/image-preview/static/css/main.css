@@ -1,0 +1,110 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Carousel Container */
+.carousel {
+    width: 60%;
+    max-width: 800px;
+    margin: 50px auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    position: relative;
+}
+
+/* Carousel Images */
+.carousel img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.carousel button[data-carousel-prev] {
+    left: 10px;
+}
+
+.carousel button[data-carousel-next] {
+    right: 10px;
+}
+
+/* Indicators */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.carousel-indicators button {
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    border: 2px solid #565656;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators button.active {
+    background: #ffa32a;
+    border: 2px solid #ffa32a;
+}
+
+/* Form Styling */
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    width: 400px;
+    margin: 30px auto;
+}
+
+/* Form Inputs */
+.form label {
+    font-weight: bold;
+    font-size: 16px;
+    align-self: flex-start;
+}
+
+.form input[type="file"] {
+    border: 2px solid #ccc;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px 30px;
+}
+
+/* Upload Button */
+.form .button {
+    border: none;
+    background: #ffa32a;
+    color: white;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    align-self: flex-end;
+}
+
+.form .button:hover {
+    background: #ff8700;
+}

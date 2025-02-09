@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Генератор паролей</title>
+</head>
+<body>
+    <h1>Сгенерировать пароль</h1>
+    <form method="post">
+        Длина: <input type="number" name="length" value="12"><br>
+        <input type="checkbox" name="letters" checked> Буквы<br>
+        <input type="checkbox" name="numbers" checked> Цифры<br>
+        <input type="checkbox" name="symbols" checked> Спецсимволы<br>
+        <button type="submit">Генерировать</button>
+    </form>
+    {% if password %}
+        <h2>Ваш пароль: {{ password }}</h2>
+    {% endif %}
+    <a href="{{ url_for('saved_passwords') }}">Сохраненные пароли</a>
+    <a href="{{ url_for('logout') }}">Выход</a>
+</body>
+</html>

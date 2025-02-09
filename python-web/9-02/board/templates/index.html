@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ads</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Advertisements</h1>    
+        <div>
+            <h3>Filter by categories:</h3>
+            <form method="GET" action="{{ url_for('index') }}">
+                <select name="category_id" onchange="this.form.submit()">
+                    <option value="">All</option>
+                    {% for category in categories %}
+                        <option value="{{ category.id }}" {% if category.id == category_id %}selected{% endif %}>{{ category.category_name }}</option>
+                    {% endfor %}
+                </select>
+            </form>
+        </div>    
+        <ul>
+            {% for ad in ads %}
+                <li>
+                    <h2>{{ ad.title }}</h2>
+                    <p>{{ ad.description }}</p>
+                    <p>Contact: {{ ad.contact_info }}</p>
+                    {% if ad.image_filename %}
+                        <img src="{{ url_for('static', filename='uploads/' + ad.image_filename) }}" alt="{{ ad.title }}" width="200">
+                    {% endif %}
+                    <p>Category: {{ ad.category.category_name }}</p>
+
+                    <form action="{{ url_for('respond_to_ad', ad_id=ad.id) }}" method="POST">
+                        <button type="submit">Respond</button>
+                    </form>                
+                    <h4>Responses:</h4>
+                    <ul>
+                        {% for response in ad.responses %}
+                            <li>
+                                <strong>{{ response.name }}</strong>: {{ response.message }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+        <a class="button" href="{{ url_for('add_ad') }}">Add Ad</a>
+    </div>
+</body>
+</html>

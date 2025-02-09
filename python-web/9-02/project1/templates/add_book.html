@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Добавить книгу</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Добавить книгу</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {{ form.hidden_tag() }}
+            <p>{{ form.title.label }} {{ form.title() }}</p>
+            <p>{{ form.author.label }} {{ form.author() }}</p>
+            <p>{{ form.year.label }} {{ form.year() }}</p>
+            <p>{{ form.genre.label }} {{ form.genre() }}</p>
+            <p>{{ form.cover_image.label }} {{ form.cover_image() }}</p>
+            <p>{{ form.submit(class="button") }}</p>
+        </form>
+        <a class="button" href="{{ url_for('index') }}">Назад</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ book.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>{{ book.title }}</h1>
+        <img src="{{ url_for('static', filename='uploads/' + book.cover_image) }}" alt="Обложка">
+        <p><strong>Автор:</strong> {{ book.author }}</p>
+        <p><strong>Год:</strong> {{ book.year }}</p>
+        <p><strong>Жанр:</strong> {{ book.genre }}</p>
+        <p><strong>Рейтинг:</strong> ⭐ {{ book.rating|round(1) }}</p>
+
+        <h2>Отзывы</h2>
+        {% for review in book.reviews %}
+            <div class="review">
+                <p><strong>Оценка:</strong> ⭐ {{ review.rating }}</p>
+                <p>{{ review.text }}</p>
+            </div>
+        {% endfor %}
+
+        <h3>Добавить отзыв</h3>
+        <form method="POST">
+            <textarea name="text" rows="3" placeholder="Напишите ваш отзыв..." required></textarea><br>
+            <label for="rating">Оценка:</label>
+            <select name="rating" required>
+                <option value="1">1 звезда</option>
+                <option value="2">2 звезды</option>
+                <option value="3">3 звезды</option>
+                <option value="4">4 звезды</option>
+                <option value="5">5 звезд</option>
+            </select><br>
+            <button type="submit">Добавить</button>
+        </form>
+
+        <a class="button" href="{{ url_for('index') }}">Назад</a>
+    </div>
+</body>
+</html>
