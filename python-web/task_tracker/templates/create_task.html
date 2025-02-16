@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ 'Редактировать задачу' if task else 'Создать задачу' }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>{{ 'Редактировать задачу' if task else 'Создать задачу' }}</h1>
+    <form method="POST">
+        <input type="hidden" name="id" value="{{ task.id if task else '' }}">
+        <label for="title">Заголовок:</label>
+        <input type="text" id="title" name="title" value="{{ task.title if task else '' }}" required>
+        <br>
+        <label for="description">Описание:</label>
+        <textarea id="description" name="description" required>{{ task.description if task else '' }}</textarea>
+        <br>
+        <label for="due_date">Срок выполнения:</label>
+        <input type="date" id="due_date" name="due_date" value="{{ task.due_date.strftime('%Y-%m-%d') if task else '' }}" required>
+        <br>
+        <button type="submit">{{ 'Сохранить изменения' if task else 'Создать задачу' }}</button>
+    </form>
+</body>
+</html>

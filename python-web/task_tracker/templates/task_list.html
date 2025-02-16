@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Ваши задачи</h2>
+    <table>
+        <tr>
+            <th>Заголовок</th>
+            <th>Описание</th>
+            <th>Дата выполнения</th>
+            <th>Статус</th>
+            <th></th>
+        </tr>
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.title }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.due_date }}</td>
+            <td>
+                <form action="{{ url_for('update_task_status', id=task.id) }}" method="POST" class="form-select">
+                    <select name="status_id" onchange="this.form.submit()">
+                        {% for status in task_statuses %}
+                            <option value="{{ status.id }}" {% if status.id == task.status.id %}selected{% endif %}>
+                                {{ status.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </form>
+            </td>
+            <td>
+                <div class="management-buttons">
+                    <button onClick="deleteTask({{ task.id }})">Delete</button>
+                    <button onClick="editTask({{ task.id }})">Edit</button>
+                </div>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

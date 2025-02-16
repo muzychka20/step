@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>{{ post.title }}</h2>
+
+<img src="{{ url_for('static', filename=post.image) }}" alt="image" class="post-image">
+
+<p>{{ post.content }}</p>
+<p><small>Опубликовано: {{ post.created_at.strftime('%d-%m-%Y %H:%M') }}</small></p>
+
+{% if g.user and g.user.id == post.author_id %}
+    <a href="{{ url_for('edit_post', post_id=post.id) }}">Редактировать</a>
+    <form method="POST" action="{{ url_for('delete_post', post_id=post.id) }}" style="display:inline;">
+        <button type="submit">Удалить</button>
+    </form>
+{% endif %}
+
+<h3>Комментарии</h3>
+{% for comment in comments %}
+    <p><strong>Пользователь {{ comment.author_id }}</strong>: {{ comment.content }}</p>
+{% endfor %}
+
+{% if g.user %}
+<form method="POST">
+    <textarea name="content" placeholder="Добавить комментарий" required></textarea>
+    <button type="submit">Отправить</button>
+</form>
+{% else %}
+<p><a href="{{ url_for('login') }}">Войдите</a>, чтобы оставить комментарий.</p>
+{% endif %}
+{% endblock %}
