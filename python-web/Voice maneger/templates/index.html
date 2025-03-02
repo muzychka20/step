@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Голосовой помощник</title>
+</head>
+<body>
+    <h1>Голосовой помощник</h1>
+    <button onclick="startRecognition()">Говорите</button>
+    <p id="result"></p>
+
+    <script>
+        function startRecognition() {
+            let recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+            recognition.lang = "ru-RU";
+            recognition.start();
+
+            recognition.onresult = function(event) {
+                let command = event.results[0][0].transcript;
+                document.getElementById("result").innerText = "Вы сказали: " + command;
+                window.open("https://www.google.com/search?q=" + encodeURIComponent(command), "_blank");
+            };
+        }
+    </script>
+</body>
+</html>
